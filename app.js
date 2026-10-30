@@ -281,12 +281,10 @@
       panel.hidden = false;
       if (animate && canAnimate()) {
         gsap.fromTo(panel, { height: 0, opacity: 0 }, { height: 'auto', opacity: 1, duration: 0.55, ease: 'power3.out', clearProps: 'height,opacity', onComplete: refreshScroll });
-        gsap.fromTo($('.preview', panel), { rotateY: -28, x: -24, opacity: 0, transformPerspective: 900 }, { rotateY: 0, x: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.1 });
-        gsap.fromTo($all('.details > div', panel), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power2.out', delay: 0.15 });
+        gsap.fromTo([$('.preview', panel)].concat($all('.details > div', panel)), { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power2.out', delay: 0.1 });
       } else {
         refreshScroll();
       }
-      setupMockupTilt(panel);
     } else {
       if (animate && canAnimate()) {
         gsap.to(panel, { height: 0, opacity: 0, duration: 0.35, ease: 'power2.in', onComplete: function () {
@@ -369,76 +367,30 @@
     ScrollTrigger.getAll().forEach(function (st) { st.kill(); });
   }
 
-  function splitWords(el) {
-    if (el.dataset.split) return;
-    el.dataset.split = '1';
-    var words = el.textContent.split(/(\s+)/);
-    el.setAttribute('aria-label', el.textContent);
-    el.innerHTML = words.map(function (w) {
-      return /^\s+$/.test(w) ? w : '<span class="w" aria-hidden="true" style="display:inline-block">' + esc(w) + '</span>';
-    }).join('');
-  }
-
-  function setupMockupTilt(scope) {
-    if (!canScrollAnimate()) return;
-    $all('img.mockup', scope).forEach(function (img) {
-      if (img.dataset.tilt) return;
-      img.dataset.tilt = '1';
-      gsap.fromTo(img,
-        { rotateY: -16, rotateX: 10, transformPerspective: 1000, transformOrigin: '50% 50%' },
-        { rotateY: 12, rotateX: -6, ease: 'none',
-          scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: 0.8 } });
-    });
-  }
+  // Les blocs qui apparaissent au scroll, un par un, une seule fois.
+  var REVEAL = '.section-label, .a-up, .a-words, .project, .a-mail';
 
   function setupAnimations(entrance) {
     if (!canScrollAnimate()) return;
     gsap.registerPlugin(ScrollTrigger);
 
-    // 1. Haut de page
-    if (entrance) {
-      var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      tl.from('.a-hero', { y: 24, opacity: 0, duration: 0.8, stagger: 0.08 })
-        .from('.portrait img', { clipPath: 'inset(100% 0% 0% 0%)', scale: 1.12, duration: 1.1, ease: 'power4.out' }, 0.1)
-        .from('.portrait figcaption', { opacity: 0, duration: 0.6 }, 0.6)
-        .from('.site-header > *', { y: -10, opacity: 0, duration: 0.6, stagger: 0.08 }, 0);
-    }
+    // Après un changement de langue, tout reste visible : pas de nouvelle apparition.
+    if (!entrance) return;
 
-    // 2. Phrases d'accroche : les mots s'allument au fil du scroll
-    $all('.a-words').forEach(function (el) {
-      splitWords(el);
-      gsap.fromTo($all('.w', el), { opacity: 0.14 }, {
-        opacity: 1, stagger: 0.05, ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top 88%', end: 'top 45%', scrub: true }
-      });
+    // Haut de page : apparition douce au chargement.
+    gsap.from('.site-header > *, .a-hero, .portrait', {
+      y: 16, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power2.out'
     });
 
-    // 3. Titres de section et blocs simples
-    $all('.section-label').forEach(function (el) {
-      gsap.from(el, { x: -16, opacity: 0, duration: 0.7, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
-    });
-    ScrollTrigger.batch('.a-up', {
-      start: 'top 92%', once: true,
+    // Le reste : chaque bloc apparaît en fondu quand il arrive à l'écran.
+    gsap.set(REVEAL, { opacity: 0, y: 24 });
+    ScrollTrigger.batch(REVEAL, {
+      start: 'top 88%',
+      once: true,
       onEnter: function (batch) {
-        gsap.from(batch, { y: 22, opacity: 0, duration: 0.7, stagger: 0.07, ease: 'power2.out', overwrite: true });
+        gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out', overwrite: true });
       }
     });
-
-    // 4. Projets : chaque ligne bascule en 3D en arrivant à l'écran
-    var list = $('.project-list');
-    if (list) gsap.set(list, { perspective: 1400 });
-    $all('.project').forEach(function (row) {
-      gsap.fromTo(row,
-        { rotateX: -32, y: 48, opacity: 0, transformOrigin: '50% 0%' },
-        { rotateX: 0, y: 0, opacity: 1, ease: 'power2.out',
-          scrollTrigger: { trigger: row, start: 'top 98%', end: 'top 72%', scrub: 0.6 } });
-    });
-    setupMockupTilt(document);
-
-    // 5. Adresse e-mail : légère montée en échelle
-    gsap.from('.a-mail', { scale: 0.92, opacity: 0, transformOrigin: '0% 50%', duration: 0.9, ease: 'power3.out',
-      scrollTrigger: { trigger: '.a-mail', start: 'top 92%', once: true } });
 
     ScrollTrigger.refresh();
   }
