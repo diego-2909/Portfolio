@@ -125,12 +125,36 @@
 
   var CHEVRON = '<svg class="chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>';
 
-  // Un projet sur le fil chronologique.
+  var ARROW_RIGHT = '<svg class="chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>';
+  var ARROW_LEFT = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>';
+
+  function techList(p, t) {
+    return '<ul class="techs" aria-label="' + esc(t.techLabel) + '">' + map(p.stack.split(' · '), function (x) { return '<li>' + esc(x) + '</li>'; }) + '</ul>';
+  }
+
+  // Un projet sur le fil chronologique. « Aperçu › » ouvre le détail dans un panneau à droite.
   function renderProject(p, t, yearLabel, isLast) {
-    var isOpen = state.open === p.id;
-    var techs = p.stack.split(' · ');
+    return '' +
+      '<li class="tl-item' + (isLast ? ' tl-last' : '') + '" id="projet-' + esc(p.id) + '">' +
+        '<span class="tl-year">' + esc(yearLabel) + '</span>' +
+        '<div class="tl-rail" aria-hidden="true"><span class="tl-line"></span><span class="tl-dot"></span></div>' +
+        '<article class="tl-body">' +
+          '<div class="project-title"><h3>' + esc(p.name) + '</h3><span>' + esc(p.kind) + '</span></div>' +
+          '<p class="project-pitch">' + esc(p.pitch) + '</p>' +
+          techList(p, t) +
+          '<button type="button" class="tl-toggle" data-project="' + esc(p.id) + '" aria-haspopup="dialog" aria-controls="drawer">' +
+            '<span class="label">' + esc(t.p.open) + '</span>' + ARROW_RIGHT +
+            '<span class="sr-only"> ' + esc(p.name) + '</span>' +
+          '</button>' +
+        '</article>' +
+      '</li>';
+  }
+
+  // Contenu du panneau latéral d'un projet.
+  function renderDrawer(p, t) {
+    var back = state.lang === 'fr' ? 'Retour' : 'Back';
     var preview = p.img
-      ? '<img class="mockup" src="' + esc(p.img) + '" alt="' + esc(p.imgAlt) + '" width="390" height="844" loading="lazy">'
+      ? '<img class="mockup" src="' + esc(p.img) + '" alt="' + esc(p.imgAlt) + '" width="390" height="844">'
       : '<pre>' + esc(p.tree) + '</pre>';
     var team = map(p.team, function (m) {
       var who = m.url ? '<a class="plain" href="' + esc(m.url) + '">' + esc(m.name) + '</a>' : esc(m.name);
@@ -138,31 +162,25 @@
     });
     var links = map(p.links, function (l) { return '<a href="' + esc(l.url) + '">' + esc(l.label) + ' ↗</a>'; });
     if (p.private) links += '<span class="muted">' + esc(p.privateLabel) + '</span>';
-
     return '' +
-      '<li class="tl-item' + (isLast ? ' tl-last' : '') + (isOpen ? ' is-open' : '') + '" id="projet-' + esc(p.id) + '">' +
-        '<span class="tl-year">' + esc(yearLabel) + '</span>' +
-        '<div class="tl-rail" aria-hidden="true"><span class="tl-line"></span><span class="tl-dot"></span></div>' +
-        '<article class="tl-body">' +
-          '<div class="project-title"><h3>' + esc(p.name) + '</h3><span>' + esc(p.kind) + '</span></div>' +
-          '<p class="project-pitch">' + esc(p.pitch) + '</p>' +
-          '<ul class="techs" aria-label="' + esc(t.techLabel) + '">' + map(techs, function (x) { return '<li>' + esc(x) + '</li>'; }) + '</ul>' +
-          '<button type="button" class="tl-toggle" data-project="' + esc(p.id) + '" aria-controls="panel-' + esc(p.id) + '" aria-expanded="' + isOpen + '">' +
-            '<span class="label">' + esc(isOpen ? t.p.close : t.p.open) + '</span>' + CHEVRON +
-            '<span class="sr-only"> ' + esc(p.name) + '</span>' +
-          '</button>' +
-          '<div class="project-panel" id="panel-' + esc(p.id) + '"' + (isOpen ? '' : ' hidden') + '>' +
-            '<div class="details">' +
-              '<div><h4>' + esc(t.p.context) + '</h4><p>' + esc(p.context) + '</p></div>' +
-              (p.result ? '<div><h4>' + esc(t.p.result) + '</h4><p>' + esc(p.result) + '</p></div>' : '') +
-              '<div><h4>' + esc(t.p.approach) + '</h4><ul>' + map(p.approach, function (a) { return '<li>' + esc(a) + '</li>'; }) + '</ul></div>' +
-              '<div><h4>' + esc(p.teamTitle) + '</h4>' + team + '</div>' +
-            '</div>' +
-            '<div class="preview">' + preview + '<span class="caption">' + esc(p.previewLabel) + '</span></div>' +
-            (links ? '<div class="panel-foot">' + links + '</div>' : '') +
-          '</div>' +
-        '</article>' +
-      '</li>';
+      '<div class="drawer-top">' +
+        '<button type="button" class="drawer-back" data-close-drawer>' + ARROW_LEFT + '<span>' + esc(back) + '</span></button>' +
+        '<span class="drawer-year">' + esc(p.year) + '</span>' +
+      '</div>' +
+      '<div class="drawer-head">' +
+        '<h2 id="drawer-title">' + esc(p.name) + '</h2>' +
+        '<p class="drawer-kind">' + esc(p.kind) + '</p>' +
+        '<p class="project-pitch">' + esc(p.pitch) + '</p>' +
+        techList(p, t) +
+      '</div>' +
+      '<div class="details">' +
+        '<div><h4>' + esc(t.p.context) + '</h4><p>' + esc(p.context) + '</p></div>' +
+        (p.result ? '<div><h4>' + esc(t.p.result) + '</h4><p>' + esc(p.result) + '</p></div>' : '') +
+        '<div><h4>' + esc(t.p.approach) + '</h4><ul>' + map(p.approach, function (a) { return '<li>' + esc(a) + '</li>'; }) + '</ul></div>' +
+        '<div><h4>' + esc(p.teamTitle) + '</h4>' + team + '</div>' +
+      '</div>' +
+      '<div class="preview">' + preview + '<span class="caption">' + esc(p.previewLabel) + '</span></div>' +
+      (links ? '<div class="panel-foot">' + links + '</div>' : '');
   }
 
   // Fil chronologique : « Aujourd'hui » en haut, puis les projets du plus récent au plus ancien.
@@ -314,47 +332,55 @@
   // ---------------------------------------------------------------------------
   var current = null;
 
-  function setProjectOpen(id, open, animate) {
-    var t = current.t;
-    var art = document.getElementById('projet-' + id);
-    if (!art) return;
-    var btn = $('.tl-toggle', art);
-    var panel = $('.project-panel', art);
-    btn.setAttribute('aria-expanded', String(open));
-    $('.label', btn).textContent = open ? t.p.close : t.p.open;
-    art.classList.toggle('is-open', open);
+  // Panneau latéral : il glisse depuis la droite, la page reste visible à gauche, floutée.
+  var drawerTrigger = null;
 
-    if (open) {
-      panel.hidden = false;
-      if (animate && canAnimate()) {
-        gsap.fromTo(panel, { height: 0, opacity: 0 }, { height: 'auto', opacity: 1, duration: 0.55, ease: 'power3.out', clearProps: 'height,opacity', onComplete: refreshScroll });
-        gsap.fromTo($all('.details > div, .preview', panel), { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power2.out', delay: 0.1 });
-      } else {
-        refreshScroll();
-      }
-    } else {
-      if (animate && canAnimate()) {
-        gsap.to(panel, { height: 0, opacity: 0, duration: 0.35, ease: 'power2.in', onComplete: function () {
-          panel.hidden = true; gsap.set(panel, { clearProps: 'height,opacity' }); refreshScroll();
-        } });
-      } else {
-        panel.hidden = true;
-        refreshScroll();
-      }
-    }
-  }
-
-  function toggleProject(id) {
-    var previous = state.open;
-    if (previous === id) {
-      state.open = null;
-      setProjectOpen(id, false, true);
-      return;
-    }
-    if (previous) setProjectOpen(previous, false, true);
+  function openDrawer(id) {
+    var p = current.projects.filter(function (x) { return x.id === id; })[0];
+    if (!p) return;
+    var drawer = $('#drawer');
+    var panel = $('.drawer-panel', drawer);
+    panel.innerHTML = renderDrawer(p, current.t);
+    panel.scrollTop = 0;
+    drawerTrigger = document.activeElement;
     state.open = id;
-    setProjectOpen(id, true, true);
+    var item = document.getElementById('projet-' + id);
+    if (item) item.classList.add('is-open');
+    drawer.hidden = false;
+    document.documentElement.classList.add('drawer-lock');
+    // Laisse le navigateur afficher le panneau fermé avant de lancer la transition.
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { drawer.classList.add('is-open'); });
+    });
+    $('.drawer-back', panel).focus({ preventScroll: true });
   }
+
+  function closeDrawer() {
+    var drawer = $('#drawer');
+    if (drawer.hidden) return;
+    drawer.classList.remove('is-open');
+    document.documentElement.classList.remove('drawer-lock');
+    var item = state.open && document.getElementById('projet-' + state.open);
+    if (item) item.classList.remove('is-open');
+    state.open = null;
+    var done = function () { drawer.hidden = true; };
+    if (reduceMotion) done(); else setTimeout(done, 450);
+    if (drawerTrigger && drawerTrigger.focus) drawerTrigger.focus({ preventScroll: true });
+  }
+
+  function toggleProject(id) { openDrawer(id); }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeDrawer(); return; }
+    // Garde le focus dans le panneau tant qu'il est ouvert.
+    if (e.key === 'Tab' && !$('#drawer').hidden) {
+      var f = $all('#drawer .drawer-panel a[href], #drawer .drawer-panel button');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 
   function toggleJob(i) {
     state.jobsOpen[i] = !state.jobsOpen[i];
@@ -393,6 +419,7 @@
 
   function setLang(lang) {
     if (lang === state.lang) return;
+    closeDrawer();
     state.lang = lang;
     try { localStorage.setItem('lang', lang); } catch (e) { /* ignoré */ }
     var y = window.scrollY;
@@ -405,6 +432,7 @@
   document.addEventListener('click', function (e) {
     var el = e.target.closest('button, a');
     if (!el) return;
+    if (el.hasAttribute('data-close-drawer')) { closeDrawer(); return; }
     if (el.dataset.lang) { setLang(el.dataset.lang); return; }
     if (el.dataset.project) { toggleProject(el.dataset.project); return; }
     if (el.dataset.job != null) { toggleJob(Number(el.dataset.job)); return; }
