@@ -13,7 +13,7 @@
     linkedin: '', // ex. 'https://www.linkedin.com/in/ton-profil'
     cv: 'assets/CV-Diego-Cortes.pdf',
     photo: 'assets/diego.jpg',
-    defaultOpen: 'runmates'
+    defaultOpen: null
   };
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -112,7 +112,7 @@
       '<section class="section" id="recherche">' +
         '<div class="section-label"><h2>' + esc(t.seek.title) + '</h2></div>' +
         '<div class="section-body seek">' +
-          '<p class="lead a-words">' + esc(t.seek.lead) + '</p>' +
+          (t.seek.lead ? '<p class="lead">' + esc(t.seek.lead) + '</p>' : '') +
           '<dl class="rows">' + map(t.seek.rows, function (r) {
             return '<div class="a-up"><dt>' + esc(r.label) + '</dt><dd>' + esc(r.value) + '</dd></div>';
           }) + '</dl>' +
@@ -367,8 +367,8 @@
     ScrollTrigger.getAll().forEach(function (st) { st.kill(); });
   }
 
-  // Les blocs qui apparaissent au scroll, un par un, une seule fois.
-  var REVEAL = '.section-label, .a-up, .a-words, .project, .a-mail';
+  // Les blocs qui apparaissent au scroll : chaque section entière, d'un seul coup, une seule fois.
+  var REVEAL = '.section, .site-footer';
 
   function setupAnimations(entrance) {
     if (!canScrollAnimate()) return;
@@ -377,19 +377,21 @@
     // Après un changement de langue, tout reste visible : pas de nouvelle apparition.
     if (!entrance) return;
 
-    // Haut de page : apparition douce au chargement.
-    gsap.from('.site-header > *, .a-hero, .portrait', {
-      y: 16, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power2.out'
-    });
+    // Haut de page : apparaît d'un bloc au chargement.
+    gsap.from('.site-header, .hero', { y: 16, opacity: 0, duration: 0.8, ease: 'power2.out' });
 
-    // Le reste : chaque bloc apparaît en fondu quand il arrive à l'écran.
-    gsap.set(REVEAL, { opacity: 0, y: 24 });
-    ScrollTrigger.batch(REVEAL, {
-      start: 'top 88%',
-      once: true,
-      onEnter: function (batch) {
-        gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out', overwrite: true });
-      }
+    // Le reste : chaque section apparaît en entier quand elle arrive à l'écran.
+    gsap.set(REVEAL, { opacity: 0, y: 32 });
+    $all(REVEAL).forEach(function (el) {
+      ScrollTrigger.create({
+        trigger: el,
+        // Le pied de page est tout en bas : il apparaît dès qu'il entre à l'écran.
+        start: el.classList.contains('site-footer') ? 'top bottom' : 'top 85%',
+        once: true,
+        onEnter: function () {
+          gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', overwrite: true });
+        }
+      });
     });
 
     ScrollTrigger.refresh();

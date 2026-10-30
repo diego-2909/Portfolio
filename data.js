@@ -26,35 +26,31 @@ function getContent(lang) {
           title: 'À propos',
           lead: "J'aime écrire du code, mais j'aime surtout comprendre le problème qu'il doit résoudre.",
           paras: [
-            "J'ai commencé par une licence d'informatique à Paul Sabatier, puis l'alternance m'a fait passer de la théorie aux vrais utilisateurs. D'abord chez Andil, sur des plugins Moodle utilisés par des clients au quotidien. Ensuite chez Airbus Operations, pendant deux ans.",
-            "Chez Airbus, on m'a confié un sujet sensible : garantir que seules les bonnes personnes accèdent aux Shared Drives de l'entreprise. J'ai mené ce projet en Product Owner technique. J'ai animé les échanges avec les équipes Data Governance et Security, conçu les maquettes, développé l'application en React et TypeScript, rédigé la documentation et accompagné la mise en production.",
-            "Cette expérience a fixé ce que je cherche : un poste où l'on code sérieusement, au contact direct du métier. Le Master MIAGE m'a donné les méthodes pour ça : analyse des processus, BPMN, Agile. L'aéronautique m'attire tout particulièrement. L'exigence de qualité y est réelle, et j'y ai déjà mes repères."
+            "Trois ans d'alternance, chez Andil puis chez Airbus Operations. Chez Airbus, j'ai mené seul un projet de sécurité, des ateliers avec les équipes métier jusqu'à la mise en production. C'est ce que je veux continuer à faire : coder au plus près du métier, idéalement dans l'aéronautique."
           ],
           points: [
-            { title: 'Le pont entre métier et technique', text: "Je passe d'un atelier de recueil des besoins à une revue de code sans perdre le fil." },
-            { title: "L'autonomie", text: 'Un projet mené de bout en bout, seul, chez un industriel exigeant.' },
-            { title: "Le travail d'équipe", text: 'La plupart de mes projets ont été construits à plusieurs, en Agile.' },
-            { title: 'En dehors du code', text: "La course à pied, de préférence en groupe. C'est d'ailleurs elle qui m'a donné l'idée de RunMates." }
+            { title: 'Métier et technique', text: "De l'atelier de recueil des besoins à la revue de code." },
+            { title: 'Autonomie', text: 'Un projet Airbus mené de bout en bout.' },
+            { title: "Travail d'équipe", text: 'La plupart de mes projets, construits à plusieurs.' },
+            { title: 'En dehors du code', text: "La course à pied, à l'origine de RunMates." }
           ]
         },
         seek: {
           title: 'Ce que je cherche',
-          lead: 'Un poste de développeur full-stack dans une équipe qui travaille au plus près du métier.',
+          lead: '',
           rows: [
-            { label: 'Poste', value: 'Développeur full-stack, ou rôle hybride développeur et Product Owner' },
-            { label: 'Contrat', value: 'CDI' },
-            { label: 'Disponibilité', value: 'Immédiate' },
-            { label: 'Lieu', value: 'Toulouse et alentours, véhicule personnel' },
-            { label: 'Secteurs', value: "L'aéronautique en priorité, et toute équipe produit exigeante" },
-            { label: 'Langues', value: 'Français natif, anglais professionnel (B2+)' }
+            { label: 'Poste', value: 'Développeur full-stack, ou développeur et Product Owner' },
+            { label: 'Contrat', value: 'CDI, disponible immédiatement' },
+            { label: 'Lieu', value: 'Toulouse et alentours' },
+            { label: 'Secteur', value: 'Aéronautique en priorité' }
           ]
         },
         p: { context: 'Contexte', result: 'Résultat', approach: "Comment on s'y est pris", open: 'Aperçu', close: 'Réduire', openAria: 'Voir l’aperçu du projet ', closeAria: 'Réduire le projet ' },
         now: {
           title: 'En ce moment',
           items: [
-            { name: 'TicketFlow', text: 'Un outil de tickets de support pensé en services : API Spring Boot, notifications, React, PostgreSQL, Docker Compose.' },
-            { name: "Suivi d'investissement DCA", text: 'Tableau de bord pour suivre un investissement programmé. React, Next.js, Prisma.' }
+            { name: 'TicketFlow', text: 'Tickets de support en services. Spring Boot, React, PostgreSQL, Docker.' },
+            { name: "Suivi d'investissement DCA", text: 'Tableau de bord personnel. Next.js, Prisma.' }
           ]
         },
         projectsDone: 'Projets réalisés', seeCase: 'Voir le projet ↓',
@@ -62,10 +58,8 @@ function getContent(lang) {
           {
             dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', role: 'Développeur et responsable de projet, en alternance',
             bullets: [
-              'Product Owner technique sur un projet de sécurité, du recueil des besoins à la mise en production.',
-              'Travail avec les équipes Data Governance et IT Security pour cadrer et valider les exigences.',
-              "Participation aux PI Planning et à l'élaboration des backlogs de l'équipe Digital Workplace.",
-              'Documentation technique de chaque outil livré.'
+              "Product Owner technique d'un projet de sécurité, du besoin à la production.",
+              'Ateliers avec Data Governance et IT Security, PI Planning, backlog.'
             ],
             projects: [
               { name: 'Recertification des accès Google Drive', text: "Application web qui fait revalider les droits d'accès aux Shared Drives.", stack: 'React · TypeScript · Google APIs', hasCase: true },
@@ -76,8 +70,7 @@ function getContent(lang) {
           {
             dates: '2022 — 2023', place: 'Labège', company: 'Andil', role: 'Développeur full-stack, en alternance',
             bullets: [
-              "Développement et maintenance sur la plateforme d'apprentissage Moodle déployée chez les clients.",
-              "Évolutions demandées par les clients, de l'analyse à la livraison."
+              'Développement et maintenance sur la plateforme Moodle des clients.'
             ],
             projects: [
               { name: 'Plugins Moodle sur mesure', text: 'Développement, maintenance et amélioration de plugins pour les besoins des clients.', stack: 'PHP', hasCase: false },
@@ -113,35 +106,31 @@ function getContent(lang) {
           title: 'About',
           lead: 'I enjoy writing code, but what I enjoy most is understanding the problem it has to solve.',
           paras: [
-            'I started with a computer science degree at Paul Sabatier University, then work-study programs took me from theory to real users. First at Andil, on Moodle plugins that clients used every day. Then at Airbus Operations, for two years.',
-            "At Airbus, I was given a sensitive topic: making sure only the right people can access the company's Shared Drives. I led the project as a technical Product Owner. I ran the discussions with the Data Governance and Security teams, designed the mockups, built the application in React and TypeScript, wrote the documentation and saw it through to production.",
-            "That experience made clear what I am looking for: a role where you write serious code, in direct contact with the business. My Master's gave me the methods for it: process analysis, BPMN, Agile. Aerospace appeals to me in particular. The quality bar is real, and I already know my way around it."
+            "Three years of work-study, at Andil and then at Airbus Operations. At Airbus, I led a security project on my own, from workshops with business teams all the way to production. That is what I want to keep doing: coding close to the business, ideally in aerospace."
           ],
           points: [
-            { title: 'Bridging business and tech', text: 'I can go from a requirements workshop to a code review without losing the thread.' },
-            { title: 'Autonomy', text: 'A project delivered end to end, on my own, at a demanding industrial company.' },
-            { title: 'Teamwork', text: 'Most of my projects were built with others, in Agile teams.' },
-            { title: 'Outside of code', text: 'Running, ideally in a group. That is actually where the idea for RunMates came from.' }
+            { title: 'Business and tech', text: 'From requirements workshops to code reviews.' },
+            { title: 'Autonomy', text: 'An Airbus project delivered end to end.' },
+            { title: 'Teamwork', text: 'Most of my projects, built with others.' },
+            { title: 'Outside of code', text: 'Running, where RunMates came from.' }
           ]
         },
         seek: {
           title: "What I'm looking for",
-          lead: 'A full-stack developer role in a team that works close to the business.',
+          lead: '',
           rows: [
-            { label: 'Role', value: 'Full-stack developer, or a hybrid developer and Product Owner role' },
-            { label: 'Contract', value: 'Permanent (CDI)' },
-            { label: 'Availability', value: 'Immediately' },
-            { label: 'Location', value: 'Toulouse area, with my own car' },
-            { label: 'Sectors', value: 'Aerospace first, and any demanding product team' },
-            { label: 'Languages', value: 'French (native), English (professional, B2+)' }
+            { label: 'Role', value: 'Full-stack developer, or developer and Product Owner' },
+            { label: 'Contract', value: 'Permanent (CDI), available now' },
+            { label: 'Location', value: 'Toulouse area' },
+            { label: 'Sector', value: 'Aerospace first' }
           ]
         },
         p: { context: 'Context', result: 'Outcome', approach: 'How we went about it', open: 'Preview', close: 'Collapse', openAria: 'Preview project ', closeAria: 'Collapse project ' },
         now: {
           title: 'Currently',
           items: [
-            { name: 'TicketFlow', text: 'A support ticket tool built as services: Spring Boot API, notifications, React, PostgreSQL, Docker Compose.' },
-            { name: 'DCA investment tracker', text: 'A dashboard to track a dollar-cost averaging investment. React, Next.js, Prisma.' }
+            { name: 'TicketFlow', text: 'Support tickets built as services. Spring Boot, React, PostgreSQL, Docker.' },
+            { name: 'DCA investment tracker', text: 'Personal dashboard. Next.js, Prisma.' }
           ]
         },
         projectsDone: 'Projects delivered', seeCase: 'See the project ↓',
@@ -149,10 +138,8 @@ function getContent(lang) {
           {
             dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', role: 'Developer and project lead, work-study',
             bullets: [
-              'Technical Product Owner on a security project, from requirements to production.',
-              'Worked with the Data Governance and IT Security teams to scope and validate requirements.',
-              'Took part in PI Planning and backlog building for the Digital Workplace team.',
-              'Technical documentation for every tool delivered.'
+              'Technical Product Owner on a security project, from need to production.',
+              'Workshops with Data Governance and IT Security, PI Planning, backlog.'
             ],
             projects: [
               { name: 'Google Drive access recertification', text: 'Web application that has Shared Drive access rights reviewed and re-approved.', stack: 'React · TypeScript · Google APIs', hasCase: true },
@@ -163,8 +150,7 @@ function getContent(lang) {
           {
             dates: '2022 — 2023', place: 'Labège', company: 'Andil', role: 'Full-stack developer, work-study',
             bullets: [
-              'Development and maintenance on the Moodle learning platform deployed for clients.',
-              'Client-requested changes, from analysis to delivery.'
+              "Development and maintenance on clients' Moodle platforms."
             ],
             projects: [
               { name: 'Custom Moodle plugins', text: 'Built, maintained and improved plugins for client needs.', stack: 'PHP', hasCase: false },

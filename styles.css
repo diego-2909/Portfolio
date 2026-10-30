@@ -108,7 +108,7 @@ a.plain { text-decoration: none; }
 .about { gap: 36px; }
 .about-paras { display: flex; flex-direction: column; gap: 16px; max-width: 640px; font-size: 16px; line-height: 1.65; color: var(--text-2); }
 .about-paras p { margin: 0; text-wrap: pretty; }
-.points { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 24px 32px; }
+.points { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 24px 32px; }
 .points div { display: flex; flex-direction: column; gap: 4px; padding-top: 12px; border-top: 1px solid var(--rule); }
 .points dt { font-weight: 500; }
 .points dd { margin: 0; color: #5C5C57; font-size: 14px; }
