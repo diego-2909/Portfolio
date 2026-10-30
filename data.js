@@ -14,7 +14,7 @@ function getContent(lang) {
 
     var T = {
       fr: {
-        code: 'fr', navLabel: 'Navigation principale', langLabel: 'Langue', techLabel: 'Technologies',
+        code: 'fr', navLabel: 'Navigation principale', langLabel: 'Langue', techLabel: 'Technologies', timelineLabel: 'Projets, du plus récent au plus ancien',
         nav: { projects: 'Projets', experience: 'Expérience', skills: 'Compétences', education: 'Formation', contact: 'Contact' },
         hero: {
           role: 'Développeur full-stack · Toulouse',
@@ -26,7 +26,9 @@ function getContent(lang) {
           title: 'À propos',
           lead: "J'aime écrire du code, mais j'aime surtout comprendre le problème qu'il doit résoudre.",
           paras: [
-            "Trois ans d'alternance, chez Andil puis chez Airbus Operations. Chez Airbus, j'ai mené seul un projet de sécurité, des ateliers avec les équipes métier jusqu'à la mise en production. C'est ce que je veux continuer à faire : coder au plus près du métier, idéalement dans l'aéronautique."
+            "J'ai commencé par une licence d'informatique à Paul Sabatier, puis l'alternance m'a fait passer de la théorie aux vrais utilisateurs. D'abord chez Andil, sur des plugins Moodle utilisés par des clients au quotidien. Ensuite chez Airbus Operations, pendant deux ans.",
+            "Chez Airbus, on m'a confié un sujet sensible : garantir que seules les bonnes personnes accèdent aux Shared Drives de l'entreprise. J'ai mené ce projet en Product Owner technique. J'ai animé les échanges avec les équipes Data Governance et Security, conçu les maquettes, développé l'application en React et TypeScript, rédigé la documentation et accompagné la mise en production.",
+            "Cette expérience a fixé ce que je cherche : un poste où l'on code sérieusement, au contact direct du métier. Le Master MIAGE m'a donné les méthodes pour ça : analyse des processus, BPMN, Agile. L'aéronautique m'attire tout particulièrement. L'exigence de qualité y est réelle, et j'y ai déjà mes repères."
           ],
           points: [
             { title: 'Métier et technique', text: "De l'atelier de recueil des besoins à la revue de code." },
@@ -47,7 +49,7 @@ function getContent(lang) {
         },
         p: { context: 'Contexte', result: 'Résultat', approach: "Comment on s'y est pris", open: 'Aperçu', close: 'Réduire', openAria: 'Voir l’aperçu du projet ', closeAria: 'Réduire le projet ' },
         now: {
-          title: 'En ce moment',
+          title: 'En ce moment', when: "Aujourd'hui",
           items: [
             { name: 'TicketFlow', text: 'Tickets de support en services. Spring Boot, React, PostgreSQL, Docker.' },
             { name: "Suivi d'investissement DCA", text: 'Tableau de bord personnel. Next.js, Prisma.' }
@@ -56,7 +58,7 @@ function getContent(lang) {
         projectsDone: 'Projets réalisés', seeCase: 'Voir le projet ↓',
         jobs: [
           {
-            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logo: 'assets/airbus.png', role: 'Développeur et responsable de projet, en alternance',
+            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Développeur et responsable de projet, en alternance',
             bullets: [
               "Product Owner technique d'un projet de sécurité, du besoin à la production.",
               'Ateliers avec Data Governance et IT Security, PI Planning, backlog.'
@@ -68,7 +70,7 @@ function getContent(lang) {
             ]
           },
           {
-            dates: '2022 — 2023', place: 'Labège', company: 'Andil', logo: 'assets/andil.png', role: 'Développeur full-stack, en alternance',
+            dates: '2022 — 2023', place: 'Labège', company: 'Andil', logoUrl: 'assets/andil.png', role: 'Développeur full-stack, en alternance',
             bullets: [
               'Développement et maintenance sur la plateforme Moodle des clients.'
             ],
@@ -86,15 +88,25 @@ function getContent(lang) {
           { title: 'Projet et analyse', items: ['Agile, Scrum', 'PI Planning, backlog', 'Recueil des besoins', 'BPMN, UML', 'Jira'] },
           { title: 'Outils', items: ['Git', 'Docker', 'Linux, Bash', 'API Mistral, Gemini'] }
         ],
+        eduMore: 'En savoir plus', eduLess: 'Réduire', eduSubjects: 'Enseignements', eduJobs: 'Débouchés visés',
         education: [
-          { dates: '2023 — 2025', name: 'Master MIAGE, Ingénierie des Processus Métiers', school: 'Université Toulouse Capitole' },
-          { dates: '2022 — 2023', name: 'Licence professionnelle RTAI, applications web', school: 'Université Toulouse Capitole' },
-          { dates: '2018 — 2022', name: 'Licence Informatique', school: 'Université Paul Sabatier' }
+          { dates: '2023 — 2025', name: 'Master MIAGE, Ingénierie des Processus Métiers', school: 'Université Toulouse Capitole · en alternance chez Airbus',
+            more: "Un master qui forme à accompagner une entreprise dans l'évolution de son système d'information : analyser, modéliser et digitaliser les processus métiers, sur des architectures web, orientées services ou cloud, en tenant compte de la conduite du changement.",
+            subjects: ['Analyse des processus métier', 'Modélisation BPMN et UML', 'Recueil des besoins', 'Gestion de projet Agile, Scrum', 'Conception de systèmes d’information', 'Bases de données', 'Développement web', 'Amélioration continue'],
+            jobs: 'Product Owner, consultant fonctionnel, chef de projet, ingénieur système d’information, développeur.' },
+          { dates: '2022 — 2023', name: 'Licence professionnelle Métiers de l’informatique, parcours RTAI', school: 'Université Toulouse Capitole · en alternance chez Andil',
+            more: "Une licence professionnelle d'un an, parcours Responsable Technique d'Applications Internet : concevoir, développer et maintenir des applications web, du front-end à la base de données.",
+            subjects: ['Développement web front-end et back-end', 'PHP et Laravel', 'JavaScript', 'Bases de données', 'Gestion de projet web'],
+            jobs: '' },
+          { dates: '2018 — 2022', name: 'Licence Informatique, niveau L2', school: 'Université Toulouse III Paul Sabatier',
+            more: "Les fondamentaux de l'informatique : algorithmique, programmation, structures de données, systèmes et bases de données.",
+            subjects: ['Algorithmique', 'Programmation en C et en Java', 'Structures de données', 'Bases de données', 'Systèmes et réseaux', 'UML'],
+            jobs: '' }
         ],
-        contact: { lead: 'Un poste, un projet, une question : écrivez-moi.', cv: 'Télécharger mon CV' }
+        contact: { email: 'E-mail', phone: 'Téléphone', cv: 'Télécharger mon CV (PDF)' }
       },
       en: {
-        code: 'en', navLabel: 'Main navigation', langLabel: 'Language', techLabel: 'Technologies',
+        code: 'en', navLabel: 'Main navigation', langLabel: 'Language', techLabel: 'Technologies', timelineLabel: 'Projects, newest first',
         nav: { projects: 'Projects', experience: 'Experience', skills: 'Skills', education: 'Education', contact: 'Contact' },
         hero: {
           role: 'Full-stack developer · Toulouse',
@@ -106,7 +118,9 @@ function getContent(lang) {
           title: 'About',
           lead: 'I enjoy writing code, but what I enjoy most is understanding the problem it has to solve.',
           paras: [
-            "Three years of work-study, at Andil and then at Airbus Operations. At Airbus, I led a security project on my own, from workshops with business teams all the way to production. That is what I want to keep doing: coding close to the business, ideally in aerospace."
+            'I started with a computer science degree at Paul Sabatier University, then work-study programs took me from theory to real users. First at Andil, on Moodle plugins that clients used every day. Then at Airbus Operations, for two years.',
+            "At Airbus, I was given a sensitive topic: making sure only the right people can access the company's Shared Drives. I led the project as a technical Product Owner. I ran the discussions with the Data Governance and Security teams, designed the mockups, built the application in React and TypeScript, wrote the documentation and saw it through to production.",
+            "That experience made clear what I am looking for: a role where you write serious code, in direct contact with the business. My Master's gave me the methods for it: process analysis, BPMN, Agile. Aerospace appeals to me in particular. The quality bar is real, and I already know my way around it."
           ],
           points: [
             { title: 'Business and tech', text: 'From requirements workshops to code reviews.' },
@@ -127,7 +141,7 @@ function getContent(lang) {
         },
         p: { context: 'Context', result: 'Outcome', approach: 'How we went about it', open: 'Preview', close: 'Collapse', openAria: 'Preview project ', closeAria: 'Collapse project ' },
         now: {
-          title: 'Currently',
+          title: 'Currently', when: 'Today',
           items: [
             { name: 'TicketFlow', text: 'Support tickets built as services. Spring Boot, React, PostgreSQL, Docker.' },
             { name: 'DCA investment tracker', text: 'Personal dashboard. Next.js, Prisma.' }
@@ -136,7 +150,7 @@ function getContent(lang) {
         projectsDone: 'Projects delivered', seeCase: 'See the project ↓',
         jobs: [
           {
-            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logo: 'assets/airbus.png', role: 'Developer and project lead, work-study',
+            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Developer and project lead, work-study',
             bullets: [
               'Technical Product Owner on a security project, from need to production.',
               'Workshops with Data Governance and IT Security, PI Planning, backlog.'
@@ -148,7 +162,7 @@ function getContent(lang) {
             ]
           },
           {
-            dates: '2022 — 2023', place: 'Labège', company: 'Andil', logo: 'assets/andil.png', role: 'Full-stack developer, work-study',
+            dates: '2022 — 2023', place: 'Labège', company: 'Andil', logoUrl: 'assets/andil.png', role: 'Full-stack developer, work-study',
             bullets: [
               "Development and maintenance on clients' Moodle platforms."
             ],
@@ -166,12 +180,22 @@ function getContent(lang) {
           { title: 'Project and analysis', items: ['Agile, Scrum', 'PI Planning, backlog', 'Requirements gathering', 'BPMN, UML', 'Jira'] },
           { title: 'Tools', items: ['Git', 'Docker', 'Linux, Bash', 'Mistral, Gemini APIs'] }
         ],
+        eduMore: 'Learn more', eduLess: 'Show less', eduSubjects: 'Courses', eduJobs: 'Target roles',
         education: [
-          { dates: '2023 — 2025', name: "Master's in Information Systems (MIAGE), Business Process Engineering", school: 'Toulouse Capitole University' },
-          { dates: '2022 — 2023', name: "Professional Bachelor's in Web Application Development", school: 'Toulouse Capitole University' },
-          { dates: '2018 — 2022', name: 'Computer Science degree', school: 'Paul Sabatier University' }
+          { dates: '2023 — 2025', name: "Master's in Information Systems (MIAGE), Business Process Engineering", school: 'Toulouse Capitole University · work-study at Airbus',
+            more: "A master's degree that trains you to guide a company through the evolution of its information system: analysing, modelling and digitising business processes on web, service-oriented or cloud architectures, while managing change.",
+            subjects: ['Business process analysis', 'BPMN and UML modelling', 'Requirements gathering', 'Agile project management, Scrum', 'Information system design', 'Databases', 'Web development', 'Continuous improvement'],
+            jobs: 'Product Owner, functional consultant, project manager, information systems engineer, developer.' },
+          { dates: '2022 — 2023', name: "Professional Bachelor's in Computing, Web Applications (RTAI)", school: 'Toulouse Capitole University · work-study at Andil',
+            more: 'A one-year professional degree focused on web application engineering: designing, building and maintaining web applications, from front-end to database.',
+            subjects: ['Front-end and back-end web development', 'PHP and Laravel', 'JavaScript', 'Databases', 'Web project management'],
+            jobs: '' },
+          { dates: '2018 — 2022', name: 'Computer Science degree, second-year level', school: 'Toulouse III Paul Sabatier University',
+            more: 'The foundations of computer science: algorithms, programming, data structures, systems and databases.',
+            subjects: ['Algorithms', 'Programming in C and Java', 'Data structures', 'Databases', 'Systems and networks', 'UML'],
+            jobs: '' }
         ],
-        contact: { lead: 'A role, a project, a question: drop me a line.', cv: 'Download my resume' }
+        contact: { email: 'Email', phone: 'Phone', cv: 'Download my resume (PDF)' }
       }
     };
     var t = T[lang];
@@ -181,7 +205,8 @@ function getContent(lang) {
 
     var data = [
       {
-        id: 'airbus', year: '2025',
+        // Présenté dans la partie Expérience (Airbus), pas dans le fil des projets.
+        id: 'airbus', year: '2025', inExperience: true,
         name: L('Recertification des accès Drive', 'Drive access recertification'),
         kind: L('Airbus Operations · alternance', 'Airbus Operations · work-study'),
         pitch: L("Faire revalider régulièrement qui a accès aux Shared Drives de l'entreprise.", "Regularly re-approving who has access to the company's Shared Drives."),
@@ -194,9 +219,7 @@ function getContent(lang) {
           "Chez Airbus, les Shared Drives Google accumulent des droits d'accès qui ne sont jamais revus : des personnes qui ont changé de poste ou de projet gardent l'accès à des données sensibles. L'équipe Digital Workplace m'a confié le sujet, du cadrage jusqu'à la mise en production.",
           'At Airbus, Google Shared Drives pile up access rights that never get reviewed: people who changed roles or projects keep access to sensitive data. The Digital Workplace team gave me the topic, from scoping all the way to production.'
         ),
-        // À remplir si tu peux citer des chiffres, par exemple :
-        // L('120 Shared Drives couverts et 80 responsables sollicités à chaque campagne.', '120 Shared Drives covered and 80 owners asked at each campaign.')
-        // Laissé vide, le bloc « Résultat » n'apparaît pas.
+        // Si tu peux citer des chiffres : result: L('… en français', '… in English'). Vide, le bloc n'apparaît pas.
         result: '',
         approach: L([
           "Recueil des besoins en ateliers avec les équipes Data Governance et IT Security, pour fixer les règles et les contraintes de conformité.",
@@ -245,8 +268,6 @@ function getContent(lang) {
         teamTitle: L('Qui a fait quoi', 'Who did what'),
         team: [ m('Diego Cortes', GH.diego, 'Tout, seul : idée, produit, modèle de données, sécurité, front-end, application iOS, paiements.', 'Everything, solo: idea, product, data model, security, front-end, iOS app, payments.') ],
         stack: 'React · TypeScript · Supabase · PostGIS · Mapbox · Capacitor · Stripe',
-        // Ajoute l'adresse publique de l'appli pour afficher un lien « Essayer l'application » :
-        // links: [{ label: L("Essayer l'application", 'Try the app'), url: 'https://...' }],
         links: [], private: true, privateLabel: L('Code privé', 'Private code')
       },
       {

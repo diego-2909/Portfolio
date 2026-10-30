@@ -228,3 +228,67 @@ a.plain { text-decoration: none; }
   padding: 22px 0 36px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted);
 }
 .site-footer .links { gap: 0 20px; }
+
+/* ---------------------------------------------------------------------------
+   Fil chronologique des projets
+   --------------------------------------------------------------------------- */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.muted { color: var(--muted); }
+
+.timeline { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
+.tl-item { display: grid; grid-template-columns: 64px 28px minmax(0, 1fr); column-gap: 16px; scroll-margin-top: 16px; }
+.tl-year { padding-top: 20px; font-size: 15px; font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+.tl-now .tl-year { padding-top: 24px; font-size: 13px; font-weight: 400; }
+.tl-rail { position: relative; display: flex; justify-content: center; }
+.tl-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--ink); transform: translateX(-50%); }
+.tl-now .tl-line { top: 14px; }
+.tl-last .tl-line { bottom: calc(100% - 32px); }
+.tl-arrow { position: relative; margin-top: 4px; background: var(--paper); color: var(--ink); }
+.tl-dot {
+  position: relative; margin-top: 26px; width: 11px; height: 11px; box-sizing: border-box;
+  border-radius: 50%; border: 1.5px solid var(--ink); background: var(--paper); transition: background .25s ease;
+}
+.tl-item.is-open .tl-dot { background: var(--ink); }
+.tl-body { min-width: 0; padding: 18px 0 34px; display: flex; flex-direction: column; gap: 6px; }
+.tl-body .project-pitch { max-width: 60ch; }
+.tl-body .techs { margin-top: 4px; }
+.tl-now .tl-body { padding: 20px 0 40px; gap: 10px; }
+.tl-now-title { margin: 0; font-size: 13px; color: var(--muted); }
+.tl-now-items { display: flex; flex-wrap: wrap; gap: 8px 32px; font-size: 14px; line-height: 1.55; }
+.tl-now-items p { margin: 0; flex: 1 1 220px; }
+.tl-now-items .n { font-weight: 500; }
+.tl-now-items .t { color: var(--text-3); }
+
+.tl-toggle {
+  align-self: flex-start; min-height: 44px; margin-top: 2px; padding: 0;
+  display: inline-flex; align-items: center; gap: 6px;
+  font: inherit; font-size: 14px; font-weight: 500; color: var(--ink);
+  background: transparent; border: 0; cursor: pointer;
+}
+.tl-toggle:hover .label { text-decoration: underline; text-underline-offset: 3px; }
+.tl-toggle.small { min-height: 40px; font-size: 13px; }
+.tl-toggle .chevron { transition: transform .25s ease; }
+.tl-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+.tl-body .project-panel { flex-direction: column; flex-wrap: nowrap; gap: 28px; padding: 18px 0 8px; }
+.tl-body .project-panel .details { flex: none; }
+.tl-body .project-panel .preview { flex: none; max-width: 340px; }
+.tl-body .panel-foot { justify-content: flex-start; }
+
+@media (max-width: 560px) {
+  .tl-item { grid-template-columns: 58px 20px minmax(0, 1fr); column-gap: 10px; }
+  .tl-now .tl-year { font-size: 12px; }
+  .tl-year { font-size: 13px; }
+}
+
+/* Formation : « En savoir plus » */
+.edu .what { display: flex; flex-direction: column; gap: 2px; }
+.edu-more { display: flex; flex-direction: column; gap: 12px; padding: 4px 0 6px; max-width: 62ch; }
+.edu-more[hidden] { display: none; }
+.edu-more p { margin: 0; font-size: 15px; line-height: 1.65; color: var(--text-2); }
+.edu-more .edu-jobs { font-size: 14px; color: var(--text-3); }
+.subjects { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.subjects li { padding: 2px 9px; border: 1px solid var(--chip-border); border-radius: 4px; font-size: 13px; line-height: 1.6; color: var(--text-2); background: #FFFFFF; }
+
+/* Contact */
+.contact-rows div:last-child { border-bottom: 1px solid var(--rule); }

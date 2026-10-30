@@ -9,6 +9,8 @@
   // ---------------------------------------------------------------------------
   var CONFIG = {
     email: 'd.cortes@me.com',
+    phone: '+33626573074',
+    phoneLabel: '+33 6 26 57 30 74',
     github: 'https://github.com/diego-2909',
     linkedin: '', // ex. 'https://www.linkedin.com/in/ton-profil'
     cv: 'assets/CV-Diego-Cortes.pdf',
@@ -21,7 +23,8 @@
   var state = {
     lang: initialLang(),
     open: CONFIG.defaultOpen,
-    jobsOpen: {}
+    jobsOpen: {},
+    eduOpen: {}
   };
 
   function initialLang() {
@@ -61,10 +64,10 @@
       '<a href="#top" class="name">Diego Cortes</a>' +
       '<div class="header-right">' +
         '<nav class="site-nav" aria-label="' + esc(t.navLabel) + '">' +
-          '<a href="#projets">' + esc(t.nav.projects) + '</a>' +
+          '<a href="#formation">' + esc(t.nav.education) + '</a>' +
           '<a href="#experience">' + esc(t.nav.experience) + '</a>' +
           '<a href="#competences">' + esc(t.nav.skills) + '</a>' +
-          '<a href="#formation">' + esc(t.nav.education) + '</a>' +
+          '<a href="#projets">' + esc(t.nav.projects) + '</a>' +
           '<a href="#contact">' + esc(t.nav.contact) + '</a>' +
         '</nav>' +
         '<div class="lang" role="group" aria-label="' + esc(t.langLabel) + '">' +
@@ -120,7 +123,10 @@
       '</section>';
   }
 
-  function renderProject(p, t) {
+  var CHEVRON = '<svg class="chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>';
+
+  // Un projet sur le fil chronologique.
+  function renderProject(p, t, yearLabel, isLast) {
     var isOpen = state.open === p.id;
     var techs = p.stack.split(' · ');
     var preview = p.img
@@ -134,41 +140,60 @@
     if (p.private) links += '<span class="muted">' + esc(p.privateLabel) + '</span>';
 
     return '' +
-      '<article class="project" id="projet-' + esc(p.id) + '" data-id="' + esc(p.id) + '">' +
-        '<div class="project-head">' +
-          '<span class="project-year">' + esc(p.year) + '</span>' +
-          '<div class="project-main">' +
-            '<div class="project-title"><h3>' + esc(p.name) + '</h3><span>' + esc(p.kind) + '</span></div>' +
-            '<p class="project-pitch">' + esc(p.pitch) + '</p>' +
-            '<ul class="techs" aria-label="' + esc(t.techLabel) + '">' + map(techs, function (x) { return '<li>' + esc(x) + '</li>'; }) + '</ul>' +
-          '</div>' +
-          '<button type="button" class="toggle" data-project="' + esc(p.id) + '" aria-controls="panel-' + esc(p.id) + '" aria-expanded="' + isOpen + '">' +
-            '<span class="label">' + esc(isOpen ? t.p.close : t.p.open) + '</span><span class="sign" aria-hidden="true">' + (isOpen ? '−' : '+') + '</span>' +
-            '<span class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> ' + esc(p.name) + '</span>' +
+      '<li class="tl-item' + (isLast ? ' tl-last' : '') + (isOpen ? ' is-open' : '') + '" id="projet-' + esc(p.id) + '">' +
+        '<span class="tl-year">' + esc(yearLabel) + '</span>' +
+        '<div class="tl-rail" aria-hidden="true"><span class="tl-line"></span><span class="tl-dot"></span></div>' +
+        '<article class="tl-body">' +
+          '<div class="project-title"><h3>' + esc(p.name) + '</h3><span>' + esc(p.kind) + '</span></div>' +
+          '<p class="project-pitch">' + esc(p.pitch) + '</p>' +
+          '<ul class="techs" aria-label="' + esc(t.techLabel) + '">' + map(techs, function (x) { return '<li>' + esc(x) + '</li>'; }) + '</ul>' +
+          '<button type="button" class="tl-toggle" data-project="' + esc(p.id) + '" aria-controls="panel-' + esc(p.id) + '" aria-expanded="' + isOpen + '">' +
+            '<span class="label">' + esc(isOpen ? t.p.close : t.p.open) + '</span>' + CHEVRON +
+            '<span class="sr-only"> ' + esc(p.name) + '</span>' +
           '</button>' +
-        '</div>' +
-        '<div class="project-panel" id="panel-' + esc(p.id) + '"' + (isOpen ? '' : ' hidden') + '>' +
-          '<div class="preview">' + preview + '<span class="caption">' + esc(p.previewLabel) + '</span></div>' +
-          '<div class="details">' +
-            '<div><h4>' + esc(t.p.context) + '</h4><p>' + esc(p.context) + '</p></div>' +
-            (p.result ? '<div><h4>' + esc(t.p.result) + '</h4><p>' + esc(p.result) + '</p></div>' : '') +
-            '<div><h4>' + esc(t.p.approach) + '</h4><ul>' + map(p.approach, function (a) { return '<li>' + esc(a) + '</li>'; }) + '</ul></div>' +
-            '<div><h4>' + esc(p.teamTitle) + '</h4>' + team + '</div>' +
+          '<div class="project-panel" id="panel-' + esc(p.id) + '"' + (isOpen ? '' : ' hidden') + '>' +
+            '<div class="details">' +
+              '<div><h4>' + esc(t.p.context) + '</h4><p>' + esc(p.context) + '</p></div>' +
+              (p.result ? '<div><h4>' + esc(t.p.result) + '</h4><p>' + esc(p.result) + '</p></div>' : '') +
+              '<div><h4>' + esc(t.p.approach) + '</h4><ul>' + map(p.approach, function (a) { return '<li>' + esc(a) + '</li>'; }) + '</ul></div>' +
+              '<div><h4>' + esc(p.teamTitle) + '</h4>' + team + '</div>' +
+            '</div>' +
+            '<div class="preview">' + preview + '<span class="caption">' + esc(p.previewLabel) + '</span></div>' +
             (links ? '<div class="panel-foot">' + links + '</div>' : '') +
           '</div>' +
-        '</div>' +
-      '</article>';
+        '</article>' +
+      '</li>';
   }
 
+  // Fil chronologique : « Aujourd'hui » en haut, puis les projets du plus récent au plus ancien.
   function renderProjects(t, projects) {
+    var list = projects.filter(function (p) { return !p.inExperience; })
+      .map(function (p, i) { return { p: p, i: i }; })
+      .sort(function (a, b) { return (Number(b.p.year) - Number(a.p.year)) || (a.i - b.i); })
+      .map(function (x) { return x.p; });
+    var items = list.map(function (p, i) {
+      var prev = list[i - 1];
+      return renderProject(p, t, prev && prev.year === p.year ? '' : p.year, i === list.length - 1);
+    }).join('');
     return '' +
       '<section class="section" id="projets">' +
         '<div class="section-label"><h2>' + esc(t.nav.projects) + '</h2><a href="' + esc(CONFIG.github) + '?tab=repositories">github.com/diego-2909</a></div>' +
-        '<div class="section-body projects">' +
-          '<div class="project-list">' + map(projects, function (p) { return renderProject(p, t); }) + '</div>' +
-          '<div class="now a-up"><p>' + esc(t.now.title) + '</p><div class="now-grid">' +
-            map(t.now.items, function (n) { return '<div><p class="n">' + esc(n.name) + '</p><p class="t">' + esc(n.text) + '</p></div>'; }) +
-          '</div></div>' +
+        '<div class="section-body">' +
+          '<ol class="timeline" aria-label="' + esc(t.timelineLabel) + '">' +
+            '<li class="tl-item tl-now">' +
+              '<span class="tl-year muted">' + esc(t.now.when) + '</span>' +
+              '<div class="tl-rail" aria-hidden="true"><span class="tl-line"></span>' +
+                '<svg class="tl-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14l6-6 6 6"></path></svg>' +
+              '</div>' +
+              '<div class="tl-body">' +
+                '<p class="tl-now-title">' + esc(t.now.title) + '</p>' +
+                '<div class="tl-now-items">' + map(t.now.items, function (n) {
+                  return '<p><span class="n">' + esc(n.name) + '</span> <span class="t">· ' + esc(n.text) + '</span></p>';
+                }) + '</div>' +
+              '</div>' +
+            '</li>' +
+            items +
+          '</ol>' +
         '</div>' +
       '</section>';
   }
@@ -192,7 +217,7 @@
               '<div class="job-body">' +
                 '<div class="job-head">' +
                   '<div><h3>' + esc(j.company) + '</h3><p class="role">' + esc(j.role) + '</p></div>' +
-                  (j.logo ? '<div class="job-logo"><img src="' + esc(j.logo) + '" alt=""></div>' : '') +
+                  (j.logoUrl ? '<div class="job-logo"><img src="' + esc(j.logoUrl) + '" alt=""></div>' : '') +
                 '</div>' +
                 '<ul>' + map(j.bullets, function (b) { return '<li>' + esc(b) + '</li>'; }) + '</ul>' +
                 '<div class="job-projects">' +
@@ -204,7 +229,6 @@
                       return '<div class="job-project">' +
                         '<div class="jp-main"><span class="jp-name">' + esc(jp.name) + '</span><span class="jp-text">' + esc(jp.text) + '</span></div>' +
                         '<span class="jp-stack">' + esc(jp.stack) + '</span>' +
-                        (jp.hasCase ? '<a class="jp-case" href="#projet-airbus" data-open="airbus">' + esc(t.seeCase) + '</a>' : '') +
                       '</div>';
                     }) +
                   '</div>' +
@@ -229,20 +253,40 @@
     return '' +
       '<section class="section" id="formation">' +
         '<div class="section-label"><h2>' + esc(t.nav.education) + '</h2></div>' +
-        '<div class="section-body">' + map(t.education, function (e) {
-          return '<div class="edu a-up"><span class="when">' + esc(e.dates) + '</span><div class="what"><p class="name">' + esc(e.name) + '</p><p class="school">' + esc(e.school) + '</p></div></div>';
+        '<div class="section-body">' + map(t.education, function (e, i) {
+          var open = !!state.eduOpen[i];
+          return '' +
+            '<div class="edu">' +
+              '<span class="when">' + esc(e.dates) + '</span>' +
+              '<div class="what">' +
+                '<p class="name">' + esc(e.name) + '</p><p class="school">' + esc(e.school) + '</p>' +
+                '<button type="button" class="tl-toggle small" data-edu="' + i + '" aria-controls="edu-' + i + '" aria-expanded="' + open + '">' +
+                  '<span class="label">' + esc(open ? t.eduLess : t.eduMore) + '</span>' + CHEVRON +
+                '</button>' +
+                '<div class="edu-more" id="edu-' + i + '"' + (open ? '' : ' hidden') + '>' +
+                  '<p>' + esc(e.more) + '</p>' +
+                  '<ul class="subjects" aria-label="' + esc(t.eduSubjects) + '">' + map(e.subjects, function (s) { return '<li>' + esc(s) + '</li>'; }) + '</ul>' +
+                  (e.jobs ? '<p class="edu-jobs"><span class="muted">' + esc(t.eduJobs) + ' : </span>' + esc(e.jobs) + '</p>' : '') +
+                '</div>' +
+              '</div>' +
+            '</div>';
         }) + '</div>' +
       '</section>';
   }
 
   function renderContact(t) {
+    var rows = [
+      [t.contact.email, '<a href="mailto:' + esc(CONFIG.email) + '">' + esc(CONFIG.email) + '</a>'],
+      [t.contact.phone, '<a href="tel:' + esc(CONFIG.phone) + '">' + esc(CONFIG.phoneLabel) + '</a>'],
+      ['GitHub', '<a href="' + esc(CONFIG.github) + '">github.com/diego-2909</a>']
+    ];
+    if (CONFIG.linkedin) rows.push(['LinkedIn', '<a href="' + esc(CONFIG.linkedin) + '">LinkedIn</a>']);
+    rows.push(['CV', '<a href="' + esc(CONFIG.cv) + '" download data-track="cv">' + esc(t.contact.cv) + '</a>']);
     return '' +
       '<section class="section contact" id="contact">' +
         '<div class="section-label"><h2>' + esc(t.nav.contact) + '</h2></div>' +
-        '<div class="section-body contact-body">' +
-          '<p class="intro a-up">' + esc(t.contact.lead) + '</p>' +
-          '<a class="mail a-mail" href="mailto:' + esc(CONFIG.email) + '">' + esc(CONFIG.email) + '</a>' +
-          '<div class="links a-up">' + linksHtml(t, t.contact.cv) + '</div>' +
+        '<div class="section-body">' +
+          '<dl class="rows contact-rows">' + map(rows, function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + r[1] + '</dd></div>'; }) + '</dl>' +
         '</div>' +
       '</section>';
   }
@@ -259,8 +303,8 @@
     $('#skip-link').textContent = state.lang === 'fr' ? 'Aller au contenu' : 'Skip to content';
     $('#header').innerHTML = renderHeader(t);
     $('#main').innerHTML =
-      renderHero(t) + renderAbout(t) + renderSeek(t) + renderProjects(t, content.projects) +
-      renderExperience(t) + renderSkills(t) + renderEducation(t) + renderContact(t);
+      renderHero(t) + renderAbout(t) + renderEducation(t) + renderExperience(t) +
+      renderSkills(t) + renderProjects(t, content.projects) + renderSeek(t) + renderContact(t);
     $('#footer').innerHTML = renderFooter(t);
     return content;
   }
@@ -274,17 +318,17 @@
     var t = current.t;
     var art = document.getElementById('projet-' + id);
     if (!art) return;
-    var btn = $('.toggle', art);
+    var btn = $('.tl-toggle', art);
     var panel = $('.project-panel', art);
     btn.setAttribute('aria-expanded', String(open));
     $('.label', btn).textContent = open ? t.p.close : t.p.open;
-    $('.sign', btn).textContent = open ? '−' : '+';
+    art.classList.toggle('is-open', open);
 
     if (open) {
       panel.hidden = false;
       if (animate && canAnimate()) {
         gsap.fromTo(panel, { height: 0, opacity: 0 }, { height: 'auto', opacity: 1, duration: 0.55, ease: 'power3.out', clearProps: 'height,opacity', onComplete: refreshScroll });
-        gsap.fromTo([$('.preview', panel)].concat($all('.details > div', panel)), { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power2.out', delay: 0.1 });
+        gsap.fromTo($all('.details > div, .preview', panel), { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power2.out', delay: 0.1 });
       } else {
         refreshScroll();
       }
@@ -331,6 +375,22 @@
     }
   }
 
+  function toggleEdu(i) {
+    state.eduOpen[i] = !state.eduOpen[i];
+    var open = state.eduOpen[i];
+    var t = current.t;
+    var btn = $('[data-edu="' + i + '"]');
+    var box = document.getElementById('edu-' + i);
+    btn.setAttribute('aria-expanded', String(open));
+    $('.label', btn).textContent = open ? t.eduLess : t.eduMore;
+    box.hidden = !open;
+    if (open && canAnimate()) {
+      gsap.fromTo(box, { y: 8, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out', onComplete: refreshScroll });
+    } else {
+      refreshScroll();
+    }
+  }
+
   function setLang(lang) {
     if (lang === state.lang) return;
     state.lang = lang;
@@ -348,9 +408,7 @@
     if (el.dataset.lang) { setLang(el.dataset.lang); return; }
     if (el.dataset.project) { toggleProject(el.dataset.project); return; }
     if (el.dataset.job != null) { toggleJob(Number(el.dataset.job)); return; }
-    if (el.dataset.open) {
-      if (state.open !== el.dataset.open) toggleProject(el.dataset.open);
-    }
+    if (el.dataset.edu != null) { toggleEdu(Number(el.dataset.edu)); return; }
   });
 
   // ---------------------------------------------------------------------------
