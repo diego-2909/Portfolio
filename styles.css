@@ -378,3 +378,56 @@ html.drawer-lock, html.drawer-lock body { overflow: hidden; }
   .drawer-top { margin: 0 -20px; padding: 12px 20px; }
   .drawer-head h2 { font-size: 22px; }
 }
+
+/* ---------------------------------------------------------------------------
+   Échelle typographique unique (prime sur les tailles définies plus haut)
+   display 36 · grand titre 22 · accroche 18 · titre 16 · texte 15 · secondaire 14 · légende 13 · code 12
+   --------------------------------------------------------------------------- */
+:root {
+  --fs-display: clamp(1.9rem, 3vw, 2.25rem);
+  --fs-xl: 22px;
+  --fs-lead: 18px;
+  --fs-title: 16px;
+  --fs-body: 15px;
+  --fs-small: 14px;
+  --fs-meta: 13px;
+  --fs-code: 12px;
+}
+body { font-size: var(--fs-body); }
+
+/* Espacement identique pour toutes les sections */
+.section { padding: 36px 0 52px; }
+.contact.section { padding-bottom: 72px; }
+
+/* Display */
+.hero h1 { font-size: var(--fs-display); }
+
+/* Grand titre (panneau projet) */
+.drawer-head h2 { font-size: var(--fs-xl); }
+
+/* Accroches */
+.hero .intro, .lead, .about .lead { font-size: var(--fs-lead); font-weight: 400; line-height: 1.45; letter-spacing: -0.005em; max-width: 50ch; }
+
+/* Titres d'éléments */
+.project-title h3, .job-body h3, .edu .name, .tl-now-items .n { font-size: var(--fs-title); font-weight: 500; }
+
+/* Texte courant */
+.about-paras, .details p, .drawer-panel .details p, .edu-more p, .rows dd,
+.job-body ul, .details ul, .skills ul, .project-pitch, .tl-now-items, .team-row { font-size: var(--fs-body); line-height: 1.6; }
+
+/* Secondaire */
+.hero .role, .facts, .site-nav, .job-body .role, .edu .school, .tl-toggle, .tl-toggle.small,
+.drawer-back, .jp-text, .panel-foot, .rows dt, .section-label h2, .points dt, .toggle.small,
+.job-project .jp-name, .edu-more .edu-jobs { font-size: var(--fs-small); }
+
+/* Légendes et dates */
+.tl-year, .tl-now .tl-year, .project-title span, .drawer-kind, .drawer-year, .details h4, .skills h3,
+.caption, .preview .caption, .portrait figcaption, .points dd, .job-when, .edu .when, .tl-now-title,
+.section-label a, .site-footer { font-size: var(--fs-meta); }
+
+/* Code et étiquettes techniques */
+.techs li, .preview pre, .jp-stack, .job-project .jp-stack, .subjects li { font-size: var(--fs-code); }
+
+@media (max-width: 560px) {
+  .drawer-head h2 { font-size: 20px; }
+}
