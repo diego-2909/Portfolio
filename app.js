@@ -64,9 +64,9 @@
       '<a href="#top" class="name">Diego Cortes</a>' +
       '<div class="header-right">' +
         '<nav class="site-nav" aria-label="' + esc(t.navLabel) + '">' +
+          '<a href="#competences">' + esc(t.nav.skills) + '</a>' +
           '<a href="#formation">' + esc(t.nav.education) + '</a>' +
           '<a href="#experience">' + esc(t.nav.experience) + '</a>' +
-          '<a href="#competences">' + esc(t.nav.skills) + '</a>' +
           '<a href="#projets">' + esc(t.nav.projects) + '</a>' +
           '<a href="#contact">' + esc(t.nav.contact) + '</a>' +
         '</nav>' +
@@ -303,8 +303,8 @@
     $('#skip-link').textContent = state.lang === 'fr' ? 'Aller au contenu' : 'Skip to content';
     $('#header').innerHTML = renderHeader(t);
     $('#main').innerHTML =
-      renderHero(t) + renderAbout(t) + renderEducation(t) + renderExperience(t) +
-      renderSkills(t) + renderProjects(t, content.projects) + renderSeek(t) + renderContact(t);
+      renderHero(t) + renderAbout(t) + renderSkills(t) + renderEducation(t) +
+      renderExperience(t) + renderProjects(t, content.projects) + renderSeek(t) + renderContact(t);
     $('#footer').innerHTML = renderFooter(t);
     return content;
   }
