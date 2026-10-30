@@ -68,7 +68,7 @@ function getContent(lang) {
             ]
           },
           {
-            dates: '2022 — 2023', place: 'Labège', company: 'Andil', role: 'Développeur full-stack, en alternance',
+            dates: '2022 — 2023', place: 'Labège', company: 'Andil', logo: 'assets/andil.png', role: 'Développeur full-stack, en alternance',
             bullets: [
               'Développement et maintenance sur la plateforme Moodle des clients.'
             ],
@@ -148,7 +148,7 @@ function getContent(lang) {
             ]
           },
           {
-            dates: '2022 — 2023', place: 'Labège', company: 'Andil', role: 'Full-stack developer, work-study',
+            dates: '2022 — 2023', place: 'Labège', company: 'Andil', logo: 'assets/andil.png', role: 'Full-stack developer, work-study',
             bullets: [
               "Development and maintenance on clients' Moodle platforms."
             ],
