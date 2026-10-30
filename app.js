@@ -190,6 +190,7 @@
             '<article class="job a-up">' +
               '<div class="job-when"><span>' + esc(j.dates) + '</span><span>' + esc(j.place) + '</span></div>' +
               '<div class="job-body">' +
+                (j.logo ? '<div class="job-logo"><img src="' + esc(j.logo) + '" alt="" width="600" height="114"></div>' : '') +
                 '<div><h3>' + esc(j.company) + '</h3><p class="role">' + esc(j.role) + '</p></div>' +
                 '<ul>' + map(j.bullets, function (b) { return '<li>' + esc(b) + '</li>'; }) + '</ul>' +
                 '<div class="job-projects">' +
@@ -391,6 +392,32 @@
         onEnter: function () {
           gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', overwrite: true });
         }
+      });
+    });
+
+    // Logo Airbus : il se relève en 3D quand on arrive dessus.
+    $all('.job-logo img').forEach(function (img) {
+      gsap.set(img, { rotateX: -90, rotateY: 35, z: -200, scale: 0.8, opacity: 0, transformPerspective: 700, transformOrigin: '50% 100%' });
+      ScrollTrigger.create({
+        trigger: img,
+        start: 'top 80%',
+        once: true,
+        onEnter: function () {
+          gsap.to(img, { opacity: 1, duration: 0.4, delay: 0.3 });
+          gsap.to(img, { rotateX: 0, rotateY: 0, z: 0, scale: 1, duration: 1.8, delay: 0.3, ease: 'power2.inOut' });
+        }
+      });
+
+      // Au survol, le logo s'incline en suivant la souris.
+      var box = img.parentNode;
+      box.addEventListener('mousemove', function (e) {
+        var r = box.getBoundingClientRect();
+        var dx = (e.clientX - r.left) / r.width - 0.5;
+        var dy = (e.clientY - r.top) / r.height - 0.5;
+        gsap.to(img, { rotateY: dx * 30, rotateX: -dy * 30, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
+      });
+      box.addEventListener('mouseleave', function () {
+        gsap.to(img, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'power2.out', overwrite: 'auto' });
       });
     });
 

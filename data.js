@@ -56,7 +56,7 @@ function getContent(lang) {
         projectsDone: 'Projets réalisés', seeCase: 'Voir le projet ↓',
         jobs: [
           {
-            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', role: 'Développeur et responsable de projet, en alternance',
+            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logo: 'assets/airbus.png', role: 'Développeur et responsable de projet, en alternance',
             bullets: [
               "Product Owner technique d'un projet de sécurité, du besoin à la production.",
               'Ateliers avec Data Governance et IT Security, PI Planning, backlog.'
@@ -136,7 +136,7 @@ function getContent(lang) {
         projectsDone: 'Projects delivered', seeCase: 'See the project ↓',
         jobs: [
           {
-            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', role: 'Developer and project lead, work-study',
+            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logo: 'assets/airbus.png', role: 'Developer and project lead, work-study',
             bullets: [
               'Technical Product Owner on a security project, from need to production.',
               'Workshops with Data Governance and IT Security, PI Planning, backlog.'
