@@ -155,7 +155,7 @@
     var back = state.lang === 'fr' ? 'Retour' : 'Back';
     var preview = p.img
       ? '<img class="mockup" src="' + esc(p.img) + '" alt="' + esc(p.imgAlt) + '" width="390" height="844">'
-      : '<pre>' + esc(p.tree) + '</pre>';
+      : (p.tree ? '<pre>' + esc(p.tree) + '</pre>' : '');
     var team = map(p.team, function (m) {
       var who = m.url ? '<a class="plain" href="' + esc(m.url) + '">' + esc(m.name) + '</a>' : esc(m.name);
       return '<div class="team-row"><span class="who">' + who + '</span><span class="did">' + esc(m.did) + '</span></div>';
@@ -174,12 +174,12 @@
         techList(p, t) +
       '</div>' +
       '<div class="details">' +
-        '<div><h4>' + esc(t.p.context) + '</h4><p>' + esc(p.context) + '</p></div>' +
+        (p.context ? '<div><h4>' + esc(t.p.context) + '</h4><p>' + esc(p.context) + '</p></div>' : '') +
         (p.result ? '<div><h4>' + esc(t.p.result) + '</h4><p>' + esc(p.result) + '</p></div>' : '') +
-        '<div><h4>' + esc(t.p.approach) + '</h4><ul>' + map(p.approach, function (a) { return '<li>' + esc(a) + '</li>'; }) + '</ul></div>' +
-        '<div><h4>' + esc(p.teamTitle) + '</h4>' + team + '</div>' +
+        (p.approach && p.approach.length ? '<div><h4>' + esc(t.p.approach) + '</h4><ul>' + map(p.approach, function (a) { return '<li>' + esc(a) + '</li>'; }) + '</ul></div>' : '') +
+        (team ? '<div><h4>' + esc(p.teamTitle) + '</h4>' + team + '</div>' : '') +
       '</div>' +
-      '<div class="preview">' + preview + '<span class="caption">' + esc(p.previewLabel) + '</span></div>' +
+      (preview ? '<div class="preview">' + preview + '<span class="caption">' + esc(p.previewLabel) + '</span></div>' : '') +
       (links ? '<div class="panel-foot">' + links + '</div>' : '');
   }
 
@@ -247,6 +247,8 @@
                       return '<div class="job-project">' +
                         '<div class="jp-main"><span class="jp-name">' + esc(jp.name) + '</span><span class="jp-text">' + esc(jp.text) + '</span></div>' +
                         '<span class="jp-stack">' + esc(jp.stack) + '</span>' +
+                        (jp.projectId ? '<button type="button" class="tl-toggle small jp-open" data-project="' + esc(jp.projectId) + '" aria-haspopup="dialog" aria-controls="drawer">' +
+                          '<span class="label">' + esc(t.p.open) + '</span>' + ARROW_RIGHT + '<span class="sr-only"> ' + esc(jp.name) + '</span></button>' : '') +
                       '</div>';
                     }) +
                   '</div>' +

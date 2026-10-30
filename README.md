@@ -25,6 +25,20 @@ Chaque texte existe en deux versions, `L('texte français', 'english text')`.
 
 Un champ laissé vide n'est pas affiché.
 
+### Présenter les projets Airbus
+
+Les trois projets de la partie Expérience Airbus ont un bouton « Aperçu › ».
+Leur contenu est dans `data.js` : le projet `airbus` (recertification, déjà rempli),
+et les projets `airbus-gdocs` et `airbus-windows`, à compléter.
+Pour chacun, renseigner `context` (le besoin), `approach` (une liste de ce que tu as fait)
+et `result` (le résultat), en français et en anglais : `L('…', '…')`.
+
+### Image de partage
+
+`assets/og.jpg` (1200 × 630) s'affiche quand le lien est partagé sur LinkedIn, WhatsApp, Slack ou par mail.
+Après un changement, LinkedIn garde l'ancienne image en cache : la rafraîchir avec
+https://www.linkedin.com/post-inspector/
+
 ## Animations
 
 Les animations utilisent [GSAP](https://gsap.com) et ScrollTrigger, chargés depuis cdnjs.

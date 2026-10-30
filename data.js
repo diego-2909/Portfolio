@@ -64,9 +64,9 @@ function getContent(lang) {
               'Ateliers avec Data Governance et IT Security, PI Planning, backlog.'
             ],
             projects: [
-              { name: 'Recertification des accès Google Drive', text: "Application web qui fait revalider les droits d'accès aux Shared Drives.", stack: 'React · TypeScript · Google APIs', hasCase: true },
-              { name: 'Classification des fichiers Google Docs', text: 'Outil interne pour classer les documents selon leur niveau de sensibilité.', stack: 'Google Apps Script', hasCase: false },
-              { name: 'Classification des fichiers Windows', text: 'Le même principe, appliqué aux fichiers des postes Windows.', stack: '.NET · C#', hasCase: false }
+              { name: 'Recertification des accès Google Drive', text: "Application web qui fait revalider les droits d'accès aux Shared Drives.", stack: 'React · TypeScript · Google APIs', projectId: 'airbus' },
+              { name: 'Classification des fichiers Google Docs', text: 'Outil interne pour classer les documents selon leur niveau de sensibilité.', stack: 'Google Apps Script', projectId: 'airbus-gdocs' },
+              { name: 'Classification des fichiers Windows', text: 'Le même principe, appliqué aux fichiers des postes Windows.', stack: '.NET · C#', projectId: 'airbus-windows' }
             ]
           },
           {
@@ -75,8 +75,8 @@ function getContent(lang) {
               'Développement et maintenance sur la plateforme Moodle des clients.'
             ],
             projects: [
-              { name: 'Plugins Moodle sur mesure', text: 'Développement, maintenance et amélioration de plugins pour les besoins des clients.', stack: 'PHP', hasCase: false },
-              { name: 'Tableau de bord des plateformes', text: "Une vue centralisée pour suivre et gérer toutes les plateformes Moodle déployées.", stack: 'Laravel · HTML · CSS · JavaScript', hasCase: false }
+              { name: 'Plugins Moodle sur mesure', text: 'Développement, maintenance et amélioration de plugins pour les besoins des clients.', stack: 'PHP' },
+              { name: 'Tableau de bord des plateformes', text: "Une vue centralisée pour suivre et gérer toutes les plateformes Moodle déployées.", stack: 'Laravel · HTML · CSS · JavaScript' }
             ]
           }
         ],
@@ -156,9 +156,9 @@ function getContent(lang) {
               'Workshops with Data Governance and IT Security, PI Planning, backlog.'
             ],
             projects: [
-              { name: 'Google Drive access recertification', text: 'Web application that has Shared Drive access rights reviewed and re-approved.', stack: 'React · TypeScript · Google APIs', hasCase: true },
-              { name: 'Google Docs file classification', text: 'Internal tool to label documents by sensitivity level.', stack: 'Google Apps Script', hasCase: false },
-              { name: 'Windows file classification', text: 'The same idea, applied to files on Windows workstations.', stack: '.NET · C#', hasCase: false }
+              { name: 'Google Drive access recertification', text: 'Web application that has Shared Drive access rights reviewed and re-approved.', stack: 'React · TypeScript · Google APIs', projectId: 'airbus' },
+              { name: 'Google Docs file classification', text: 'Internal tool to label documents by sensitivity level.', stack: 'Google Apps Script', projectId: 'airbus-gdocs' },
+              { name: 'Windows file classification', text: 'The same idea, applied to files on Windows workstations.', stack: '.NET · C#', projectId: 'airbus-windows' }
             ]
           },
           {
@@ -167,8 +167,8 @@ function getContent(lang) {
               "Development and maintenance on clients' Moodle platforms."
             ],
             projects: [
-              { name: 'Custom Moodle plugins', text: 'Built, maintained and improved plugins for client needs.', stack: 'PHP', hasCase: false },
-              { name: 'Platform dashboard', text: 'A central view to monitor and manage every deployed Moodle platform.', stack: 'Laravel · HTML · CSS · JavaScript', hasCase: false }
+              { name: 'Custom Moodle plugins', text: 'Built, maintained and improved plugins for client needs.', stack: 'PHP' },
+              { name: 'Platform dashboard', text: 'A central view to monitor and manage every deployed Moodle platform.', stack: 'Laravel · HTML · CSS · JavaScript' }
             ]
           }
         ],
@@ -457,6 +457,37 @@ function getContent(lang) {
         team: [ m('Diego Cortes', GH.diego, 'Projet réalisé seul.', 'Built solo.') ],
         stack: 'PHP · MySQL · HTML/CSS',
         links: [{ label: 'Code', url: 'https://github.com/diego-2909/Blog' }], private: false, privateLabel: ''
+      },
+
+      // -----------------------------------------------------------------------
+      // Projets Airbus présentés dans la partie Expérience (bouton « Aperçu › »).
+      // À compléter : context, approach (liste), result. Un champ vide n'est pas affiché.
+      // -----------------------------------------------------------------------
+      {
+        id: 'airbus-gdocs', year: '2025', inExperience: true,
+        name: L('Classification des fichiers Google Docs', 'Google Docs file classification'),
+        kind: L('Airbus Operations · alternance', 'Airbus Operations · work-study'),
+        pitch: L('Un outil interne pour classer les documents Google selon leur niveau de sensibilité.', 'An internal tool to label Google documents by sensitivity level.'),
+        context: '',
+        approach: [],
+        result: '',
+        teamTitle: L('Qui a fait quoi', 'Who did what'),
+        team: [],
+        stack: 'Google Apps Script · Google Workspace APIs',
+        links: [], private: true, privateLabel: L('Code interne Airbus', 'Internal Airbus code')
+      },
+      {
+        id: 'airbus-windows', year: '2025', inExperience: true,
+        name: L('Classification des fichiers Windows', 'Windows file classification'),
+        kind: L('Airbus Operations · alternance', 'Airbus Operations · work-study'),
+        pitch: L('Le même principe, appliqué aux fichiers des postes Windows.', 'The same idea, applied to files on Windows workstations.'),
+        context: '',
+        approach: [],
+        result: '',
+        teamTitle: L('Qui a fait quoi', 'Who did what'),
+        team: [],
+        stack: '.NET · C#',
+        links: [], private: true, privateLabel: L('Code interne Airbus', 'Internal Airbus code')
       }
     ];
 

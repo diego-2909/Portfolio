@@ -431,3 +431,6 @@ body { font-size: var(--fs-body); }
 @media (max-width: 560px) {
   .drawer-head h2 { font-size: 20px; }
 }
+
+/* Bouton « Aperçu › » dans les projets d'une expérience */
+.job-project .jp-open { flex: 0 0 auto; min-height: 28px; }
