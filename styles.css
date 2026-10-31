@@ -731,3 +731,6 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 .feat-media { transform-origin: 50% 70%; will-change: transform; }
 .feat-media.is-vertical { aspect-ratio: 4 / 3; }
 @media (max-width: 640px) { .featured { width: 100%; } }
+/* Projet mis en avant : le texte d'abord, la vidéo dessous */
+.featured .feat-body { padding: 0 0 20px; }
+@media (max-width: 560px) { .featured .feat-body { padding-bottom: 16px; } }
