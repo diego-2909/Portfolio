@@ -789,3 +789,5 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 .edu-row { margin: 0; width: 100%; padding: 18px 0; }
 .edu-row:hover { background: #F0F0EB; box-shadow: 0 0 0 12px #F0F0EB; border-radius: 6px; }
 @media (max-width: 560px) { .edu-row { margin: 0; width: 100%; padding: 16px 0; } .edu-row:hover { box-shadow: 0 0 0 8px #F0F0EB; } }
+.job-row .row-more { margin-top: 6px; font-size: var(--fs-meta); font-weight: 500; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #B9B9B3; }
+.job-row:hover .row-more { text-decoration-color: currentColor; }
