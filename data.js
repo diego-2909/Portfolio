@@ -109,8 +109,13 @@ function getContent(lang) {
             subjects: [],
             jobs: 'développeur d’applications web, intégrateur web, assistant chef de projet web.' },
           { dates: '2018 — 2022', name: 'Licence Informatique, niveau L2', school: 'Université Toulouse III Paul Sabatier',
-            more: "Les fondamentaux de l'informatique : algorithmique, programmation, structures de données, systèmes et bases de données.",
-            subjects: ['Algorithmique', 'Programmation en C et en Java', 'Structures de données', 'Bases de données', 'Systèmes et réseaux', 'UML'],
+            more: "Les deux premières années de la licence d'informatique, qui posent les fondamentaux : algorithmique et programmation, du C à la programmation orientée objet, structures de données et complexité, systèmes, réseaux, architecture des machines et bases de données, avec un projet de développement à chaque semestre de L2.",
+            groups: [
+              { title: 'L1 · les bases', items: ['Algorithmique', 'Programmation en C', 'Architecture des machines', 'Logique', 'Mathématiques'] },
+              { title: 'L2 · semestre 3', items: ['Algorithmique et programmation', 'Systèmes', 'Réseaux', 'Architecture des machines', 'Interaction homme-machine', 'Logique', 'Mathématiques pour l’informatique', 'Projet'] },
+              { title: 'L2 · semestre 4', items: ['Programmation orientée objet', 'Structures de données', 'Complexité', 'Bases de données', 'Systèmes', 'Réseaux', 'Architecture des machines', 'Projet'] }
+            ],
+            subjects: [],
             jobs: '' }
         ],
         contact: { email: 'E-mail', phone: 'Téléphone', cv: 'Télécharger mon CV (PDF)' }
@@ -211,8 +216,13 @@ function getContent(lang) {
             subjects: [],
             jobs: 'web application developer, web integrator, assistant web project manager.' },
           { dates: '2018 — 2022', name: 'Computer Science degree, second-year level', school: 'Toulouse III Paul Sabatier University',
-            more: 'The foundations of computer science: algorithms, programming, data structures, systems and databases.',
-            subjects: ['Algorithms', 'Programming in C and Java', 'Data structures', 'Databases', 'Systems and networks', 'UML'],
+            more: 'The first two years of a computer science degree, covering the foundations: algorithms and programming, from C to object-oriented programming, data structures and complexity, operating systems, networks, computer architecture and databases, with a development project every semester of the second year.',
+            groups: [
+              { title: 'Year 1 · the basics', items: ['Algorithms', 'C programming', 'Computer architecture', 'Logic', 'Mathematics'] },
+              { title: 'Year 2 · semester 3', items: ['Algorithms and programming', 'Operating systems', 'Networks', 'Computer architecture', 'Human-computer interaction', 'Logic', 'Mathematics for computer science', 'Project'] },
+              { title: 'Year 2 · semester 4', items: ['Object-oriented programming', 'Data structures', 'Complexity', 'Databases', 'Operating systems', 'Networks', 'Computer architecture', 'Project'] }
+            ],
+            subjects: [],
             jobs: '' }
         ],
         contact: { email: 'Email', phone: 'Phone', cv: 'Download my resume (PDF)' }
