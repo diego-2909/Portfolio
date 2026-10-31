@@ -149,10 +149,11 @@
 
   // Projet mis en avant : la vidéo, puis le titre et « En savoir plus » qui ouvre le panneau.
   function renderFeatured(p, t) {
+    var mobile = !!(window.matchMedia && window.matchMedia('(max-width: 640px)').matches && p.videoMobile);
     return '' +
       '<article class="featured" id="projet-' + esc(p.id) + '">' +
-        '<div class="feat-media">' +
-          '<video class="feat-video" src="' + esc(p.video) + '" poster="' + esc(p.poster) + '" muted loop playsinline preload="none" aria-label="' + esc(p.videoLabel) + '"></video>' +
+        '<div class="feat-media' + (mobile ? ' is-vertical' : '') + '">' +
+          '<video class="feat-video" src="' + esc(mobile ? p.videoMobile : p.video) + '" poster="' + esc(mobile ? p.posterMobile : p.poster) + '" muted loop playsinline preload="metadata" aria-label="' + esc(p.videoLabel) + '"></video>' +
           '<button type="button" class="feat-play" data-video-toggle aria-label="' + esc(t.featured.play) + '" data-play="' + esc(t.featured.play) + '" data-pause="' + esc(t.featured.pause) + '">' +
             '<svg class="i-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>' +
             '<svg class="i-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>' +
@@ -192,12 +193,20 @@
       if (v.paused) { userPaused = false; v.play().catch(function () {}); } else { userPaused = true; v.pause(); }
     });
     if (!('IntersectionObserver' in window)) { if (!userPaused) v.play().catch(function () {}); return; }
+    // Lecture seulement quand la vidéo est bien à l'écran (au moins 60 %), depuis le début la première fois.
+    var started = false;
     new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting && !userPaused) v.play().catch(function () {});
-        else if (!e.isIntersecting) v.pause();
+        if (e.intersectionRatio >= 0.6 && !userPaused) {
+          if (!started) { started = true; try { v.currentTime = 0; } catch (err) { /* ignoré */ } }
+          v.play().catch(function () {});
+        } else if (e.intersectionRatio < 0.25) v.pause();
       });
-    }, { threshold: 0.35 }).observe(v);
+    }, { threshold: [0, 0.25, 0.6, 0.8] }).observe(v);
+    // Chargement anticipé quand on s'en approche, pour qu'elle démarre sans attendre.
+    new IntersectionObserver(function (entries, obs) {
+      if (entries[0].isIntersecting) { v.preload = 'auto'; obs.disconnect(); }
+    }, { rootMargin: '900px 0px' }).observe(v);
     sync();
   }
 
@@ -373,7 +382,7 @@
 
   function renderFooter(t) {
     var note = state.lang === 'fr' ? 'Statistiques de visite anonymes, sans cookie.' : 'Anonymous visit statistics, no cookies.';
-    return '<span>Diego Cortes, Toulouse, 2026<span class="footer-note"> · ' + esc(note) + '</span></span><div class="links">' + linksHtml(t, 'CV') + '</div>';
+    return '<span>Diego Cortes, Toulouse, 2026<span class="footer-note"><span class="sep" aria-hidden="true"> · </span>' + esc(note) + '</span></span><div class="links">' + linksHtml(t, 'CV') + '</div>';
   }
 
   // ---------------------------------------------------------------------------
@@ -425,11 +434,20 @@
     // les robots d'aperçu (LinkedIn, Slack, Outlook…) n'exécutent pas ce code ou repartent avant.
     function opened() {
       if (!enabled || !code || read('pf_opened') === code) return;
-      setTimeout(function () {
+      var timer = null;
+      function arm() {
+        clearTimeout(timer);
         if (document.visibilityState !== 'visible') return;
-        store('pf_opened', code);
-        send('open', state.lang);
-      }, 1000);
+        timer = setTimeout(function () {
+          if (document.visibilityState !== 'visible' || read('pf_opened') === code) return;
+          store('pf_opened', code);
+          document.removeEventListener('visibilitychange', arm);
+          send('open', state.lang);
+        }, 1000);
+      }
+      // Onglet ouvert en arrière-plan (Cmd+clic depuis un mail) : on attend qu'il soit affiché.
+      document.addEventListener('visibilitychange', arm);
+      arm();
     }
 
     return { send: send, opened: opened };
@@ -475,7 +493,8 @@
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { drawer.classList.add('is-open'); });
     });
-    $('.drawer-back', panel).focus({ preventScroll: true });
+    var title = $('#drawer-title', panel);
+    if (title) { title.setAttribute('tabindex', '-1'); title.focus({ preventScroll: true }); }
   }
 
   function closeDrawer() {

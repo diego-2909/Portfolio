@@ -500,3 +500,81 @@ body { font-size: var(--fs-body); }
 .edu-logo { flex: 0 0 auto; width: 140px; height: 48px; display: flex; justify-content: flex-end; align-items: center; }
 .edu-logo img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; }
 @media (max-width: 560px) { .edu-logo { width: 88px; height: 36px; } }
+
+/* ---------------------------------------------------------------------------
+   Mobile : mise en page resserrée
+   --------------------------------------------------------------------------- */
+.footer-note .sep { color: inherit; }
+.feat-media.is-vertical { aspect-ratio: 4 / 5; }
+#drawer-title:focus { outline: none; }
+
+@media (max-width: 560px) {
+  /* En-tête : les cinq liens tiennent sur une ligne */
+  .site-header { padding: 12px 0 0; }
+  .site-nav { gap: 0 13px; font-size: 13px; justify-content: space-between; }
+  .site-nav a { padding: 10px 0 9px; }
+
+  /* Sections plus compactes */
+  .section { padding: 26px 0 40px; gap: 14px; }
+  .section-label { flex-direction: row; align-items: baseline; justify-content: space-between; }
+  .section-label h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+
+  /* Haut de page : photo en vignette au-dessus du nom */
+  .hero { padding: 28px 0 36px; gap: 20px; }
+  .portrait { order: -1; flex: 0 0 auto; max-width: none; }
+  .portrait img { width: 96px; height: 96px; aspect-ratio: 1; border-radius: 50%; object-position: 50% 25%; }
+  .portrait figcaption { display: none; }
+  .hero-text { gap: 18px; }
+  .hero h1 { font-size: 30px; }
+
+  /* À propos */
+  .about { gap: 22px; }
+  .about-paras { gap: 14px; }
+
+  /* Compétences : deux colonnes, les technos à la suite */
+  .skills { grid-template-columns: 1fr 1fr; gap: 22px 18px; }
+  .skills h3 { margin-bottom: 8px; padding-bottom: 6px; }
+  .skills ul { gap: 2px; font-size: 14px; }
+
+  /* Formation et expérience : dates et lieu sur une ligne */
+  .edu { padding: 16px 0; gap: 4px; }
+  .edu .when { flex-basis: 100%; }
+  .edu-head { align-items: flex-start; gap: 14px; }
+  .edu-logo { width: 72px; height: 34px; margin-top: 2px; }
+  .job { padding: 22px 0; gap: 6px; }
+  .job-when { flex: 1 1 100%; flex-direction: row; flex-wrap: wrap; gap: 0 8px; }
+  .job-when span + span::before { content: '·'; margin-right: 8px; }
+  .job-body { gap: 10px; }
+  .job-head { align-items: center; }
+  .job-logo { width: 84px; height: 36px; }
+
+  /* Projet mis en avant */
+  .featured { margin-bottom: 28px; }
+  .feat-media { border-radius: 18px; }
+  .feat-body { padding-top: 14px; }
+  .feat-more { width: 100%; justify-content: center; }
+
+  /* Fil des projets : colonne des années plus étroite, espacement resserré */
+  .tl-item { grid-template-columns: 40px 14px minmax(0, 1fr); column-gap: 10px; }
+  .tl-year { padding-top: 16px; font-size: 13px; }
+  .tl-now .tl-year { padding-top: 20px; font-size: 11px; line-height: 1.2; }
+  .tl-dot { margin-top: 22px; width: 10px; height: 10px; }
+  .tl-body { padding: 14px 0 22px; gap: 5px; }
+  .tl-now .tl-body { padding: 16px 0 26px; }
+  .tl-now-items { flex-direction: column; gap: 8px; }
+  .tl-now-items p { flex: none; }
+  .tl-toggle { min-height: 40px; }
+
+  /* Ce que je cherche, contact */
+  .rows div { padding: 10px 0; gap: 0; }
+  .rows dt { flex-basis: 100%; font-size: 12.5px; }
+
+  /* Pied de page */
+  .site-footer { flex-direction: column; gap: 10px; padding-bottom: 28px; }
+  .footer-note { display: block; margin-top: 2px; }
+  .footer-note .sep { display: none; }
+}
+@media (max-width: 560px) {
+  /* « Aujourd'hui » ne tient pas dans la colonne : la flèche suffit, « En ce moment » donne le sens */
+  .tl-now .tl-year { visibility: hidden; }
+}
