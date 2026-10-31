@@ -745,3 +745,7 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 .featured { width: min(100%, calc(48vh * 16 / 9), 640px); }
 .feat-foot { display: flex; justify-content: flex-end; }
 @media (max-width: 640px) { .featured { width: 100%; } }
+/* Vidéo centrée dans la colonne, bouton aligné sur son bord droit */
+.featured { width: 100%; }
+.feat-media, .feat-foot { width: min(100%, calc(48vh * 16 / 9), 640px); margin-left: auto; margin-right: auto; }
+@media (max-width: 640px) { .feat-media, .feat-foot { width: 100%; } }
