@@ -1,6 +1,6 @@
 # Portfolio — Diego Cortes
 
-Site personnel en HTML, CSS et JavaScript, sans framework ni compilation. Il est publié avec GitHub Pages.
+Site personnel en HTML, CSS et JavaScript, sans framework ni compilation. Il est publié sur Vercel.
 
 En ligne : https://diego-cortes.dev/
 

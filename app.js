@@ -150,6 +150,60 @@
       '</li>';
   }
 
+  // Projet mis en avant : la vidéo, puis le titre et « En savoir plus » qui ouvre le panneau.
+  function renderFeatured(p, t) {
+    return '' +
+      '<article class="featured" id="projet-' + esc(p.id) + '">' +
+        '<div class="feat-media">' +
+          '<video class="feat-video" src="' + esc(p.video) + '" poster="' + esc(p.poster) + '" muted loop playsinline preload="none" aria-label="' + esc(p.videoLabel) + '"></video>' +
+          '<button type="button" class="feat-play" data-video-toggle aria-label="' + esc(t.featured.play) + '" data-play="' + esc(t.featured.play) + '" data-pause="' + esc(t.featured.pause) + '">' +
+            '<svg class="i-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>' +
+            '<svg class="i-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>' +
+          '</button>' +
+        '</div>' +
+        '<div class="feat-body">' +
+          '<p class="feat-tag">' + esc(t.featured.tag) + ' · ' + esc(p.kind) + '</p>' +
+          '<div class="feat-row">' +
+            '<div>' +
+              '<h3>' + esc(p.name) + '</h3>' +
+              '<p class="project-pitch">' + esc(p.pitch) + '</p>' +
+              techList(p, t) +
+            '</div>' +
+            '<button type="button" class="feat-more" data-project="' + esc(p.id) + '" aria-haspopup="dialog" aria-controls="drawer">' +
+              '<span>' + esc(t.featured.more) + '</span>' + ARROW_RIGHT +
+              '<span class="sr-only"> ' + esc(p.name) + '</span>' +
+            '</button>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+  }
+
+  // Lecture automatique quand la vidéo est visible (sauf si l'utilisateur réduit les animations ou l'a mise en pause).
+  function setupFeaturedVideo() {
+    var v = $('.feat-video');
+    if (!v) return;
+    var btn = $('[data-video-toggle]');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var userPaused = reduce;
+    function sync() {
+      var playing = !v.paused;
+      btn.classList.toggle('is-playing', playing);
+      btn.setAttribute('aria-label', playing ? btn.dataset.pause : btn.dataset.play);
+    }
+    v.addEventListener('play', sync); v.addEventListener('pause', sync);
+    btn.addEventListener('click', function () {
+      if (v.paused) { userPaused = false; v.play().catch(function () {}); } else { userPaused = true; v.pause(); }
+    });
+    if (!('IntersectionObserver' in window)) { if (!userPaused) v.play().catch(function () {}); return; }
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !userPaused) v.play().catch(function () {});
+        else if (!e.isIntersecting) v.pause();
+      });
+    }, { threshold: 0.35 }).observe(v);
+    sync();
+  }
+
   // Contenu du panneau latéral d'un projet.
   function renderDrawer(p, t) {
     var back = state.lang === 'fr' ? 'Retour' : 'Back';
@@ -185,7 +239,8 @@
 
   // Fil chronologique : « Aujourd'hui » en haut, puis les projets du plus récent au plus ancien.
   function renderProjects(t, projects) {
-    var list = projects.filter(function (p) { return !p.inExperience; })
+    var feat = projects.filter(function (p) { return p.featured; })[0];
+    var list = projects.filter(function (p) { return !p.inExperience && !p.featured; })
       .map(function (p, i) { return { p: p, i: i }; })
       .sort(function (a, b) { return (Number(b.p.year) - Number(a.p.year)) || (a.i - b.i); })
       .map(function (x) { return x.p; });
@@ -197,6 +252,7 @@
       '<section class="section" id="projets">' +
         '<div class="section-label"><h2>' + esc(t.nav.projects) + '</h2><a href="' + esc(CONFIG.github) + '?tab=repositories">github.com/diego-2909</a></div>' +
         '<div class="section-body">' +
+          (feat ? renderFeatured(feat, t) : '') +
           '<ol class="timeline" aria-label="' + esc(t.timelineLabel) + '">' +
             '<li class="tl-item tl-now">' +
               '<span class="tl-year muted">' + esc(t.now.when) + '</span>' +
@@ -537,6 +593,7 @@
 
   function setupAnimations(entrance) {
     setupLogoHover();
+    setupFeaturedVideo();
     if (!canScrollAnimate()) return;
     gsap.registerPlugin(ScrollTrigger);
 

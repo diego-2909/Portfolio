@@ -48,6 +48,7 @@ function getContent(lang) {
           ]
         },
         p: { context: 'Contexte', result: 'Résultat', approach: "Comment on s'y est pris", open: 'Aperçu', close: 'Réduire', openAria: 'Voir l’aperçu du projet ', closeAria: 'Réduire le projet ' },
+        featured: { tag: 'Mon projet 2026', more: 'En savoir plus', play: 'Lire la vidéo', pause: 'Mettre la vidéo en pause' },
         now: {
           title: 'En ce moment', when: "Aujourd'hui",
           items: [
@@ -156,6 +157,7 @@ function getContent(lang) {
           ]
         },
         p: { context: 'Context', result: 'Outcome', approach: 'How we went about it', open: 'Preview', close: 'Collapse', openAria: 'Preview project ', closeAria: 'Collapse project ' },
+        featured: { tag: 'My 2026 project', more: 'Learn more', play: 'Play the video', pause: 'Pause the video' },
         now: {
           title: 'Currently', when: 'Today',
           items: [
@@ -275,6 +277,8 @@ function getContent(lang) {
       },
       {
         id: 'runmates', year: '2026', name: 'RunMates',
+        featured: true, video: 'assets/runmates.mp4', poster: 'assets/runmates-poster.jpg',
+        videoLabel: L("Démonstration de RunMates sur iPhone : explorer les sorties, en proposer une à Toulouse, mes sorties, profil et messages", 'RunMates demo on iPhone: browse runs, post one in Toulouse, my runs, profile and messages'),
         kind: L('Projet personnel · seul', 'Personal project · solo'),
         pitch: L('Trouver une sortie course ou vélo près de chez soi, à son allure, et la rejoindre en un geste.', 'Find a run or ride nearby, at your pace, and join it in one tap.'),
         img: 'assets/runmates-sorties.jpg',
