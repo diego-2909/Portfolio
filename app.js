@@ -317,8 +317,56 @@
   }
 
   function renderFooter(t) {
-    return '<span>Diego Cortes, Toulouse, 2026</span><div class="links">' + linksHtml(t, 'CV') + '</div>';
+    var note = state.lang === 'fr' ? 'Statistiques de visite anonymes, sans cookie.' : 'Anonymous visit statistics, no cookies.';
+    return '<span>Diego Cortes, Toulouse, 2026<span class="footer-note"> · ' + esc(note) + '</span></span><div class="links">' + linksHtml(t, 'CV') + '</div>';
   }
+
+  // ---------------------------------------------------------------------------
+  // Liens uniques par recruteur : diego-cortes.dev/?r=code
+  // Enregistre l'ouverture du lien et ce qui est consulté (aperçus, CV, langue).
+  // Rien n'est envoyé sans code valide ou tant que config.js est vide.
+  // Côté base : supabase/schema.sql.
+  // ---------------------------------------------------------------------------
+  var tracking = (function () {
+    var cfg = window.PORTFOLIO_CONFIG || {};
+    var enabled = !!(cfg.supabaseUrl && cfg.supabaseAnonKey);
+    function read(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
+    function store(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { /* ignoré */ } }
+
+    var fromUrl = (new URLSearchParams(location.search).get('r') || '').toLowerCase();
+    var code = /^[a-z0-9]{6,12}$/.test(fromUrl) ? fromUrl : read('pf_r');
+    if (code) store('pf_r', code);
+    var session = read('pf_s');
+    if (!session) {
+      session = Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+      store('pf_s', session);
+    }
+
+    function send(event, detail) {
+      if (!enabled || !code) return;
+      try {
+        fetch(cfg.supabaseUrl.replace(/\/$/, '') + '/rest/v1/rpc/track', {
+          method: 'POST',
+          keepalive: true,
+          headers: { 'Content-Type': 'application/json', apikey: cfg.supabaseAnonKey, Authorization: 'Bearer ' + cfg.supabaseAnonKey },
+          body: JSON.stringify({ p_code: code, p_session: session, p_event: event, p_detail: detail || null })
+        }).catch(function () { /* le suivi ne doit jamais gêner la visite */ });
+      } catch (e) { /* idem */ }
+    }
+
+    // L'ouverture est comptée une fois par session, après une seconde de page visible :
+    // les robots d'aperçu (LinkedIn, Slack, Outlook…) n'exécutent pas ce code ou repartent avant.
+    function opened() {
+      if (!enabled || !code || read('pf_opened') === code) return;
+      setTimeout(function () {
+        if (document.visibilityState !== 'visible') return;
+        store('pf_opened', code);
+        send('open', state.lang);
+      }, 1000);
+    }
+
+    return { send: send, opened: opened };
+  })();
 
   function render() {
     var content = getContent(state.lang);
@@ -345,6 +393,7 @@
   function openDrawer(id) {
     var p = current.projects.filter(function (x) { return x.id === id; })[0];
     if (!p) return;
+    tracking.send('project', id);
     var drawer = $('#drawer');
     var panel = $('.drawer-panel', drawer);
     panel.innerHTML = renderDrawer(p, current.t);
@@ -428,6 +477,7 @@
     if (lang === state.lang) return;
     closeDrawer();
     state.lang = lang;
+    tracking.send('lang', lang);
     try { localStorage.setItem('lang', lang); } catch (e) { /* ignoré */ }
     var y = window.scrollY;
     killAnimations();
@@ -439,6 +489,7 @@
   document.addEventListener('click', function (e) {
     var el = e.target.closest('button, a');
     if (!el) return;
+    if (el.dataset.track === 'cv') { tracking.send('cv'); return; }
     if (el.hasAttribute('data-close-drawer')) { closeDrawer(); return; }
     if (el.dataset.lang) { setLang(el.dataset.lang); return; }
     if (el.dataset.project) { toggleProject(el.dataset.project); return; }
@@ -517,6 +568,7 @@
   // ---------------------------------------------------------------------------
   current = render();
   setupAnimations(true);
+  tracking.opened();
   if (location.hash) {
     var target = document.getElementById(location.hash.slice(1));
     if (target) target.scrollIntoView();

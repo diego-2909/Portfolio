@@ -2,7 +2,7 @@
 
 Site personnel en HTML, CSS et JavaScript, sans framework ni compilation. Il est publié avec GitHub Pages.
 
-En ligne : https://diego-2909.github.io/Portfolio/
+En ligne : https://diego-cortes.dev/
 
 ## Structure
 
@@ -10,8 +10,11 @@ En ligne : https://diego-2909.github.io/Portfolio/
 index.html     la page (squelette)
 styles.css     la mise en page
 data.js        tout le contenu, en français et en anglais
-app.js         le rendu, les interactions et les animations
-assets/        photo, maquette RunMates, CV en PDF
+app.js         le rendu, les interactions, les animations et le suivi des liens
+config.js      connexion Supabase (URL et clé publique)
+admin/         page privée des liens de candidature
+supabase/      schéma de la base (schema.sql)
+assets/        photo, logos, maquette RunMates, image de partage, CV en PDF
 ```
 
 ## Modifier le contenu
@@ -38,6 +41,34 @@ et `result` (le résultat), en français et en anglais : `L('…', '…')`.
 `assets/og.jpg` (1200 × 630) s'affiche quand le lien est partagé sur LinkedIn, WhatsApp, Slack ou par mail.
 Après un changement, LinkedIn garde l'ancienne image en cache : la rafraîchir avec
 https://www.linkedin.com/post-inspector/
+
+## Liens uniques par recruteur (Supabase)
+
+Chaque candidature reçoit son propre lien, par exemple `https://diego-cortes.dev/?r=k7f3x9ab`.
+Quand il est ouvert, le site enregistre l'ouverture, les aperçus de projets consultés,
+le téléchargement du CV et le passage en anglais. Aucune adresse IP, aucun cookie.
+
+### Mise en place (une seule fois)
+
+1. **Créer le projet** sur [supabase.com](https://supabase.com) → New project (offre gratuite).
+2. **Créer les tables** : SQL Editor → New query → coller `supabase/schema.sql` → Run.
+   L'adresse administrateur est `d.cortes@me.com` : la changer dans le script si besoin.
+3. **Créer ton compte admin** : Authentication → Users → Add user → Create new user,
+   avec `d.cortes@me.com` et un mot de passe, en cochant « Auto Confirm User ».
+4. **Fermer les inscriptions** : Authentication → Sign In / Providers → Email →
+   désactiver « Allow new users to sign up ».
+5. **Brancher le site** : Project Settings → API → copier « Project URL » et la clé
+   « anon public » dans `config.js`. Jamais la clé `service_role`.
+
+### Utilisation
+
+- Ouvrir **https://diego-cortes.dev/admin/** et se connecter.
+- Saisir l'entreprise (et une note si besoin), cliquer sur « Générer le lien », puis « Copier le lien ».
+- Coller ce lien dans la candidature. Le tableau « Suivi » indique ensuite si le lien a été ouvert,
+  combien de fois, quand, et ce qui a été consulté.
+
+Les liens sont stockés dans Supabase, indépendamment du code : redéployer le site ne les casse pas,
+tant que le paramètre `?r=` est conservé dans `app.js`.
 
 ## Animations
 

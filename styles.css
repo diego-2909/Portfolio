@@ -465,3 +465,6 @@ body { font-size: var(--fs-body); }
   .site-nav::-webkit-scrollbar { display: none; }
   .site-nav a { flex: 0 0 auto; padding: 8px 0; }
 }
+
+.footer-note { color: var(--muted); }
+@media (max-width: 560px) { .footer-note { display: block; } .footer-note::before { content: ''; } }
