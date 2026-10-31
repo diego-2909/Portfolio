@@ -108,12 +108,12 @@ function getContent(lang) {
             ],
             subjects: [],
             jobs: 'développeur d’applications web, intégrateur web, assistant chef de projet web.' },
-          { dates: '2018 — 2022', name: 'Licence Informatique, niveau L2', school: 'Université Toulouse III Paul Sabatier',
-            more: "Les deux premières années de la licence d'informatique, qui posent les fondamentaux : algorithmique et programmation, du C à la programmation orientée objet, structures de données et complexité, systèmes, réseaux, architecture des machines et bases de données, avec un projet de développement à chaque semestre de L2.",
+          { dates: '2018 — 2022', name: 'Licence Informatique, jusqu\u2019au semestre 5', school: 'Université Toulouse III Paul Sabatier',
+            more: "Une licence d'informatique suivie jusqu'au premier semestre de L3. La L1, en Sciences du numérique, était généraliste : mathématiques, physique et informatique. La L2 a posé les fondamentaux de la programmation, de l'assembleur au C, à Java et à Python, avec les systèmes, les réseaux, les bases de données et un projet de développement à chaque semestre. Le semestre 5 a ajouté la programmation fonctionnelle en OCaml et la complexité.",
             groups: [
-              { title: 'L1 · les bases', items: ['Algorithmique', 'Programmation en C', 'Architecture des machines', 'Logique', 'Mathématiques'] },
-              { title: 'L2 · semestre 3', items: ['Algorithmique et programmation', 'Systèmes', 'Réseaux', 'Architecture des machines', 'Interaction homme-machine', 'Logique', 'Mathématiques pour l’informatique', 'Projet'] },
-              { title: 'L2 · semestre 4', items: ['Programmation orientée objet', 'Structures de données', 'Complexité', 'Bases de données', 'Systèmes', 'Réseaux', 'Architecture des machines', 'Projet'] }
+              { title: 'L1 · Sciences du numérique', items: ['Mathématiques', 'Physique', 'Informatique', 'Algorithmique'] },
+              { title: 'L2 · Informatique', items: ['Assembleur', 'C', 'Java', 'Python', 'Programmation orientée objet', 'Structures de données', 'Algorithmique et programmation', 'Systèmes', 'Réseaux', 'Architecture des machines', 'Bases de données', 'Interaction homme-machine', 'Projets de développement'] },
+              { title: 'L3 · semestre 5', items: ['Programmation fonctionnelle (OCaml)', 'Complexité'] }
             ],
             subjects: [],
             jobs: '' }
@@ -215,12 +215,12 @@ function getContent(lang) {
             ],
             subjects: [],
             jobs: 'web application developer, web integrator, assistant web project manager.' },
-          { dates: '2018 — 2022', name: 'Computer Science degree, second-year level', school: 'Toulouse III Paul Sabatier University',
-            more: 'The first two years of a computer science degree, covering the foundations: algorithms and programming, from C to object-oriented programming, data structures and complexity, operating systems, networks, computer architecture and databases, with a development project every semester of the second year.',
+          { dates: '2018 — 2022', name: 'Computer Science degree, up to semester 5', school: 'Toulouse III Paul Sabatier University',
+            more: "A computer science degree completed up to the first semester of the third year. Year 1, in Digital Sciences, was broad: mathematics, physics and computing. Year 2 laid the programming foundations, from assembly to C, Java and Python, along with operating systems, networks, databases and a development project every semester. Semester 5 added functional programming in OCaml and complexity theory.",
             groups: [
-              { title: 'Year 1 · the basics', items: ['Algorithms', 'C programming', 'Computer architecture', 'Logic', 'Mathematics'] },
-              { title: 'Year 2 · semester 3', items: ['Algorithms and programming', 'Operating systems', 'Networks', 'Computer architecture', 'Human-computer interaction', 'Logic', 'Mathematics for computer science', 'Project'] },
-              { title: 'Year 2 · semester 4', items: ['Object-oriented programming', 'Data structures', 'Complexity', 'Databases', 'Operating systems', 'Networks', 'Computer architecture', 'Project'] }
+              { title: 'Year 1 · Digital Sciences', items: ['Mathematics', 'Physics', 'Computing', 'Algorithms'] },
+              { title: 'Year 2 · Computer Science', items: ['Assembly', 'C', 'Java', 'Python', 'Object-oriented programming', 'Data structures', 'Algorithms and programming', 'Operating systems', 'Networks', 'Computer architecture', 'Databases', 'Human-computer interaction', 'Development projects'] },
+              { title: 'Year 3 · semester 5', items: ['Functional programming (OCaml)', 'Complexity'] }
             ],
             subjects: [],
             jobs: '' }
