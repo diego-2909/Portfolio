@@ -91,7 +91,7 @@ function getContent(lang) {
         ],
         eduMore: 'En savoir plus', eduLess: 'Réduire', eduSubjects: 'Enseignements', eduJobs: 'Débouchés visés',
         education: [
-          { dates: '2023 — 2025', name: 'Master MIAGE, Ingénierie des Processus Métiers', school: 'Université Toulouse Capitole · en alternance chez Airbus',
+          { dates: '2023 — 2025', name: 'Master MIAGE, Ingénierie des Processus Métiers', school: 'Université Toulouse Capitole · en alternance chez Airbus', logoUrl: 'assets/ut1-capitole.png',
             more: "Un master en deux ans, suivi en alternance chez Airbus, qui forme à faire évoluer le système d'information d'une entreprise : analyser, modéliser et digitaliser ses processus métiers, puis concevoir et déployer les applications qui les servent. La première année pose les bases (modélisation du SI, des données et des processus, programmation objet, bases de données, gestion de projet). La deuxième, parcours Ingénierie des Processus Métiers, approfondit le développement, le cloud, l'industrialisation et la gouvernance des SI.",
             groups: [
               { title: 'Master 1 · 2023 — 2024', items: ['Modélisation du SI', 'Modélisation des données et des processus', 'Conception et programmation orientée objet', 'Agilité pour le recueil des besoins', 'Bases de données relationnelles avancées', 'Bases de données décisionnelles', 'Gestion de projet', 'Machine learning', 'Intelligence artificielle symbolique', 'Droit du numérique'] },
@@ -99,7 +99,7 @@ function getContent(lang) {
             ],
             subjects: [],
             jobs: 'Product Owner, consultant fonctionnel, chef de projet, ingénieur système d’information, développeur.' },
-          { dates: '2022 — 2023', name: 'Licence professionnelle Métiers de l’informatique, parcours RTAI', school: 'Université Toulouse Capitole · en alternance chez Andil',
+          { dates: '2022 — 2023', name: 'Licence professionnelle Métiers de l’informatique, parcours RTAI', school: 'Université Toulouse Capitole · en alternance chez Andil', logoUrl: 'assets/ut1-capitole.png',
             more: "Une licence professionnelle d'un an (L3), parcours Responsable Technique d'Applications Internet, suivie en alternance chez Andil. Elle forme à encadrer un projet web de bout en bout : concevoir et réaliser des applications Internet, suivre la conduite de projet, assurer leur sécurité et leur pérennité, et rédiger leur documentation.",
             groups: [
               { title: 'Développement de sites et d’applications web', items: ['Création de sites web (HTML, CSS)', 'Sites dynamiques et responsive design', 'Programmation côté serveur', 'Frameworks MVC', 'Référencement SEO'] },
@@ -109,7 +109,7 @@ function getContent(lang) {
             ],
             subjects: [],
             jobs: 'développeur d’applications web, intégrateur web, assistant chef de projet web.' },
-          { dates: '2018 — 2022', name: 'Licence Informatique (L2)', school: 'Université Toulouse III Paul Sabatier',
+          { dates: '2018 — 2022', name: 'Licence Informatique (L2)', school: 'Université Toulouse III Paul Sabatier', logoUrl: 'assets/ut3.png',
             more: "Une licence d'informatique suivie jusqu'au premier semestre de L3. La L1 commence par un semestre scientifique commun (mathématiques, physique-chimie, informatique), puis se concentre sur l'informatique : algorithmique, programmation en C, architecture et logique. La L2 a posé les fondamentaux de la programmation, de l'assembleur au C, à Java et à Python, avec les systèmes, les réseaux, les bases de données et un projet de développement à chaque semestre. Le semestre 5 a ajouté la programmation fonctionnelle en OCaml et la complexité.",
             groups: [
               { title: 'L1 · semestre 1, tronc commun scientifique', items: ['Mathématiques', 'Physique et chimie', 'Informatique et outils mathématiques', 'Sciences du numérique'] },
@@ -200,7 +200,7 @@ function getContent(lang) {
         ],
         eduMore: 'Learn more', eduLess: 'Show less', eduSubjects: 'Courses', eduJobs: 'Target roles',
         education: [
-          { dates: '2023 — 2025', name: "Master's in Information Systems (MIAGE), Business Process Engineering", school: 'Toulouse Capitole University · work-study at Airbus',
+          { dates: '2023 — 2025', name: "Master's in Information Systems (MIAGE), Business Process Engineering", school: 'Toulouse Capitole University · work-study at Airbus', logoUrl: 'assets/ut1-capitole.png',
             more: "A two-year master's degree, completed as a work-study at Airbus, that trains you to evolve a company's information system: analysing, modelling and digitising its business processes, then designing and deploying the applications that support them. The first year lays the foundations (information system, data and process modelling, object-oriented programming, databases, project management). The second, specialised in Business Process Engineering, goes deeper into development, cloud, delivery automation and IS governance.",
             groups: [
               { title: "Master's year 1 · 2023 — 2024", items: ['Information system modelling', 'Data and process modelling', 'Object-oriented design and programming', 'Agile requirements gathering', 'Advanced relational databases', 'Decision-support databases', 'Project management', 'Machine learning', 'Symbolic artificial intelligence', 'Digital law'] },
@@ -208,7 +208,7 @@ function getContent(lang) {
             ],
             subjects: [],
             jobs: 'Product Owner, functional consultant, project manager, information systems engineer, developer.' },
-          { dates: '2022 — 2023', name: "Professional Bachelor's in Computing, Web Applications (RTAI)", school: 'Toulouse Capitole University · work-study at Andil',
+          { dates: '2022 — 2023', name: "Professional Bachelor's in Computing, Web Applications (RTAI)", school: 'Toulouse Capitole University · work-study at Andil', logoUrl: 'assets/ut1-capitole.png',
             more: "A one-year professional degree (third year of a bachelor's), specialised as Internet Application Technical Lead, completed as a work-study at Andil. It trains you to run a web project end to end: designing and building Internet applications, following project delivery, keeping them secure and maintainable, and documenting them.",
             groups: [
               { title: 'Web sites and applications', items: ['Building websites (HTML, CSS)', 'Dynamic sites and responsive design', 'Server-side programming', 'MVC frameworks', 'SEO'] },
@@ -218,7 +218,7 @@ function getContent(lang) {
             ],
             subjects: [],
             jobs: 'web application developer, web integrator, assistant web project manager.' },
-          { dates: '2018 — 2022', name: 'Computer Science degree (2nd year)', school: 'Toulouse III Paul Sabatier University',
+          { dates: '2018 — 2022', name: 'Computer Science degree (2nd year)', school: 'Toulouse III Paul Sabatier University', logoUrl: 'assets/ut3.png',
             more: "A computer science degree completed up to the first semester of the third year. Year 1 starts with a shared science semester (mathematics, physics and chemistry, computing), then focuses on computer science: algorithms, C programming, architecture and logic. Year 2 laid the programming foundations, from assembly to C, Java and Python, along with operating systems, networks, databases and a development project every semester. Semester 5 added functional programming in OCaml and complexity theory.",
             groups: [
               { title: 'Year 1 · semester 1, shared science core', items: ['Mathematics', 'Physics and chemistry', 'Computing and mathematical tools', 'Digital sciences'] },

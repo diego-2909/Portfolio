@@ -335,7 +335,9 @@
             '<div class="edu">' +
               '<span class="when">' + esc(e.dates) + '</span>' +
               '<div class="what">' +
-                '<p class="name">' + esc(e.name) + '</p><p class="school">' + esc(e.school) + '</p>' +
+                '<div class="edu-head"><div><p class="name">' + esc(e.name) + '</p><p class="school">' + esc(e.school) + '</p></div>' +
+                  (e.logoUrl ? '<div class="edu-logo"><img src="' + esc(e.logoUrl) + '" alt=""></div>' : '') +
+                '</div>' +
                 '<button type="button" class="tl-toggle small" data-edu="' + i + '" aria-controls="edu-' + i + '" aria-expanded="' + open + '">' +
                   '<span class="label">' + esc(open ? t.eduLess : t.eduMore) + '</span>' + CHEVRON +
                 '</button>' +
