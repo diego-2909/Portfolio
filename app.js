@@ -81,12 +81,13 @@
     return '' +
       '<section class="hero" id="top">' +
         '<div class="hero-text">' +
-          '<div><h1 class="a-hero">Diego Cortes</h1><p class="role a-hero">' + esc(t.hero.role) + '</p></div>' +
+          '<div class="hero-id"><img class="avatar-m" src="' + esc(CONFIG.photo) + '" alt="" width="64" height="64">' +
+            '<div><h1 class="a-hero">Diego Cortes</h1><p class="role a-hero">' + esc(t.hero.role) + '</p></div></div>' +
           '<p class="intro a-hero">' + esc(t.hero.intro) + '</p>' +
           '<div class="hero-cta a-hero">' +
             '<a class="btn-primary" href="#contact">' + esc(t.hero.ctaContact) + '</a>' +
             '<a class="btn-secondary" href="' + esc(CONFIG.cv) + '" download data-track="cv">' + esc(t.hero.ctaCv) + '</a>' +
-            '<a class="plain hero-gh" href="' + esc(CONFIG.github) + '">GitHub ↗</a>' +
+            '<a class="hero-gh" href="' + esc(CONFIG.github) + '">GitHub' + EXT + '</a>' +
           '</div>' +
         '</div>' +
         '<figure class="portrait">' +
@@ -123,6 +124,7 @@
   var CHEVRON = '<svg class="chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>';
 
   var ARROW_RIGHT = '<svg class="chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>';
+  var EXT = '<svg class="ext" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>';
   var ARROW_LEFT = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>';
 
   // Couleur pastel par famille de technologie : la même techno a la même couleur partout.
@@ -242,7 +244,7 @@
       var who = m.url ? '<a class="plain" href="' + esc(m.url) + '">' + esc(m.name) + '</a>' : esc(m.name);
       return '<div class="team-row"><span class="who">' + who + '</span><span class="did">' + esc(m.did) + '</span></div>';
     });
-    var links = map(p.links, function (l) { return '<a href="' + esc(l.url) + '">' + esc(l.label) + ' ↗</a>'; });
+    var links = map(p.links, function (l) { return '<a href="' + esc(l.url) + '">' + esc(l.label) + EXT + '</a>'; });
     if (p.private) links += '<span class="muted">' + esc(p.privateLabel) + '</span>';
     return '' +
       '<div class="drawer-top">' +
@@ -396,7 +398,7 @@
         (t.certs && t.certs.length ? '<div class="certs"><p class="certs-title">' + esc(t.certsTitle) + '</p>' + map(t.certs, function (c) {
           return '<div class="cert"><img src="' + esc(c.img) + '" alt="" width="48" height="51">' +
             '<div class="cert-main"><p class="cert-name">' + esc(c.name) + '</p><p class="cert-issuer">' + esc(c.issuer) + '</p>' +
-            '<a class="cert-link" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.link) + ' ↗</a></div></div>';
+            '<a class="cert-link" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.link) + EXT + '</a></div></div>';
         }) + '</div>' : '') +
         '</div>' +
       '</section>';
