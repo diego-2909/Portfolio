@@ -87,7 +87,7 @@
           '<div class="hero-cta a-hero">' +
             '<a class="btn-primary" href="#contact">' + esc(t.hero.ctaContact) + '</a>' +
             '<a class="btn-secondary" href="' + esc(CONFIG.cv) + '" download data-track="cv">' + esc(t.hero.ctaCv) + '</a>' +
-            '<a class="hero-gh" href="' + esc(CONFIG.github) + '">GitHub' + EXT + '</a>' +
+            '<a class="hero-gh" href="' + esc(CONFIG.github) + '">' + GH_ICON + 'GitHub</a>' +
           '</div>' +
         '</div>' +
         '<figure class="portrait">' +
@@ -125,6 +125,7 @@
 
   var ARROW_RIGHT = '<svg class="chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>';
   var EXT = '<svg class="ext" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>';
+  var GH_ICON = '<img class="gh-icon" src="assets/github.png" alt="" width="16" height="16">';
   var ARROW_LEFT = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>';
 
   // Couleur pastel par famille de technologie : la même techno a la même couleur partout.
@@ -408,7 +409,7 @@
     var rows = [
       [t.contact.email, '<a href="mailto:' + esc(CONFIG.email) + '">' + esc(CONFIG.email) + '</a>'],
       [t.contact.phone, '<a href="tel:' + esc(CONFIG.phone) + '">' + esc(CONFIG.phoneLabel) + '</a>'],
-      ['GitHub', '<a href="' + esc(CONFIG.github) + '">github.com/diego-2909</a>']
+      ['GitHub', '<a class="gh-link" href="' + esc(CONFIG.github) + '">' + GH_ICON + 'github.com/diego-2909</a>']
     ];
     if (CONFIG.linkedin) rows.push(['LinkedIn', '<a href="' + esc(CONFIG.linkedin) + '">LinkedIn</a>']);
     rows.push(['CV', '<a href="' + esc(CONFIG.cv) + '" download data-track="cv">' + esc(t.contact.cv) + '</a>']);

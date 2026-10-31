@@ -820,3 +820,29 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
   .btn-primary, .btn-secondary { flex: 0 0 auto; min-height: 38px; padding: 0 15px; font-size: 13.5px; }
   .hero-gh { flex: 0 0 auto; margin: 0 0 0 6px; text-align: left; font-size: 13.5px; }
 }
+
+/* Logo GitHub à côté des liens */
+.gh-icon { width: 16px; height: 16px; display: inline-block; vertical-align: -3px; margin-right: 6px; }
+.hero-gh .gh-icon { margin-right: 6px; }
+.gh-link { display: inline-flex; align-items: center; }
+
+/* Mobile : texte un peu plus petit partout, photo plus grande */
+@media (max-width: 560px) {
+  :root { --fs-xl: 20px; --fs-lead: 16px; --fs-title: 15px; --fs-body: 14px; --fs-small: 13px; --fs-meta: 12px; --fs-code: 11px; }
+  body { font-size: 14px; }
+  .avatar-m { width: 84px; height: 84px; }
+  .hero-id { gap: 16px; }
+  .hero h1 { font-size: 25px; }
+  .hero .role { font-size: 13px; }
+  .hero .intro { font-size: 15.5px; }
+  .lead, .about .lead { font-size: 17px; line-height: 1.4; }
+  .about-paras, .contact-body .lead { font-size: 14px; }
+  .contact-body .lead { font-size: 16px; }
+  .site-nav { font-size: 12.5px; }
+  .site-header .name { font-size: 15px; }
+  .edu-row .name, .job-row .name { font-size: 15px; }
+  .feat-row h3 { font-size: 19px; }
+  .skill-row li, .chips li { font-size: 12px; }
+  .btn-primary, .btn-secondary { font-size: 13px; min-height: 36px; padding: 0 14px; }
+  .hero-gh { font-size: 13px; }
+}
