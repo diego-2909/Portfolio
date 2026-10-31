@@ -91,8 +91,12 @@ function getContent(lang) {
         eduMore: 'En savoir plus', eduLess: 'Réduire', eduSubjects: 'Enseignements', eduJobs: 'Débouchés visés',
         education: [
           { dates: '2023 — 2025', name: 'Master MIAGE, Ingénierie des Processus Métiers', school: 'Université Toulouse Capitole · en alternance chez Airbus',
-            more: "Un master qui forme à accompagner une entreprise dans l'évolution de son système d'information : analyser, modéliser et digitaliser les processus métiers, sur des architectures web, orientées services ou cloud, en tenant compte de la conduite du changement.",
-            subjects: ['Analyse des processus métier', 'Modélisation BPMN et UML', 'Recueil des besoins', 'Gestion de projet Agile, Scrum', 'Conception de systèmes d’information', 'Bases de données', 'Développement web', 'Amélioration continue'],
+            more: "Un master en deux ans, suivi en alternance chez Airbus, qui forme à faire évoluer le système d'information d'une entreprise : analyser, modéliser et digitaliser ses processus métiers, puis concevoir et déployer les applications qui les servent. La première année pose les bases (modélisation du SI, des données et des processus, programmation objet, bases de données, gestion de projet). La deuxième, parcours Ingénierie des Processus Métiers, approfondit le développement, le cloud, l'industrialisation et la gouvernance des SI.",
+            groups: [
+              { title: 'Master 1 · 2023 — 2024', items: ['Modélisation du SI', 'Modélisation des données et des processus', 'Conception et programmation orientée objet', 'Agilité pour le recueil des besoins', 'Bases de données relationnelles avancées', 'Bases de données décisionnelles', 'Gestion de projet', 'Machine learning', 'Intelligence artificielle symbolique', 'Droit du numérique'] },
+              { title: 'Master 2 Ingénierie des Processus Métiers · 2024 — 2025', items: ['Développement front et back', 'Développement pour le Big Data', 'Architecture d’entreprise à base de services', 'Données et développement dans le cloud', 'Intégration et déploiement continus', 'Agilité pour la gestion de projets', 'Urbanisation et gouvernance des SI', 'Intégration de données', 'Process Intelligence', 'Recherche et développement'] }
+            ],
+            subjects: [],
             jobs: 'Product Owner, consultant fonctionnel, chef de projet, ingénieur système d’information, développeur.' },
           { dates: '2022 — 2023', name: 'Licence professionnelle Métiers de l’informatique, parcours RTAI', school: 'Université Toulouse Capitole · en alternance chez Andil',
             more: "Une licence professionnelle d'un an, parcours Responsable Technique d'Applications Internet : concevoir, développer et maintenir des applications web, du front-end à la base de données.",
@@ -183,8 +187,12 @@ function getContent(lang) {
         eduMore: 'Learn more', eduLess: 'Show less', eduSubjects: 'Courses', eduJobs: 'Target roles',
         education: [
           { dates: '2023 — 2025', name: "Master's in Information Systems (MIAGE), Business Process Engineering", school: 'Toulouse Capitole University · work-study at Airbus',
-            more: "A master's degree that trains you to guide a company through the evolution of its information system: analysing, modelling and digitising business processes on web, service-oriented or cloud architectures, while managing change.",
-            subjects: ['Business process analysis', 'BPMN and UML modelling', 'Requirements gathering', 'Agile project management, Scrum', 'Information system design', 'Databases', 'Web development', 'Continuous improvement'],
+            more: "A two-year master's degree, completed as a work-study at Airbus, that trains you to evolve a company's information system: analysing, modelling and digitising its business processes, then designing and deploying the applications that support them. The first year lays the foundations (information system, data and process modelling, object-oriented programming, databases, project management). The second, specialised in Business Process Engineering, goes deeper into development, cloud, delivery automation and IS governance.",
+            groups: [
+              { title: "Master's year 1 · 2023 — 2024", items: ['Information system modelling', 'Data and process modelling', 'Object-oriented design and programming', 'Agile requirements gathering', 'Advanced relational databases', 'Decision-support databases', 'Project management', 'Machine learning', 'Symbolic artificial intelligence', 'Digital law'] },
+              { title: "Master's year 2, Business Process Engineering · 2024 — 2025", items: ['Front-end and back-end development', 'Big Data development', 'Service-oriented enterprise architecture', 'Cloud data and development', 'Continuous integration and deployment', 'Agile project management', 'IS urbanisation and governance', 'Data integration', 'Process Intelligence', 'Research and development'] }
+            ],
+            subjects: [],
             jobs: 'Product Owner, functional consultant, project manager, information systems engineer, developer.' },
           { dates: '2022 — 2023', name: "Professional Bachelor's in Computing, Web Applications (RTAI)", school: 'Toulouse Capitole University · work-study at Andil',
             more: 'A one-year professional degree focused on web application engineering: designing, building and maintaining web applications, from front-end to database.',

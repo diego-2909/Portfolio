@@ -285,7 +285,12 @@
                 '</button>' +
                 '<div class="edu-more" id="edu-' + i + '"' + (open ? '' : ' hidden') + '>' +
                   '<p>' + esc(e.more) + '</p>' +
-                  '<ul class="subjects" aria-label="' + esc(t.eduSubjects) + '">' + map(e.subjects, function (s) { return '<li>' + esc(s) + '</li>'; }) + '</ul>' +
+                  (e.groups && e.groups.length
+                    ? map(e.groups, function (g) {
+                        return '<div class="edu-group"><p class="edu-group-title">' + esc(g.title) + '</p>' +
+                          '<ul class="subjects" aria-label="' + esc(g.title) + '">' + map(g.items, function (s) { return '<li>' + esc(s) + '</li>'; }) + '</ul></div>';
+                      })
+                    : '<ul class="subjects" aria-label="' + esc(t.eduSubjects) + '">' + map(e.subjects, function (s) { return '<li>' + esc(s) + '</li>'; }) + '</ul>') +
                   (e.jobs ? '<p class="edu-jobs"><span class="muted">' + esc(t.eduJobs) + ' : </span>' + esc(e.jobs) + '</p>' : '') +
                 '</div>' +
               '</div>' +

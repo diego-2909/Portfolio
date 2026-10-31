@@ -434,3 +434,7 @@ body { font-size: var(--fs-body); }
 
 /* Bouton « Aperçu › » dans les projets d'une expérience */
 .job-project .jp-open { flex: 0 0 auto; min-height: 28px; }
+
+/* Formation : enseignements groupés par année */
+.edu-group { display: flex; flex-direction: column; gap: 6px; }
+.edu-more .edu-group-title { margin: 4px 0 0; font-size: var(--fs-meta); font-weight: 500; color: var(--muted); }
