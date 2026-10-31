@@ -65,9 +65,9 @@
       '<div class="header-right">' +
         '<nav class="site-nav" aria-label="' + esc(t.navLabel) + '">' +
           '<a href="#experience">' + esc(t.nav.experience) + '</a>' +
+          '<a href="#formation">' + esc(t.nav.education) + '</a>' +
           '<a href="#projets">' + esc(t.nav.projects) + '</a>' +
           '<a href="#competences">' + esc(t.nav.skills) + '</a>' +
-          '<a href="#formation">' + esc(t.nav.education) + '</a>' +
           '<a href="#contact">' + esc(t.nav.contact) + '</a>' +
         '</nav>' +
         '<div class="lang" role="group" aria-label="' + esc(t.langLabel) + '">' +
@@ -285,39 +285,71 @@
     return open ? 'Hide what I delivered' : 'See what I delivered (' + n + ')';
   }
 
+  function moreBtn(kind, i, label, name) {
+    return '<button type="button" class="more-btn" data-detail="' + kind + ':' + i + '" aria-haspopup="dialog" aria-controls="push">' +
+      '<span>' + esc(label) + '</span>' + ARROW_RIGHT + '<span class="sr-only"> · ' + esc(name) + '</span></button>';
+  }
+
   function renderExperience(t) {
     return '' +
       '<section class="section" id="experience">' +
         '<div class="section-label"><h2>' + esc(t.nav.experience) + '</h2></div>' +
         '<div class="section-body">' + map(t.jobs, function (j, i) {
-          var open = !!state.jobsOpen[i];
           return '' +
             '<article class="job a-up">' +
               '<div class="job-when"><span>' + esc(j.dates) + '</span><span>' + esc(j.place) + '</span></div>' +
               '<div class="job-body">' +
                 '<div class="job-head">' +
                   '<div><h3>' + esc(j.company) + '</h3><p class="role">' + esc(j.role) + '</p></div>' +
-                  (j.logoUrl ? '<div class="job-logo"><img src="' + esc(j.logoUrl) + '" alt=""></div>' : '') +
+                  (j.logoUrl ? '<div class="job-logo"><img src="' + esc(j.logoUrl) + '" alt="" data-logo="job:' + i + '"></div>' : '') +
                 '</div>' +
-                '<div class="job-projects">' +
-                '<button type="button" class="toggle small" data-job="' + i + '" aria-controls="job-' + i + '" aria-expanded="' + open + '">' +
-                  '<span class="label">' + esc(jobLabel(j, i)) + '</span><span class="sign" aria-hidden="true">' + (open ? '−' : '+') + '</span>' +
-                '</button>' +
-                '<div class="job-projects-list" id="job-' + i + '"' + (open ? '' : ' hidden') + '>' +
-                  map(j.projects, function (jp) {
-                    return '<div class="job-project">' +
-                      '<div class="jp-main"><span class="jp-name">' + esc(jp.name) + '</span><span class="jp-text">' + esc(jp.text) + '</span></div>' +
-                      '<span class="jp-stack">' + esc(jp.stack) + '</span>' +
-                      (jp.projectId ? '<button type="button" class="tl-toggle small jp-open" data-project="' + esc(jp.projectId) + '" aria-haspopup="dialog" aria-controls="drawer">' +
-                        '<span class="label">' + esc(t.p.open) + '</span>' + ARROW_RIGHT + '<span class="sr-only"> ' + esc(jp.name) + '</span></button>' : '') +
-                    '</div>';
-                  }) +
-                '</div>' +
-                '</div>' +
+                '<div class="card-foot">' + moreBtn('job', i, t.detail.more, j.company) +
+                  '<span class="card-count">' + esc(t.detail.count(j.projects.length)) + '</span></div>' +
               '</div>' +
             '</article>';
         }) + '</div>' +
       '</section>';
+  }
+
+  // Panneau « Plus de détails » : toute la page glisse vers la gauche, le détail arrive par la droite.
+  function renderJobDetail(j, i, t) {
+    return '' +
+      '<div class="push-top"><button type="button" class="drawer-back" data-close-push>' + ARROW_LEFT + '<span>' + esc(t.detail.back) + '</span></button>' +
+        '<span class="drawer-year">' + esc(j.dates) + '</span></div>' +
+      '<header class="push-head">' +
+        (j.logoUrl ? '<div class="push-logo"><img src="' + esc(j.logoUrl) + '" alt=""></div>' : '') +
+        '<p class="push-kicker">' + esc(t.nav.experience) + ' · ' + esc(j.place) + '</p>' +
+        '<h2 id="push-title" tabindex="-1">' + esc(j.company) + '</h2>' +
+        '<p class="push-sub">' + esc(j.role) + '</p>' +
+      '</header>' +
+      (j.bullets && j.bullets.length ? '<div class="push-block"><h3>' + esc(t.detail.missions) + '</h3><ul class="push-list">' + map(j.bullets, function (b) { return '<li>' + esc(b) + '</li>'; }) + '</ul></div>' : '') +
+      '<div class="push-block"><h3>' + esc(t.projectsDone) + '</h3>' +
+        map(j.projects, function (jp) {
+          return '<div class="push-project">' +
+            '<div class="pp-main"><p class="pp-name">' + esc(jp.name) + '</p><p class="pp-text">' + esc(jp.text) + '</p>' +
+              '<ul class="techs">' + map(jp.stack.split(' · '), function (x) { return '<li>' + esc(x) + '</li>'; }) + '</ul></div>' +
+            (jp.projectId ? '<button type="button" class="tl-toggle small" data-project="' + esc(jp.projectId) + '" aria-haspopup="dialog" aria-controls="drawer">' +
+              '<span class="label">' + esc(t.p.open) + '</span>' + ARROW_RIGHT + '<span class="sr-only"> ' + esc(jp.name) + '</span></button>' : '') +
+          '</div>';
+        }) +
+      '</div>';
+  }
+
+  function renderEduDetail(e, i, t) {
+    return '' +
+      '<div class="push-top"><button type="button" class="drawer-back" data-close-push>' + ARROW_LEFT + '<span>' + esc(t.detail.back) + '</span></button>' +
+        '<span class="drawer-year">' + esc(e.dates) + '</span></div>' +
+      '<header class="push-head">' +
+        (e.logoUrl ? '<div class="push-logo"><img src="' + esc(e.logoUrl) + '" alt=""></div>' : '') +
+        '<p class="push-kicker">' + esc(t.nav.education) + '</p>' +
+        '<h2 id="push-title" tabindex="-1">' + esc(e.name) + '</h2>' +
+        '<p class="push-sub">' + esc(e.school) + '</p>' +
+      '</header>' +
+      '<div class="push-block"><p class="push-text">' + esc(e.more) + '</p></div>' +
+      map(e.groups || [], function (g) {
+        return '<div class="push-block"><h3>' + esc(g.title) + '</h3><ul class="chips">' + map(g.items, function (x) { return '<li>' + esc(x) + '</li>'; }) + '</ul></div>';
+      }) +
+      (e.jobs ? '<div class="push-block"><h3>' + esc(t.eduJobs) + '</h3><p class="push-text">' + esc(e.jobs) + '</p></div>' : '');
   }
 
   function renderSkills(t) {
@@ -334,30 +366,20 @@
     return '' +
       '<section class="section" id="formation">' +
         '<div class="section-label"><h2>' + esc(t.nav.education) + '</h2></div>' +
-        '<div class="section-body">' + map(t.education, function (e, i) {
-          var open = !!state.eduOpen[i];
+        '<div class="section-body edu-list">' + map(t.education, function (e, i) {
+          var all = [];
+          (e.groups || []).forEach(function (g) { all = all.concat(g.items); });
+          var shown = all.slice(0, 5), rest = all.length - shown.length;
           return '' +
-            '<div class="edu">' +
-              '<span class="when">' + esc(e.dates) + '</span>' +
-              '<div class="what">' +
-                '<div class="edu-head"><div><p class="name">' + esc(e.name) + '</p><p class="school">' + esc(e.school) + '</p></div>' +
-                  (e.logoUrl ? '<div class="edu-logo"><img src="' + esc(e.logoUrl) + '" alt=""></div>' : '') +
-                '</div>' +
-                '<button type="button" class="tl-toggle small" data-edu="' + i + '" aria-controls="edu-' + i + '" aria-expanded="' + open + '">' +
-                  '<span class="label">' + esc(open ? t.eduLess : t.eduMore) + '</span>' + CHEVRON +
-                '</button>' +
-                '<div class="edu-more" id="edu-' + i + '"' + (open ? '' : ' hidden') + '>' +
-                  '<p>' + esc(e.more) + '</p>' +
-                  (e.groups && e.groups.length
-                    ? map(e.groups, function (g) {
-                        return '<div class="edu-group"><p class="edu-group-title">' + esc(g.title) + '</p>' +
-                          '<ul class="subjects" aria-label="' + esc(g.title) + '">' + map(g.items, function (s) { return '<li>' + esc(s) + '</li>'; }) + '</ul></div>';
-                      })
-                    : '<ul class="subjects" aria-label="' + esc(t.eduSubjects) + '">' + map(e.subjects, function (s) { return '<li>' + esc(s) + '</li>'; }) + '</ul>') +
-                  (e.jobs ? '<p class="edu-jobs"><span class="muted">' + esc(t.eduJobs) + ' : </span>' + esc(e.jobs) + '</p>' : '') +
-                '</div>' +
+            '<article class="edu-card a-up">' +
+              '<div class="edu-top">' +
+                '<div><p class="when">' + esc(e.dates) + '</p><h3 class="name">' + esc(e.name) + '</h3><p class="school">' + esc(e.school) + '</p></div>' +
+                (e.logoUrl ? '<div class="edu-logo"><img src="' + esc(e.logoUrl) + '" alt="" data-logo="edu:' + i + '"></div>' : '') +
               '</div>' +
-            '</div>';
+              (shown.length ? '<ul class="chips edu-chips" aria-label="' + esc(t.eduSubjects) + '">' + map(shown, function (x) { return '<li>' + esc(x) + '</li>'; }) +
+                (rest > 0 ? '<li class="more-chip">+' + rest + '</li>' : '') + '</ul>' : '') +
+              '<div class="card-foot">' + moreBtn('edu', i, t.detail.more, e.name) + '</div>' +
+            '</article>';
         }) + '</div>' +
       '</section>';
   }
@@ -461,8 +483,8 @@
     $('#skip-link').textContent = state.lang === 'fr' ? 'Aller au contenu' : 'Skip to content';
     $('#header').innerHTML = renderHeader(t);
     $('#main').innerHTML =
-      renderHero(t) + renderAbout(t) + renderExperience(t) + renderProjects(t, content.projects) +
-      renderSkills(t) + renderEducation(t) + renderContact(t);
+      renderHero(t) + renderAbout(t) + renderExperience(t) + renderEducation(t) +
+      renderProjects(t, content.projects) + renderSkills(t) + renderContact(t);
     $('#footer').innerHTML = renderFooter(t);
     return content;
   }
@@ -501,7 +523,7 @@
     var drawer = $('#drawer');
     if (drawer.hidden) return;
     drawer.classList.remove('is-open');
-    document.documentElement.classList.remove('drawer-lock');
+    if ($('#push').hidden) document.documentElement.classList.remove('drawer-lock');
     var item = state.open && document.getElementById('projet-' + state.open);
     if (item) item.classList.remove('is-open');
     state.open = null;
@@ -512,11 +534,68 @@
 
   function toggleProject(id) { openDrawer(id); }
 
+  var pushTrigger = null;
+  function openPush(key) {
+    var parts = key.split(':'), kind = parts[0], i = Number(parts[1]);
+    var t = current.t, item = kind === 'job' ? t.jobs[i] : t.education[i];
+    if (!item) return;
+    var push = $('#push'), panel = $('.push-panel', push);
+    panel.innerHTML = kind === 'job' ? renderJobDetail(item, i, t) : renderEduDetail(item, i, t);
+    panel.scrollTop = 0;
+    pushTrigger = document.activeElement;
+    tracking.send('project', (kind === 'job' ? 'exp:' : 'edu:') + (kind === 'job' ? item.company : item.dates).toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40));
+    push.hidden = false;
+    document.documentElement.classList.add('drawer-lock');
+    var src = $('[data-logo="' + key + '"]'), dst = $('.push-logo img', panel);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        document.documentElement.classList.add('is-pushed');
+        push.classList.add('is-open');
+        flyLogo(src, dst, panel);
+        var title = $('#push-title', panel);
+        if (title) title.focus({ preventScroll: true });
+      });
+    });
+  }
+
+  // Le logo de la carte s'envole vers l'en-tête du panneau : on suit l'élément d'un écran à l'autre.
+  function flyLogo(src, dst, panel) {
+    if (!src || !dst || reduceMotion || !src.animate) return;
+    var a = src.getBoundingClientRect();
+    var w = panel.getBoundingClientRect().width;
+    var b = dst.getBoundingClientRect();
+    if (!a.width || !b.width) return;
+    // Le panneau part de translateX(100 %) : sa position finale est décalée de sa largeur.
+    var m = new DOMMatrix(getComputedStyle(panel).transform);
+    var bl = b.left - m.m41, bt = b.top;
+    var clone = src.cloneNode();
+    clone.className = 'logo-fly';
+    clone.style.cssText = 'position:fixed;left:' + a.left + 'px;top:' + a.top + 'px;width:' + a.width + 'px;height:' + a.height + 'px;z-index:60;pointer-events:none;object-fit:contain;';
+    document.body.appendChild(clone);
+    dst.style.visibility = 'hidden';
+    var anim = clone.animate([
+      { transform: 'translate(0,0) scale(1)' },
+      { transform: 'translate(' + (bl - a.left + (b.width - a.width) / 2) + 'px,' + (bt - a.top + (b.height - a.height) / 2) + 'px) scale(' + (b.width / a.width) + ')' }
+    ], { duration: 560, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
+    anim.onfinish = function () { dst.style.visibility = ''; clone.remove(); };
+  }
+
+  function closePush() {
+    var push = $('#push');
+    if (push.hidden) return;
+    push.classList.remove('is-open');
+    document.documentElement.classList.remove('is-pushed');
+    var done = function () { push.hidden = true; if ($('#drawer').hidden) document.documentElement.classList.remove('drawer-lock'); };
+    if (reduceMotion) done(); else setTimeout(done, 520);
+    if (pushTrigger && pushTrigger.focus) pushTrigger.focus({ preventScroll: true });
+  }
+
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closeDrawer(); return; }
-    // Garde le focus dans le panneau tant qu'il est ouvert.
-    if (e.key === 'Tab' && !$('#drawer').hidden) {
-      var f = $all('#drawer .drawer-panel a[href], #drawer .drawer-panel button');
+    if (e.key === 'Escape') { if (!$('#drawer').hidden) closeDrawer(); else closePush(); return; }
+    // Garde le focus dans le panneau ouvert (projet, sinon détail).
+    var box = !$('#drawer').hidden ? '#drawer .drawer-panel' : (!$('#push').hidden ? '#push .push-panel' : null);
+    if (e.key === 'Tab' && box) {
+      var f = $all(box + ' a[href], ' + box + ' button');
       if (!f.length) return;
       var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -562,6 +641,7 @@
   function setLang(lang) {
     if (lang === state.lang) return;
     closeDrawer();
+    closePush();
     state.lang = lang;
     tracking.send('lang', lang);
     try { localStorage.setItem('lang', lang); } catch (e) { /* ignoré */ }
@@ -577,6 +657,8 @@
     if (!el) return;
     if (el.dataset.track === 'cv') { tracking.send('cv'); return; }
     if (el.hasAttribute('data-close-drawer')) { closeDrawer(); return; }
+    if (el.hasAttribute('data-close-push')) { closePush(); return; }
+    if (el.dataset.detail) { openPush(el.dataset.detail); return; }
     if (el.dataset.lang) { setLang(el.dataset.lang); return; }
     if (el.dataset.project) { toggleProject(el.dataset.project); return; }
     if (el.dataset.job != null) { toggleJob(Number(el.dataset.job)); return; }

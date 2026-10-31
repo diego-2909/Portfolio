@@ -629,3 +629,81 @@ body { font-size: var(--fs-body); }
 }
 .job-projects-list { border-bottom: 0; }
 .job-projects-list[hidden] { display: none; }
+
+/* ---------------------------------------------------------------------------
+   « Plus de détails » : la page glisse vers la gauche, le détail arrive par la droite
+   --------------------------------------------------------------------------- */
+:root { --pw: min(820px, calc(100vw - 36px)); --push-ease: cubic-bezier(.2, .8, .2, 1); }
+.wrap { transition: transform .55s var(--push-ease), opacity .55s ease; }
+html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: .45; }
+.push { position: fixed; inset: 0; z-index: 40; }
+.push[hidden] { display: none; }
+.push-edge { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: w-resize; }
+.push-panel {
+  position: absolute; top: 0; right: 0; bottom: 0; width: var(--pw);
+  overflow-y: auto; overscroll-behavior: contain; background: var(--paper);
+  border-left: 1px solid var(--ink); box-shadow: -30px 0 80px -40px rgba(20, 20, 20, .45);
+  padding: 0 48px 56px; transform: translateX(100%); transition: transform .55s var(--push-ease);
+}
+.push.is-open .push-panel { transform: none; }
+@media (prefers-reduced-motion: reduce) { .wrap, .push-panel { transition: none; } }
+.push-top { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center;
+  margin: 0 -48px; padding: 14px 48px; background: rgba(250, 250, 248, .96); border-bottom: 1px solid var(--rule); }
+.push-head { padding: 36px 0 8px; display: flex; flex-direction: column; gap: 6px; }
+.push-logo { width: 180px; height: 72px; display: flex; align-items: center; margin-bottom: 18px; }
+.push-logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; }
+.push-kicker { margin: 0; font-family: var(--mono); font-size: var(--fs-code); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.push-head h2 { margin: 0; font-size: 30px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.12; }
+#push-title:focus { outline: none; }
+.push-sub { margin: 0; color: var(--muted); font-size: var(--fs-body); }
+.push-block { padding: 22px 0; border-top: 1px solid var(--rule); }
+.push-head + .push-block { margin-top: 18px; }
+.push-block h3 { margin: 0 0 12px; font-size: var(--fs-meta); font-weight: 500; color: var(--muted); }
+.push-text { margin: 0; font-size: var(--fs-body); line-height: 1.65; color: var(--text-2); max-width: 62ch; }
+.push-list { margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; color: var(--text-2); }
+.push-project { display: flex; gap: 16px; align-items: flex-start; justify-content: space-between; padding: 14px 0; border-top: 1px solid var(--rule-soft); }
+.push-block h3 + .push-project { border-top: 0; padding-top: 0; }
+.pp-main { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.pp-name { margin: 0; font-weight: 500; font-size: var(--fs-title); }
+.pp-text { margin: 0; color: var(--text-3); font-size: var(--fs-small); line-height: 1.55; }
+.push-project .tl-toggle { flex: none; margin-top: -8px; }
+
+/* Étiquettes (enseignements) */
+.chips { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.chips li { padding: 4px 11px; border: 1px solid var(--rule); border-radius: 999px; background: #fff; font-size: 13.5px; line-height: 1.45; color: var(--text-2); }
+.chips .more-chip { background: transparent; border-style: dashed; color: var(--muted); }
+
+/* Bouton « Plus de détails » */
+.card-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 4px; }
+.more-btn { min-height: 40px; padding: 0 12px 0 16px; display: inline-flex; align-items: center; gap: 4px; border-radius: 999px;
+  border: 1px solid var(--ink); background: transparent; color: var(--ink); font: inherit; font-size: var(--fs-small); font-weight: 500; cursor: pointer;
+  transition: background .2s ease, color .2s ease; }
+.more-btn:hover { background: var(--ink); color: var(--paper); }
+.more-btn .chevron { transition: transform .25s ease; }
+.more-btn:hover .chevron { transform: translateX(3px); }
+.card-count { font-size: var(--fs-meta); color: var(--muted); }
+
+/* Formation : cartes mises en avant */
+.edu-list { gap: 14px; }
+.edu-card { display: flex; flex-direction: column; gap: 14px; padding: 22px 24px; border: 1px solid var(--rule); border-radius: 16px; background: #fff; }
+.edu-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+.edu-card .when { margin: 0 0 4px; font-size: var(--fs-meta); color: var(--muted); }
+.edu-card .name { margin: 0; font-size: 18px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3; }
+.edu-card .school { margin: 2px 0 0; color: var(--muted); font-size: var(--fs-small); }
+.edu-card .edu-logo { width: 130px; height: 48px; }
+.edu-chips li { background: var(--paper); }
+
+@media (max-width: 560px) {
+  :root { --pw: calc(100vw - 28px); }
+  .push-panel { padding: 0 20px 44px; }
+  .push-top { margin: 0 -20px; padding: 12px 20px; }
+  .push-head { padding-top: 26px; }
+  .push-logo { width: 140px; height: 56px; margin-bottom: 12px; }
+  .push-head h2 { font-size: 24px; }
+  .push-project { flex-direction: column; gap: 6px; }
+  .push-project .tl-toggle { margin-top: 0; }
+  .edu-card { padding: 18px 16px; border-radius: 14px; gap: 12px; }
+  .edu-card .name { font-size: 16.5px; }
+  .edu-card .edu-logo { width: 72px; height: 34px; }
+  .chips li { font-size: 12.5px; padding: 3px 9px; }
+}
