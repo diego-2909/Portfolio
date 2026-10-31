@@ -734,3 +734,10 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 /* Projet mis en avant : le texte d'abord, la vidéo dessous */
 .featured .feat-body { padding: 0 0 20px; }
 @media (max-width: 560px) { .featured .feat-body { padding-bottom: 16px; } }
+/* Bouton sous la vidéo, puis séparation avec les autres projets */
+.feat-foot { padding-top: 16px; }
+.feat-row { display: block; }
+.others-title { margin: 44px 0 4px; padding-top: 22px; border-top: 1px solid var(--rule); font-size: var(--fs-meta); font-weight: 500; color: var(--muted); }
+.feat-media { transform: none !important; }
+@media (max-width: 560px) { .feat-foot .feat-more { width: 100%; } .others-title { margin-top: 32px; } }
+.others-title { font-size: var(--fs-title); color: var(--ink); }

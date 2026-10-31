@@ -42,7 +42,7 @@ function getContent(lang) {
         },
         p: { context: 'Contexte', result: 'Résultat', approach: "Comment on s'y est pris", open: 'Aperçu', close: 'Réduire', openAria: 'Voir l’aperçu du projet ', closeAria: 'Réduire le projet ' },
         detail: { more: 'Plus de détails', back: 'Retour', missions: 'Mes missions', count: function (n) { return n + ' réalisation' + (n > 1 ? 's' : ''); } },
-        featured: { tag: 'Mon projet 2026', more: 'En savoir plus', play: 'Lire la vidéo', pause: 'Mettre la vidéo en pause' },
+        featured: { tag: 'Mon dernier projet (2026)', others: 'Mes autres projets', more: 'En savoir plus', play: 'Lire la vidéo', pause: 'Mettre la vidéo en pause' },
         now: {
           title: 'En ce moment', when: "Aujourd'hui",
           items: [
@@ -150,7 +150,7 @@ function getContent(lang) {
         },
         p: { context: 'Context', result: 'Outcome', approach: 'How we went about it', open: 'Preview', close: 'Collapse', openAria: 'Preview project ', closeAria: 'Collapse project ' },
         detail: { more: 'More details', back: 'Back', missions: 'What I did', count: function (n) { return n + ' project' + (n > 1 ? 's' : ''); } },
-        featured: { tag: 'My 2026 project', more: 'Learn more', play: 'Play the video', pause: 'Pause the video' },
+        featured: { tag: 'My latest project (2026)', others: 'Other projects', more: 'Learn more', play: 'Play the video', pause: 'Pause the video' },
         now: {
           title: 'Currently', when: 'Today',
           items: [

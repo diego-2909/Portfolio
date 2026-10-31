@@ -160,10 +160,6 @@
               '<p class="project-pitch">' + esc(p.pitch) + '</p>' +
               techList(p, t) +
             '</div>' +
-            '<button type="button" class="feat-more" data-project="' + esc(p.id) + '" aria-haspopup="dialog" aria-controls="drawer">' +
-              '<span>' + esc(t.featured.more) + '</span>' + ARROW_RIGHT +
-              '<span class="sr-only"> ' + esc(p.name) + '</span>' +
-            '</button>' +
           '</div>' +
         '</div>' +
         '<div class="feat-media' + (mobile ? ' is-vertical' : '') + '">' +
@@ -171,6 +167,12 @@
           '<button type="button" class="feat-play" data-video-toggle aria-label="' + esc(t.featured.play) + '" data-play="' + esc(t.featured.play) + '" data-pause="' + esc(t.featured.pause) + '">' +
             '<svg class="i-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>' +
             '<svg class="i-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>' +
+          '</button>' +
+        '</div>' +
+        '<div class="feat-foot">' +
+          '<button type="button" class="feat-more" data-project="' + esc(p.id) + '" aria-haspopup="dialog" aria-controls="drawer">' +
+            '<span>' + esc(t.featured.more) + '</span>' + ARROW_RIGHT +
+            '<span class="sr-only"> ' + esc(p.name) + '</span>' +
           '</button>' +
         '</div>' +
       '</article>';
@@ -264,7 +266,7 @@
       '<section class="section" id="projets">' +
         '<div class="section-label"><h2>' + esc(t.nav.projects) + '</h2><a href="' + esc(CONFIG.github) + '?tab=repositories">github.com/diego-2909</a></div>' +
         '<div class="section-body">' +
-          (feat ? renderFeatured(feat, t) : '') +
+          (feat ? renderFeatured(feat, t) + '<h3 class="others-title">' + esc(t.featured.others) + '</h3>' : '') +
           '<ol class="timeline" aria-label="' + esc(t.timelineLabel) + '">' +
             '<li class="tl-item tl-now">' +
               '<span class="tl-year muted">' + esc(t.now.when) + '</span>' +
@@ -735,15 +737,6 @@
         }
       });
     });
-
-    // Projet mis en avant : la vidéo grandit en arrivant à l'écran.
-    var media = $('.feat-media');
-    if (media) {
-      gsap.fromTo(media, { scale: 0.84, borderRadius: 28 }, {
-        scale: 1, borderRadius: 14, ease: 'none',
-        scrollTrigger: { trigger: media, start: 'top bottom', end: 'center 55%', scrub: 0.6 }
-      });
-    }
 
     ScrollTrigger.refresh();
   }
