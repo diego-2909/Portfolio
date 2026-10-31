@@ -153,7 +153,7 @@
     return '' +
       '<article class="featured" id="projet-' + esc(p.id) + '">' +
         '<div class="feat-media' + (mobile ? ' is-vertical' : '') + '">' +
-          '<video class="feat-video" src="' + esc(mobile ? p.videoMobile : p.video) + '" poster="' + esc(mobile ? p.posterMobile : p.poster) + '" muted loop playsinline preload="metadata" aria-label="' + esc(p.videoLabel) + '"></video>' +
+          '<video class="feat-video" src="' + esc(mobile ? p.videoMobile : p.video) + '" poster="' + esc(mobile ? p.posterMobile : p.poster) + '" muted playsinline preload="metadata" aria-label="' + esc(p.videoLabel) + '"></video>' +
           '<button type="button" class="feat-play" data-video-toggle aria-label="' + esc(t.featured.play) + '" data-play="' + esc(t.featured.play) + '" data-pause="' + esc(t.featured.pause) + '">' +
             '<svg class="i-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>' +
             '<svg class="i-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>' +
@@ -195,10 +195,17 @@
     if (!('IntersectionObserver' in window)) { if (!userPaused) v.play().catch(function () {}); return; }
     // Lecture seulement quand la vidéo est bien à l'écran (au moins 60 %), depuis le début la première fois.
     var started = false;
+    // On passe l'ouverture plein écran orange (« Trouve. Cours. Partage. ») : la vidéo démarre sur l'iPhone.
+    var SKIP = 3.2;
+    v.addEventListener('ended', function () { try { v.currentTime = SKIP; } catch (err) { /* ignoré */ } v.play().catch(function () {}); });
     new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.intersectionRatio >= 0.6 && !userPaused) {
-          if (!started) { started = true; try { v.currentTime = 0; } catch (err) { /* ignoré */ } }
+          if (!started) {
+            started = true;
+            var seek = function () { try { v.currentTime = SKIP; } catch (err) { /* ignoré */ } };
+            if (v.readyState >= 1) seek(); else v.addEventListener('loadedmetadata', seek, { once: true });
+          }
           v.play().catch(function () {});
         } else if (e.intersectionRatio < 0.25) v.pause();
       });
@@ -729,6 +736,15 @@
         }
       });
     });
+
+    // Projet mis en avant : la vidéo grandit en arrivant à l'écran.
+    var media = $('.feat-media');
+    if (media) {
+      gsap.fromTo(media, { scale: 0.84, borderRadius: 28 }, {
+        scale: 1, borderRadius: 14, ease: 'none',
+        scrollTrigger: { trigger: media, start: 'top bottom', end: 'center 55%', scrub: 0.6 }
+      });
+    }
 
     ScrollTrigger.refresh();
   }
