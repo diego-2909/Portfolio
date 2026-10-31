@@ -27,7 +27,7 @@ function getContent(lang) {
           title: 'À propos',
           lead: "J'aime écrire du code, mais j'aime surtout comprendre le problème qu'il doit résoudre.",
           paras: [
-            "Une licence d'informatique à Paul Sabatier, puis trois ans d'alternance. Chez Andil, sur des plugins Moodle utilisés chaque jour par les clients. Chez Airbus, en Product Owner technique d'un projet de sécurité : des ateliers avec Data Governance jusqu'à la mise en production."
+            "Licence d'informatique à Paul Sabatier, puis trois ans d'alternance : chez Andil sur des plugins Moodle, puis chez Airbus en Product Owner technique d'un projet de sécurité, de l'atelier jusqu'à la mise en production."
           ],
         },
         seek: {
@@ -129,7 +129,7 @@ function getContent(lang) {
           title: 'About',
           lead: 'I enjoy writing code, but what I enjoy most is understanding the problem it has to solve.',
           paras: [
-            "A computer science degree at Paul Sabatier University, then three years of work-study. At Andil, on Moodle plugins clients used every day. At Airbus, as technical Product Owner of a security project: from workshops with Data Governance all the way to production."
+            "A computer science degree at Paul Sabatier, then three years of work-study: Moodle plugins at Andil, then technical Product Owner of a security project at Airbus, from the first workshop to production."
           ],
         },
         seek: {

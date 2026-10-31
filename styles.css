@@ -627,3 +627,5 @@ body { font-size: var(--fs-body); }
   .job-project .jp-stack { flex-basis: 100%; order: 2; }
   .job-project .jp-open { order: 3; }
 }
+.job-projects-list { border-bottom: 0; }
+.job-projects-list[hidden] { display: none; }

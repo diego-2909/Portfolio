@@ -83,7 +83,6 @@
         '<div class="hero-text">' +
           '<div><h1 class="a-hero">Diego Cortes</h1><p class="role a-hero">' + esc(t.hero.role) + '</p></div>' +
           '<p class="intro a-hero">' + esc(t.hero.intro) + '</p>' +
-          '<p class="status a-hero"><span class="dot" aria-hidden="true"></span>' + esc(t.hero.status) + '</p>' +
           '<div class="hero-cta a-hero">' +
             '<a class="btn-primary" href="#contact">' + esc(t.hero.ctaContact) + '</a>' +
             '<a class="btn-secondary" href="' + esc(CONFIG.cv) + '" download data-track="cv">' + esc(t.hero.ctaCv) + '</a>' +
@@ -282,15 +281,16 @@
   function jobLabel(job, i) {
     var n = job.projects.length;
     var open = !!state.jobsOpen[i];
-    if (state.lang === 'fr') return open ? 'Masquer les projets' : 'Projets réalisés (' + n + ')';
-    return open ? 'Hide projects' : 'Projects delivered (' + n + ')';
+    if (state.lang === 'fr') return open ? 'Masquer les réalisations' : 'Voir les réalisations (' + n + ')';
+    return open ? 'Hide what I delivered' : 'See what I delivered (' + n + ')';
   }
 
   function renderExperience(t) {
     return '' +
       '<section class="section" id="experience">' +
         '<div class="section-label"><h2>' + esc(t.nav.experience) + '</h2></div>' +
-        '<div class="section-body">' + map(t.jobs, function (j) {
+        '<div class="section-body">' + map(t.jobs, function (j, i) {
+          var open = !!state.jobsOpen[i];
           return '' +
             '<article class="job a-up">' +
               '<div class="job-when"><span>' + esc(j.dates) + '</span><span>' + esc(j.place) + '</span></div>' +
@@ -299,7 +299,11 @@
                   '<div><h3>' + esc(j.company) + '</h3><p class="role">' + esc(j.role) + '</p></div>' +
                   (j.logoUrl ? '<div class="job-logo"><img src="' + esc(j.logoUrl) + '" alt=""></div>' : '') +
                 '</div>' +
-                '<div class="job-projects-list" aria-label="' + esc(t.projectsDone) + '">' +
+                '<div class="job-projects">' +
+                '<button type="button" class="toggle small" data-job="' + i + '" aria-controls="job-' + i + '" aria-expanded="' + open + '">' +
+                  '<span class="label">' + esc(jobLabel(j, i)) + '</span><span class="sign" aria-hidden="true">' + (open ? '−' : '+') + '</span>' +
+                '</button>' +
+                '<div class="job-projects-list" id="job-' + i + '"' + (open ? '' : ' hidden') + '>' +
                   map(j.projects, function (jp) {
                     return '<div class="job-project">' +
                       '<div class="jp-main"><span class="jp-name">' + esc(jp.name) + '</span><span class="jp-text">' + esc(jp.text) + '</span></div>' +
@@ -308,6 +312,7 @@
                         '<span class="label">' + esc(t.p.open) + '</span>' + ARROW_RIGHT + '<span class="sr-only"> ' + esc(jp.name) + '</span></button>' : '') +
                     '</div>';
                   }) +
+                '</div>' +
                 '</div>' +
               '</div>' +
             '</article>';
@@ -456,7 +461,7 @@
     $('#skip-link').textContent = state.lang === 'fr' ? 'Aller au contenu' : 'Skip to content';
     $('#header').innerHTML = renderHeader(t);
     $('#main').innerHTML =
-      renderHero(t) + renderExperience(t) + renderProjects(t, content.projects) + renderAbout(t) +
+      renderHero(t) + renderAbout(t) + renderExperience(t) + renderProjects(t, content.projects) +
       renderSkills(t) + renderEducation(t) + renderContact(t);
     $('#footer').innerHTML = renderFooter(t);
     return content;
