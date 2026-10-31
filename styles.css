@@ -725,3 +725,8 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 .cert-link { flex: none; font-size: var(--fs-meta); }
 .cert { align-items: flex-start; }
 .cert-link { display: inline-block; margin-top: 4px; }
+
+/* Vidéo : un peu moins grande sur ordinateur, 4:3 sur téléphone */
+.featured { width: min(100%, calc(60vh * 16 / 9), 760px); }
+.feat-media.is-vertical { aspect-ratio: 4 / 3; }
+@media (max-width: 640px) { .featured { width: 100%; } }
