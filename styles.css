@@ -755,3 +755,28 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 .featured .feat-body { padding-bottom: 18px; }
 .featured .project-pitch { max-width: none; }
 @media (max-width: 640px) { .featured { width: 100%; } }
+
+/* Formation : chaque diplôme est une ligne cliquable, avec une flèche */
+.edu-list { gap: 0; }
+.edu-row { display: flex; align-items: center; gap: 18px; width: 100%; padding: 18px 14px; margin: 0 -14px; width: calc(100% + 28px);
+  font: inherit; color: inherit; text-align: left; background: transparent; border: 0; border-top: 1px solid var(--rule); border-radius: 0; cursor: pointer;
+  transition: background .2s ease; }
+.edu-row:first-child { border-top: 0; }
+.edu-row:hover { background: #F0F0EB; border-radius: 12px; }
+.edu-row:hover + .edu-row { border-top-color: transparent; }
+.edu-row:focus-visible { outline: 2px solid var(--link-hover); outline-offset: -2px; border-radius: 12px; }
+.edu-txt { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.edu-row .when { font-size: var(--fs-meta); color: var(--muted); }
+.edu-row .name { font-size: var(--fs-title); font-weight: 500; letter-spacing: -0.01em; line-height: 1.35; }
+.edu-row .school { font-size: var(--fs-small); color: var(--muted); }
+.edu-row .edu-logo { flex: none; width: 110px; height: 44px; display: flex; justify-content: flex-end; align-items: center; }
+.edu-row .edu-logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; }
+.edu-chev { flex: none; width: 34px; height: 34px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--rule); color: var(--ink); transition: transform .2s ease, background .2s ease, color .2s ease; }
+.edu-row:hover .edu-chev { background: var(--ink); color: var(--paper); border-color: var(--ink); transform: translateX(2px); }
+@media (max-width: 560px) {
+  .edu-row { gap: 12px; padding: 16px 10px; margin: 0 -10px; width: calc(100% + 20px); }
+  .edu-row .edu-logo { width: 60px; height: 30px; }
+  .edu-chev { width: 30px; height: 30px; }
+  .edu-row .name { font-size: 15.5px; }
+}

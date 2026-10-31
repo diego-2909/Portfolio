@@ -376,13 +376,12 @@
         '<div class="section-label"><h2>' + esc(t.nav.education) + '</h2></div>' +
         '<div class="section-body edu-list">' + map(t.education, function (e, i) {
           return '' +
-            '<article class="edu-card a-up">' +
-              '<div class="edu-top">' +
-                '<div><p class="when">' + esc(e.dates) + '</p><h3 class="name">' + esc(e.name) + '</h3><p class="school">' + esc(e.school) + '</p></div>' +
-                (e.logoUrl ? '<div class="edu-logo"><img src="' + esc(e.logoUrl) + '" alt="" data-logo="edu:' + i + '"></div>' : '') +
-              '</div>' +
-              '<div class="card-foot">' + moreBtn('edu', i, t.detail.more, e.name) + '</div>' +
-            '</article>';
+            '<button type="button" class="edu-row a-up" data-detail="edu:' + i + '" aria-haspopup="dialog" aria-controls="push">' +
+              '<span class="edu-txt"><span class="when">' + esc(e.dates) + '</span><span class="name">' + esc(e.name) + '</span><span class="school">' + esc(e.school) + '</span></span>' +
+              (e.logoUrl ? '<span class="edu-logo"><img src="' + esc(e.logoUrl) + '" alt="" data-logo="edu:' + i + '"></span>' : '') +
+              '<span class="edu-chev" aria-hidden="true">' + ARROW_RIGHT + '</span>' +
+              '<span class="sr-only"> · ' + esc(t.detail.more) + '</span>' +
+            '</button>';
         }) +
         (t.certs && t.certs.length ? '<div class="certs"><p class="certs-title">' + esc(t.certsTitle) + '</p>' + map(t.certs, function (c) {
           return '<div class="cert"><img src="' + esc(c.img) + '" alt="" width="48" height="51">' +
