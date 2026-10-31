@@ -30,12 +30,6 @@ function getContent(lang) {
             "Chez Airbus, on m'a confié un sujet sensible : garantir que seules les bonnes personnes accèdent aux Shared Drives de l'entreprise. J'ai mené ce projet en Product Owner technique. J'ai animé les échanges avec les équipes Data Governance et Security, conçu les maquettes, développé l'application en React et TypeScript, rédigé la documentation et accompagné la mise en production.",
             "Cette expérience a fixé ce que je cherche : un poste où l'on code sérieusement, au contact direct du métier. Le Master MIAGE m'a donné les méthodes pour ça : analyse des processus, BPMN, Agile. L'aéronautique m'attire tout particulièrement. L'exigence de qualité y est réelle, et j'y ai déjà mes repères."
           ],
-          points: [
-            { title: 'Métier et technique', text: "De l'atelier de recueil des besoins à la revue de code." },
-            { title: 'Autonomie', text: 'Un projet Airbus mené de bout en bout.' },
-            { title: "Travail d'équipe", text: 'La plupart de mes projets, construits à plusieurs.' },
-            { title: 'En dehors du code', text: "La course à pied, à l'origine de RunMates." }
-          ]
         },
         seek: {
           title: 'Ce que je cherche',
@@ -139,12 +133,6 @@ function getContent(lang) {
             "At Airbus, I was given a sensitive topic: making sure only the right people can access the company's Shared Drives. I led the project as a technical Product Owner. I ran the discussions with the Data Governance and Security teams, designed the mockups, built the application in React and TypeScript, wrote the documentation and saw it through to production.",
             "That experience made clear what I am looking for: a role where you write serious code, in direct contact with the business. My Master's gave me the methods for it: process analysis, BPMN, Agile. Aerospace appeals to me in particular. The quality bar is real, and I already know my way around it."
           ],
-          points: [
-            { title: 'Business and tech', text: 'From requirements workshops to code reviews.' },
-            { title: 'Autonomy', text: 'An Airbus project delivered end to end.' },
-            { title: 'Teamwork', text: 'Most of my projects, built with others.' },
-            { title: 'Outside of code', text: 'Running, where RunMates came from.' }
-          ]
         },
         seek: {
           title: "What I'm looking for",

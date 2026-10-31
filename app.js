@@ -103,9 +103,6 @@
         '<div class="section-body about">' +
           '<p class="lead a-words">' + esc(t.about.lead) + '</p>' +
           '<div class="about-paras">' + map(t.about.paras, function (p) { return '<p class="a-up">' + esc(p) + '</p>'; }) + '</div>' +
-          '<dl class="points">' + map(t.about.points, function (p) {
-            return '<div class="a-up"><dt>' + esc(p.title) + '</dt><dd>' + esc(p.text) + '</dd></div>';
-          }) + '</dl>' +
         '</div>' +
       '</section>';
   }
