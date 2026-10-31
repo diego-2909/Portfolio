@@ -125,8 +125,22 @@
   var ARROW_RIGHT = '<svg class="chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>';
   var ARROW_LEFT = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>';
 
+  // Couleur pastel par famille de technologie : la même techno a la même couleur partout.
+  var TECH_FAMILY = {
+    front: ['react', 'next.js', 'typescript', 'javascript', 'vue.js', 'html', 'css', 'html/css', 'ejs'],
+    back: ['java', 'spring boot', 'node.js', 'express', 'php', 'laravel', 'c#', '.net', 'c', 'python'],
+    data: ['sql', 'mysql', 'postgresql', 'postgis', 'supabase', 'prisma', 'bigquery', 'oracle'],
+    cloud: ['docker', 'stripe', 'mapbox', 'capacitor', 'mistral', 'aws'],
+    google: ['google apis', 'google apps script', 'apps script', 'google drive api', 'google workspace apis']
+  };
+  function techItem(x) {
+    var k = x.toLowerCase(), fam = '';
+    Object.keys(TECH_FAMILY).forEach(function (f) { if (TECH_FAMILY[f].indexOf(k) !== -1) fam = f; });
+    return '<li' + (fam ? ' class="t-' + fam + '"' : '') + '>' + esc(x) + '</li>';
+  }
+
   function techList(p, t) {
-    return '<ul class="techs" aria-label="' + esc(t.techLabel) + '">' + map(p.stack.split(' · '), function (x) { return '<li>' + esc(x) + '</li>'; }) + '</ul>';
+    return '<ul class="techs" aria-label="' + esc(t.techLabel) + '">' + map(p.stack.split(' · '), techItem) + '</ul>';
   }
 
   // Un projet sur le fil chronologique. « Aperçu › » ouvre le détail dans un panneau à droite.
@@ -331,7 +345,7 @@
         map(j.projects, function (jp) {
           return '<div class="push-project">' +
             '<div class="pp-main"><p class="pp-name">' + esc(jp.name) + '</p><p class="pp-text">' + esc(jp.text) + '</p>' +
-              '<ul class="techs">' + map(jp.stack.split(' · '), function (x) { return '<li>' + esc(x) + '</li>'; }) + '</ul></div>' +
+              '<ul class="techs">' + map(jp.stack.split(' · '), techItem) + '</ul></div>' +
             (jp.projectId ? '<button type="button" class="tl-toggle small" data-project="' + esc(jp.projectId) + '" aria-haspopup="dialog" aria-controls="drawer">' +
               '<span class="label">' + esc(t.p.open) + '</span>' + ARROW_RIGHT + '<span class="sr-only"> ' + esc(jp.name) + '</span></button>' : '') +
           '</div>';
