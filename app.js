@@ -375,7 +375,13 @@
               '</div>' +
               '<div class="card-foot">' + moreBtn('edu', i, t.detail.more, e.name) + '</div>' +
             '</article>';
-        }) + '</div>' +
+        }) +
+        (t.certs && t.certs.length ? '<div class="certs"><p class="certs-title">' + esc(t.certsTitle) + '</p>' + map(t.certs, function (c) {
+          return '<div class="cert"><img src="' + esc(c.img) + '" alt="" width="48" height="51">' +
+            '<div class="cert-main"><p class="cert-name">' + esc(c.name) + '</p><p class="cert-issuer">' + esc(c.issuer) + '</p>' +
+            '<a class="cert-link" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.link) + ' ↗</a></div></div>';
+        }) + '</div>' : '') +
+        '</div>' +
       '</section>';
   }
 

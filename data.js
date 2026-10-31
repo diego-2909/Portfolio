@@ -83,6 +83,11 @@ function getContent(lang) {
           { title: 'Projet et analyse', items: ['Agile, Scrum', 'PI Planning, backlog', 'Recueil des besoins', 'BPMN, UML', 'Jira'] },
           { title: 'Outils', items: ['Git', 'Docker', 'Linux, Bash', 'API Mistral, Gemini'] }
         ],
+        certsTitle: 'Certification',
+        certs: [
+          { name: 'AWS Academy Graduate · Cloud Foundations', issuer: 'Amazon Web Services · obtenu pendant le Master MIAGE', img: 'assets/aws-cloud-foundations.png',
+            url: 'https://www.credly.com/badges/a07016d2-69c5-4faf-ab38-83d827173f73/public_url', link: 'Voir le badge' }
+        ],
         eduMore: 'En savoir plus', eduLess: 'Réduire', eduSubjects: 'Enseignements', eduJobs: 'Débouchés visés',
         education: [
           { dates: '2023 — 2025', name: 'Master MIAGE, Ingénierie des Processus Métiers', school: 'Université Toulouse Capitole · en alternance chez Airbus', logoUrl: 'assets/ut1-capitole.png',
@@ -185,6 +190,11 @@ function getContent(lang) {
           { title: 'Google ecosystem', items: ['Apps Script', 'Workspace APIs', 'Drive, Shared Drives'] },
           { title: 'Project and analysis', items: ['Agile, Scrum', 'PI Planning, backlog', 'Requirements gathering', 'BPMN, UML', 'Jira'] },
           { title: 'Tools', items: ['Git', 'Docker', 'Linux, Bash', 'Mistral, Gemini APIs'] }
+        ],
+        certsTitle: 'Certification',
+        certs: [
+          { name: 'AWS Academy Graduate · Cloud Foundations', issuer: "Amazon Web Services · earned during my Master's", img: 'assets/aws-cloud-foundations.png',
+            url: 'https://www.credly.com/badges/a07016d2-69c5-4faf-ab38-83d827173f73/public_url', link: 'View badge' }
         ],
         eduMore: 'Learn more', eduLess: 'Show less', eduSubjects: 'Courses', eduJobs: 'Target roles',
         education: [

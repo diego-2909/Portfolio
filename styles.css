@@ -713,3 +713,15 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 .edu-card:first-child { padding-top: 0; border-top: 0; }
 .edu-card .name { font-size: var(--fs-title); }
 @media (max-width: 560px) { .edu-card { padding: 18px 0; border-radius: 0; } }
+
+/* Certification sous la formation */
+.certs { margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.certs-title { margin: 0 0 10px; font-size: var(--fs-meta); color: var(--muted); }
+.cert { display: flex; align-items: center; gap: 14px; }
+.cert img { width: 44px; height: auto; flex: none; }
+.cert-main { flex: 1 1 auto; min-width: 0; }
+.cert-name { margin: 0; font-weight: 500; font-size: var(--fs-small); }
+.cert-issuer { margin: 0; font-size: var(--fs-meta); color: var(--muted); }
+.cert-link { flex: none; font-size: var(--fs-meta); }
+.cert { align-items: flex-start; }
+.cert-link { display: inline-block; margin-top: 4px; }
