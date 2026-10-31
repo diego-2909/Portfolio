@@ -578,3 +578,52 @@ body { font-size: var(--fs-body); }
   /* « Aujourd'hui » ne tient pas dans la colonne : la flèche suffit, « En ce moment » donne le sens */
   .tl-now .tl-year { visibility: hidden; }
 }
+
+/* ---------------------------------------------------------------------------
+   Refonte : haut de page avec statut et actions, compétences en étiquettes,
+   expérience réduite au poste et aux projets, contact avec la recherche
+   --------------------------------------------------------------------------- */
+.status { margin: 0; display: inline-flex; align-items: center; gap: 9px; align-self: flex-start;
+  padding: 6px 14px 6px 12px; border-radius: 999px; background: #EAF5EE; color: #1F6B3A; font-size: var(--fs-small); font-weight: 500; }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; background: #2E9C57; box-shadow: 0 0 0 4px rgba(46, 156, 87, .18); }
+.hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+.btn-primary, .btn-secondary { min-height: 44px; padding: 0 20px; display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 999px; font-size: var(--fs-small); font-weight: 500; text-decoration: none; }
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: #2E2E2A; color: var(--paper); }
+.btn-secondary { border: 1px solid var(--ink); color: var(--ink); }
+.btn-secondary:hover { background: #EFEFEA; color: var(--ink); }
+.hero-gh { margin-left: 6px; font-size: var(--fs-small); font-weight: 500; }
+.hero-gh:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Expérience : le poste, puis la liste des projets */
+.job-body { gap: 12px; }
+.job-projects-list { border-bottom: 1px solid var(--rule-soft); }
+.job-project { padding: 11px 0; }
+.job-project .jp-text { color: var(--text-3); }
+
+/* Compétences : une ligne par domaine */
+.skill-rows { display: flex; flex-direction: column; }
+.skill-row { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 6px 24px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--rule-soft); }
+.skill-row:first-child { border-top: 0; padding-top: 0; }
+.skill-row h3 { margin: 0; font-size: var(--fs-meta); font-weight: 500; color: var(--muted); }
+.skill-row ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.skill-row li { padding: 3px 10px; border: 1px solid var(--rule); border-radius: 999px; background: #fff; font-size: 13.5px; line-height: 1.5; color: var(--text-2); }
+
+/* Contact */
+.contact-body { gap: 18px; }
+.contact-body .lead { max-width: 46ch; }
+
+@media (max-width: 560px) {
+  .hero-cta { gap: 10px; }
+  .btn-primary, .btn-secondary { flex: 1 1 140px; }
+  .hero-gh { flex-basis: 100%; margin: 2px 0 0; text-align: center; }
+  .status { font-size: 13px; }
+  .skill-row { grid-template-columns: 1fr; gap: 8px; padding: 12px 0; }
+  .skill-row li { font-size: 13px; padding: 3px 9px; }
+  .job-project { padding: 10px 0; }
+}
+@media (max-width: 560px) {
+  .job-project .jp-stack { flex-basis: 100%; order: 2; }
+  .job-project .jp-open { order: 3; }
+}

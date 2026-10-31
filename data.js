@@ -19,6 +19,7 @@ function getContent(lang) {
         hero: {
           role: 'Développeur full-stack · Toulouse',
           intro: "Trois ans chez Airbus et Andil à concevoir des outils web, du recueil des besoins jusqu'à la mise en production.",
+          status: 'Disponible · CDI · Toulouse', ctaContact: 'Me contacter', ctaCv: 'Télécharger le CV',
           basedLabel: 'Basé à', degreeLabel: 'Diplôme', degree: 'Master MIAGE', linksLabel: 'Liens', cv: 'CV (PDF)',
           photoAlt: 'Portrait de Diego Cortes'
         },
@@ -26,9 +27,7 @@ function getContent(lang) {
           title: 'À propos',
           lead: "J'aime écrire du code, mais j'aime surtout comprendre le problème qu'il doit résoudre.",
           paras: [
-            "J'ai commencé par une licence d'informatique à Paul Sabatier, puis l'alternance m'a fait passer de la théorie aux vrais utilisateurs. D'abord chez Andil, sur des plugins Moodle utilisés par des clients au quotidien. Ensuite chez Airbus Operations, pendant deux ans.",
-            "Chez Airbus, on m'a confié un sujet sensible : garantir que seules les bonnes personnes accèdent aux Shared Drives de l'entreprise. J'ai mené ce projet en Product Owner technique. J'ai animé les échanges avec les équipes Data Governance et Security, conçu les maquettes, développé l'application en React et TypeScript, rédigé la documentation et accompagné la mise en production.",
-            "Cette expérience a fixé ce que je cherche : un poste où l'on code sérieusement, au contact direct du métier. Le Master MIAGE m'a donné les méthodes pour ça : analyse des processus, BPMN, Agile. L'aéronautique m'attire tout particulièrement. L'exigence de qualité y est réelle, et j'y ai déjà mes repères."
+            "Une licence d'informatique à Paul Sabatier, puis trois ans d'alternance. Chez Andil, sur des plugins Moodle utilisés chaque jour par les clients. Chez Airbus, en Product Owner technique d'un projet de sécurité : des ateliers avec Data Governance jusqu'à la mise en production."
           ],
         },
         seek: {
@@ -114,7 +113,7 @@ function getContent(lang) {
             subjects: [],
             jobs: '' }
         ],
-        contact: { email: 'E-mail', phone: 'Téléphone', cv: 'Télécharger mon CV (PDF)' }
+        contact: { lead: 'Je cherche un CDI de développeur full-stack, ou développeur et Product Owner, à Toulouse. Aéronautique en priorité, disponible immédiatement.', email: 'E-mail', phone: 'Téléphone', cv: 'Télécharger mon CV (PDF)' }
       },
       en: {
         code: 'en', navLabel: 'Main navigation', langLabel: 'Language', techLabel: 'Technologies', timelineLabel: 'Projects, newest first',
@@ -122,6 +121,7 @@ function getContent(lang) {
         hero: {
           role: 'Full-stack developer · Toulouse',
           intro: 'Three years at Airbus and Andil building web tools, from gathering requirements all the way to production.',
+          status: 'Available · Permanent role · Toulouse', ctaContact: 'Get in touch', ctaCv: 'Download resume',
           basedLabel: 'Based in', degreeLabel: 'Degree', degree: "Master's in Information Systems (MIAGE)", linksLabel: 'Links', cv: 'Resume (PDF)',
           photoAlt: 'Portrait of Diego Cortes'
         },
@@ -129,9 +129,7 @@ function getContent(lang) {
           title: 'About',
           lead: 'I enjoy writing code, but what I enjoy most is understanding the problem it has to solve.',
           paras: [
-            'I started with a computer science degree at Paul Sabatier University, then work-study programs took me from theory to real users. First at Andil, on Moodle plugins that clients used every day. Then at Airbus Operations, for two years.',
-            "At Airbus, I was given a sensitive topic: making sure only the right people can access the company's Shared Drives. I led the project as a technical Product Owner. I ran the discussions with the Data Governance and Security teams, designed the mockups, built the application in React and TypeScript, wrote the documentation and saw it through to production.",
-            "That experience made clear what I am looking for: a role where you write serious code, in direct contact with the business. My Master's gave me the methods for it: process analysis, BPMN, Agile. Aerospace appeals to me in particular. The quality bar is real, and I already know my way around it."
+            "A computer science degree at Paul Sabatier University, then three years of work-study. At Andil, on Moodle plugins clients used every day. At Airbus, as technical Product Owner of a security project: from workshops with Data Governance all the way to production."
           ],
         },
         seek: {
@@ -217,7 +215,7 @@ function getContent(lang) {
             subjects: [],
             jobs: '' }
         ],
-        contact: { email: 'Email', phone: 'Phone', cv: 'Download my resume (PDF)' }
+        contact: { lead: "I'm looking for a permanent full-stack developer role, or developer and Product Owner, in Toulouse. Aerospace first, available now.", email: 'Email', phone: 'Phone', cv: 'Download my resume (PDF)' }
       }
     };
     var t = T[lang];

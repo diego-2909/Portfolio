@@ -64,10 +64,10 @@
       '<a href="#top" class="name">Diego Cortes</a>' +
       '<div class="header-right">' +
         '<nav class="site-nav" aria-label="' + esc(t.navLabel) + '">' +
-          '<a href="#competences">' + esc(t.nav.skills) + '</a>' +
-          '<a href="#formation">' + esc(t.nav.education) + '</a>' +
           '<a href="#experience">' + esc(t.nav.experience) + '</a>' +
           '<a href="#projets">' + esc(t.nav.projects) + '</a>' +
+          '<a href="#competences">' + esc(t.nav.skills) + '</a>' +
+          '<a href="#formation">' + esc(t.nav.education) + '</a>' +
           '<a href="#contact">' + esc(t.nav.contact) + '</a>' +
         '</nav>' +
         '<div class="lang" role="group" aria-label="' + esc(t.langLabel) + '">' +
@@ -83,11 +83,12 @@
         '<div class="hero-text">' +
           '<div><h1 class="a-hero">Diego Cortes</h1><p class="role a-hero">' + esc(t.hero.role) + '</p></div>' +
           '<p class="intro a-hero">' + esc(t.hero.intro) + '</p>' +
-          '<dl class="facts a-hero">' +
-            '<dt>' + esc(t.hero.basedLabel) + '</dt><dd>Toulouse</dd>' +
-            '<dt>' + esc(t.hero.degreeLabel) + '</dt><dd>' + esc(t.hero.degree) + '</dd>' +
-            '<dt>' + esc(t.hero.linksLabel) + '</dt><dd class="links">' + linksHtml(t, t.hero.cv) + '</dd>' +
-          '</dl>' +
+          '<p class="status a-hero"><span class="dot" aria-hidden="true"></span>' + esc(t.hero.status) + '</p>' +
+          '<div class="hero-cta a-hero">' +
+            '<a class="btn-primary" href="#contact">' + esc(t.hero.ctaContact) + '</a>' +
+            '<a class="btn-secondary" href="' + esc(CONFIG.cv) + '" download data-track="cv">' + esc(t.hero.ctaCv) + '</a>' +
+            '<a class="plain hero-gh" href="' + esc(CONFIG.github) + '">GitHub ↗</a>' +
+          '</div>' +
         '</div>' +
         '<figure class="portrait">' +
           '<img src="' + esc(CONFIG.photo) + '" alt="' + esc(t.hero.photoAlt) + '" width="539" height="568">' +
@@ -289,8 +290,7 @@
     return '' +
       '<section class="section" id="experience">' +
         '<div class="section-label"><h2>' + esc(t.nav.experience) + '</h2></div>' +
-        '<div class="section-body">' + map(t.jobs, function (j, i) {
-          var open = !!state.jobsOpen[i];
+        '<div class="section-body">' + map(t.jobs, function (j) {
           return '' +
             '<article class="job a-up">' +
               '<div class="job-when"><span>' + esc(j.dates) + '</span><span>' + esc(j.place) + '</span></div>' +
@@ -299,21 +299,15 @@
                   '<div><h3>' + esc(j.company) + '</h3><p class="role">' + esc(j.role) + '</p></div>' +
                   (j.logoUrl ? '<div class="job-logo"><img src="' + esc(j.logoUrl) + '" alt=""></div>' : '') +
                 '</div>' +
-                '<ul>' + map(j.bullets, function (b) { return '<li>' + esc(b) + '</li>'; }) + '</ul>' +
-                '<div class="job-projects">' +
-                  '<button type="button" class="toggle small" data-job="' + i + '" aria-controls="job-' + i + '" aria-expanded="' + open + '">' +
-                    '<span class="label">' + esc(jobLabel(j, i)) + '</span><span class="sign" aria-hidden="true">' + (open ? '−' : '+') + '</span>' +
-                  '</button>' +
-                  '<div class="job-projects-list" id="job-' + i + '"' + (open ? '' : ' hidden') + '>' +
-                    map(j.projects, function (jp) {
-                      return '<div class="job-project">' +
-                        '<div class="jp-main"><span class="jp-name">' + esc(jp.name) + '</span><span class="jp-text">' + esc(jp.text) + '</span></div>' +
-                        '<span class="jp-stack">' + esc(jp.stack) + '</span>' +
-                        (jp.projectId ? '<button type="button" class="tl-toggle small jp-open" data-project="' + esc(jp.projectId) + '" aria-haspopup="dialog" aria-controls="drawer">' +
-                          '<span class="label">' + esc(t.p.open) + '</span>' + ARROW_RIGHT + '<span class="sr-only"> ' + esc(jp.name) + '</span></button>' : '') +
-                      '</div>';
-                    }) +
-                  '</div>' +
+                '<div class="job-projects-list" aria-label="' + esc(t.projectsDone) + '">' +
+                  map(j.projects, function (jp) {
+                    return '<div class="job-project">' +
+                      '<div class="jp-main"><span class="jp-name">' + esc(jp.name) + '</span><span class="jp-text">' + esc(jp.text) + '</span></div>' +
+                      '<span class="jp-stack">' + esc(jp.stack) + '</span>' +
+                      (jp.projectId ? '<button type="button" class="tl-toggle small jp-open" data-project="' + esc(jp.projectId) + '" aria-haspopup="dialog" aria-controls="drawer">' +
+                        '<span class="label">' + esc(t.p.open) + '</span>' + ARROW_RIGHT + '<span class="sr-only"> ' + esc(jp.name) + '</span></button>' : '') +
+                    '</div>';
+                  }) +
                 '</div>' +
               '</div>' +
             '</article>';
@@ -325,8 +319,8 @@
     return '' +
       '<section class="section" id="competences">' +
         '<div class="section-label"><h2>' + esc(t.nav.skills) + '</h2></div>' +
-        '<div class="section-body"><div class="skills">' + map(t.skills, function (s) {
-          return '<div class="a-up"><h3>' + esc(s.title) + '</h3><ul>' + map(s.items, function (i) { return '<li>' + esc(i) + '</li>'; }) + '</ul></div>';
+        '<div class="section-body"><div class="skill-rows">' + map(t.skills, function (s) {
+          return '<div class="skill-row"><h3>' + esc(s.title) + '</h3><ul>' + map(s.items, function (i) { return '<li>' + esc(i) + '</li>'; }) + '</ul></div>';
         }) + '</div></div>' +
       '</section>';
   }
@@ -374,7 +368,8 @@
     return '' +
       '<section class="section contact" id="contact">' +
         '<div class="section-label"><h2>' + esc(t.nav.contact) + '</h2></div>' +
-        '<div class="section-body">' +
+        '<div class="section-body contact-body">' +
+          (t.contact.lead ? '<p class="lead">' + esc(t.contact.lead) + '</p>' : '') +
           '<dl class="rows contact-rows">' + map(rows, function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + r[1] + '</dd></div>'; }) + '</dl>' +
         '</div>' +
       '</section>';
@@ -461,8 +456,8 @@
     $('#skip-link').textContent = state.lang === 'fr' ? 'Aller au contenu' : 'Skip to content';
     $('#header').innerHTML = renderHeader(t);
     $('#main').innerHTML =
-      renderHero(t) + renderAbout(t) + renderSkills(t) + renderEducation(t) +
-      renderExperience(t) + renderProjects(t, content.projects) + renderSeek(t) + renderContact(t);
+      renderHero(t) + renderExperience(t) + renderProjects(t, content.projects) + renderAbout(t) +
+      renderSkills(t) + renderEducation(t) + renderContact(t);
     $('#footer').innerHTML = renderFooter(t);
     return content;
   }
