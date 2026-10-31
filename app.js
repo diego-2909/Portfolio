@@ -367,17 +367,12 @@
       '<section class="section" id="formation">' +
         '<div class="section-label"><h2>' + esc(t.nav.education) + '</h2></div>' +
         '<div class="section-body edu-list">' + map(t.education, function (e, i) {
-          var all = [];
-          (e.groups || []).forEach(function (g) { all = all.concat(g.items); });
-          var shown = all.slice(0, 5), rest = all.length - shown.length;
           return '' +
             '<article class="edu-card a-up">' +
               '<div class="edu-top">' +
                 '<div><p class="when">' + esc(e.dates) + '</p><h3 class="name">' + esc(e.name) + '</h3><p class="school">' + esc(e.school) + '</p></div>' +
                 (e.logoUrl ? '<div class="edu-logo"><img src="' + esc(e.logoUrl) + '" alt="" data-logo="edu:' + i + '"></div>' : '') +
               '</div>' +
-              (shown.length ? '<ul class="chips edu-chips" aria-label="' + esc(t.eduSubjects) + '">' + map(shown, function (x) { return '<li>' + esc(x) + '</li>'; }) +
-                (rest > 0 ? '<li class="more-chip">+' + rest + '</li>' : '') + '</ul>' : '') +
               '<div class="card-foot">' + moreBtn('edu', i, t.detail.more, e.name) + '</div>' +
             '</article>';
         }) + '</div>' +

@@ -707,3 +707,9 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
   .edu-card .edu-logo { width: 72px; height: 34px; }
   .chips li { font-size: 12.5px; padding: 3px 9px; }
 }
+/* Formation sobre : une ligne par diplôme, comme l'expérience */
+.edu-list { gap: 0; }
+.edu-card { padding: 20px 0; border: 0; border-top: 1px solid var(--rule); border-radius: 0; background: transparent; gap: 10px; }
+.edu-card:first-child { padding-top: 0; border-top: 0; }
+.edu-card .name { font-size: var(--fs-title); }
+@media (max-width: 560px) { .edu-card { padding: 18px 0; border-radius: 0; } }
