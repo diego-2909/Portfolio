@@ -403,7 +403,7 @@
         fetch(cfg.supabaseUrl.replace(/\/$/, '') + '/rest/v1/rpc/track', {
           method: 'POST',
           keepalive: true,
-          headers: { 'Content-Type': 'application/json', apikey: cfg.supabaseAnonKey, Authorization: 'Bearer ' + cfg.supabaseAnonKey },
+          headers: { 'Content-Type': 'application/json', apikey: cfg.supabaseAnonKey },
           body: JSON.stringify({ p_code: code, p_session: session, p_event: event, p_detail: detail || null })
         }).catch(function () { /* le suivi ne doit jamais gêner la visite */ });
       } catch (e) { /* idem */ }
