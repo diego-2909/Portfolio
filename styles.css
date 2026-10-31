@@ -749,3 +749,9 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 .featured { width: 100%; }
 .feat-media, .feat-foot { width: min(100%, calc(48vh * 16 / 9), 640px); margin-left: auto; margin-right: auto; }
 @media (max-width: 640px) { .feat-media, .feat-foot { width: 100%; } }
+/* Bloc RunMates centré : texte, vidéo et bouton partagent la même largeur */
+.featured { width: min(100%, calc(48vh * 16 / 9), 640px); margin-left: auto; margin-right: auto; }
+.feat-media, .feat-foot { width: 100%; }
+.featured .feat-body { padding-bottom: 18px; }
+.featured .project-pitch { max-width: none; }
+@media (max-width: 640px) { .featured { width: 100%; } }
