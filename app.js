@@ -391,6 +391,14 @@
     var fromUrl = (new URLSearchParams(location.search).get('r') || '').toLowerCase();
     var code = /^[a-z0-9]{6,12}$/.test(fromUrl) ? fromUrl : read('pf_r');
     if (code) store('pf_r', code);
+    // Le code est gardé pour la visite, puis retiré de l'adresse affichée : le lien reste propre.
+    if (fromUrl && window.history && history.replaceState) {
+      try {
+        var u = new URL(location.href);
+        u.searchParams.delete('r');
+        history.replaceState(history.state, '', u.pathname + (u.search ? u.search : '') + u.hash);
+      } catch (e) { /* ignoré */ }
+    }
     var session = read('pf_s');
     if (!session) {
       session = Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
