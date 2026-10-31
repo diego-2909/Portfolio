@@ -741,3 +741,7 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 .feat-media { transform: none !important; }
 @media (max-width: 560px) { .feat-foot .feat-more { width: 100%; } .others-title { margin-top: 32px; } }
 .others-title { font-size: var(--fs-title); color: var(--ink); }
+/* Vidéo un peu plus petite, « En savoir plus » aligné à droite sous la vidéo */
+.featured { width: min(100%, calc(48vh * 16 / 9), 640px); }
+.feat-foot { display: flex; justify-content: flex-end; }
+@media (max-width: 640px) { .featured { width: 100%; } }
