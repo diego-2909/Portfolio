@@ -44,7 +44,9 @@ https://www.linkedin.com/post-inspector/
 
 ## Liens uniques par recruteur (Supabase)
 
-Chaque candidature reçoit son propre lien, par exemple `https://diego-cortes.dev/?r=k7f3x9ab`.
+Chaque candidature reçoit son propre lien, avec un code court choisi à la main (`https://diego-cortes.dev/cg`)
+ou tiré au sort (`https://diego-cortes.dev/k7f3x9ab`). L'ancien format `?r=` marche toujours.
+À l'ouverture, le code est retiré de l'adresse affichée : elle redevient `diego-cortes.dev`.
 Quand il est ouvert, le site enregistre l'ouverture, les aperçus de projets consultés,
 le téléchargement du CV et le passage en anglais. Aucune adresse IP, aucun cookie.
 
@@ -63,12 +65,17 @@ le téléchargement du CV et le passage en anglais. Aucune adresse IP, aucun coo
 ### Utilisation
 
 - Ouvrir **https://diego-cortes.dev/admin/** et se connecter.
-- Saisir l'entreprise (et une note si besoin), cliquer sur « Générer le lien », puis « Copier le lien ».
+- Saisir l'entreprise, éventuellement un code court (ex. `cg` pour Capgemini) et une note,
+  cliquer sur « Générer le lien », puis « Copier le lien ».
+  Sans code, un code de 8 caractères est tiré au sort.
 - Coller ce lien dans la candidature. Le tableau « Suivi » indique ensuite si le lien a été ouvert,
   combien de fois, quand, et ce qui a été consulté.
 
 Les liens sont stockés dans Supabase, indépendamment du code : redéployer le site ne les casse pas,
-tant que le paramètre `?r=` est conservé dans `app.js`.
+tant que la lecture du code est conservée dans `app.js` et la règle de `vercel.json` en place.
+
+Si `schema.sql` a été exécuté avant l'arrivée des codes courts, exécuter une fois
+`supabase/migration-codes-courts.sql` dans le SQL Editor.
 
 ## Animations
 

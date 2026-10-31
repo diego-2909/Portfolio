@@ -388,15 +388,19 @@
     function read(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
     function store(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { /* ignoré */ } }
 
-    var fromUrl = (new URLSearchParams(location.search).get('r') || '').toLowerCase();
-    var code = /^[a-z0-9]{6,12}$/.test(fromUrl) ? fromUrl : read('pf_r');
+    // Le code vient de l'adresse : diego-cortes.dev/cg (code court) ou diego-cortes.dev/?r=k7f3x9ab.
+    var CODE_RE = /^[a-z0-9][a-z0-9-]{1,19}$/;
+    var fromPath = decodeURIComponent(location.pathname.replace(/^\/+|\/+$/g, '')).toLowerCase();
+    var fromQuery = (new URLSearchParams(location.search).get('r') || '').toLowerCase();
+    var fromUrl = CODE_RE.test(fromQuery) ? fromQuery : (CODE_RE.test(fromPath) && fromPath !== 'index.html' ? fromPath : '');
+    var code = fromUrl || read('pf_r');
     if (code) store('pf_r', code);
-    // Le code est gardé pour la visite, puis retiré de l'adresse affichée : le lien reste propre.
-    if (fromUrl && window.history && history.replaceState) {
+    // Le code est gardé pour la visite, puis retiré de l'adresse affichée : elle redevient diego-cortes.dev.
+    if ((fromPath || fromQuery) && window.history && history.replaceState) {
       try {
         var u = new URL(location.href);
         u.searchParams.delete('r');
-        history.replaceState(history.state, '', u.pathname + (u.search ? u.search : '') + u.hash);
+        history.replaceState(history.state, '', '/' + (u.search ? u.search : '') + u.hash);
       } catch (e) { /* ignoré */ }
     }
     var session = read('pf_s');

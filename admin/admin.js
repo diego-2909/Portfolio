@@ -14,7 +14,9 @@
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
-  function linkUrl(code) { return SITE + '/?r=' + code; }
+  function linkUrl(code) { return SITE + '/' + code; }
+  var CODE_RE = /^[a-z0-9][a-z0-9-]{1,19}$/;
+  var RESERVED = ['admin', 'assets'];
   function fmtDate(iso) {
     if (!iso) return '—';
     var d = new Date(iso);
@@ -151,6 +153,7 @@
         '<p class="muted" style="margin-bottom:18px">Un lien par candidature. Colle-le dans ta lettre, ton mail ou ton message LinkedIn.</p>' +
         '<form id="create">' +
           '<div class="field"><label for="company">Entreprise</label><input id="company" required maxlength="120" placeholder="ex. Capgemini"></div>' +
+          '<div class="field"><label for="code">Code du lien (facultatif)</label><input id="code" maxlength="20" placeholder="ex. cg → diego-cortes.dev/cg" autocapitalize="off" autocomplete="off" spellcheck="false"></div>' +
           '<div class="field"><label for="note">Note (facultatif)</label><input id="note" maxlength="500" placeholder="ex. Dev full-stack, via Welcome to the Jungle"></div>' +
           '<button class="btn" type="submit">Générer le lien</button>' +
         '</form>' +
@@ -176,15 +179,24 @@
     var btn = e.target.querySelector('button');
     var company = document.getElementById('company').value.trim();
     var note = document.getElementById('note').value.trim();
+    var chosen = document.getElementById('code').value.trim().toLowerCase();
+    var msg = document.getElementById('create-msg');
+    msg.textContent = '';
     if (!company) return;
+    if (chosen && (!CODE_RE.test(chosen) || RESERVED.indexOf(chosen) !== -1)) {
+      msg.textContent = 'Code invalide : 2 à 20 caractères, lettres minuscules, chiffres ou tirets (et pas « admin » ni « assets »).';
+      return;
+    }
     btn.disabled = true;
     var attempt = 0;
     (function tryInsert() {
-      var code = newCode();
+      var code = chosen || newCode();
       sb.from('links').insert({ code: code, company: company, note: note || null }).select().single().then(function (res) {
-        if (res.error && res.error.code === '23505' && attempt++ < 3) return tryInsert(); // code déjà pris : on en tire un autre
+        if (res.error && res.error.code === '23505' && !chosen && attempt++ < 3) return tryInsert(); // code tiré au sort déjà pris : on en tire un autre
         btn.disabled = false;
-        if (res.error) { document.getElementById('create-msg').textContent = 'Impossible de créer le lien : ' + res.error.message; return; }
+        if (res.error && res.error.code === '23505') { msg.textContent = 'Ce code est déjà utilisé par un autre lien. Choisis-en un autre.'; return; }
+        if (res.error && res.error.code === '23514') { msg.textContent = 'Code refusé par la base. As-tu exécuté supabase/migration-codes-courts.sql ?'; return; }
+        if (res.error) { msg.textContent = 'Impossible de créer le lien : ' + res.error.message; return; }
         state.lastCreated = res.data;
         load();
       });

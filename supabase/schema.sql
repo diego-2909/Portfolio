@@ -13,7 +13,7 @@
 -- -----------------------------------------------------------------------------
 create table if not exists public.links (
   id          uuid primary key default gen_random_uuid(),
-  code        text not null unique check (code ~ '^[a-z0-9]{6,12}$'),
+  code        text not null unique check (code ~ '^[a-z0-9][a-z0-9-]{1,19}$' and code not in ('admin', 'assets')),
   company     text not null check (char_length(company) between 1 and 120),
   note        text check (char_length(note) <= 500),
   created_at  timestamptz not null default now()
@@ -71,7 +71,7 @@ begin
     return;
   end if;
 
-  select id into v_link from public.links where code = lower(left(p_code, 12));
+  select id into v_link from public.links where code = lower(left(p_code, 20));
   if v_link is null then
     return;
   end if;
