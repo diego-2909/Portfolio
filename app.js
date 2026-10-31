@@ -302,19 +302,16 @@
     return '' +
       '<section class="section" id="experience">' +
         '<div class="section-label"><h2>' + esc(t.nav.experience) + '</h2></div>' +
-        '<div class="section-body">' + map(t.jobs, function (j, i) {
+        '<div class="section-body edu-list">' + map(t.jobs, function (j, i) {
           return '' +
-            '<article class="job a-up">' +
-              '<div class="job-when"><span>' + esc(j.dates) + '</span><span>' + esc(j.place) + '</span></div>' +
-              '<div class="job-body">' +
-                '<div class="job-head">' +
-                  '<div><h3>' + esc(j.company) + '</h3><p class="role">' + esc(j.role) + '</p></div>' +
-                  (j.logoUrl ? '<div class="job-logo"><img src="' + esc(j.logoUrl) + '" alt="" data-logo="job:' + i + '"></div>' : '') +
-                '</div>' +
-                '<div class="card-foot">' + moreBtn('job', i, t.detail.more, j.company) +
-                  '<span class="card-count">' + esc(t.detail.count(j.projects.length)) + '</span></div>' +
-              '</div>' +
-            '</article>';
+            '<button type="button" class="edu-row job-row a-up" data-detail="job:' + i + '" aria-haspopup="dialog" aria-controls="push">' +
+              '<span class="edu-txt"><span class="when">' + esc(j.dates) + ' · ' + esc(j.place) + '</span>' +
+                '<span class="name">' + esc(j.company) + '</span><span class="school">' + esc(j.role) + '</span>' +
+                '<span class="row-count">' + esc(t.detail.count(j.projects.length)) + '</span></span>' +
+              (j.logoUrl ? '<span class="edu-logo"><img src="' + esc(j.logoUrl) + '" alt="" data-logo="job:' + i + '"></span>' : '') +
+              '<span class="edu-chev" aria-hidden="true">' + ARROW_RIGHT + '</span>' +
+              '<span class="sr-only"> · ' + esc(t.detail.more) + '</span>' +
+            '</button>';
         }) + '</div>' +
       '</section>';
   }
