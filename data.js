@@ -30,8 +30,7 @@ function getContent(lang) {
             "Diplômé d'un Master MIAGE en Ingénierie des Processus Métiers, j'ai acquis trois ans d'expérience en développement informatique, en alternance chez Airbus Operations et Andil.",
             "Chez Airbus, en tant que développeur et responsable projet, j'ai pris en charge une application de recertification des accès Google Drive, du recueil des besoins jusqu'à la mise en production, entre développement et coordination avec les équipes métier et sécurité.",
             "Passer de PHP chez Andil à React, aux Google APIs puis à C# et .NET chez Airbus m'a appris à prendre en main rapidement un nouvel environnement.",
-            "En parallèle, je développe mes propres projets, comme RunMates, une application web et iOS pour rejoindre des sorties de course à pied ou de vélo près de chez soi, que je mène seul de la conception à la mise en ligne.",
-            "Aujourd'hui, je souhaite mettre cette polyvalence au service d'une équipe, comme développeur full-stack avec, lorsque le projet le permet, une dimension de pilotage technique."
+            "En parallèle, je développe mes propres projets, comme RunMates, une application web et iOS pour rejoindre des sorties de course à pied ou de vélo près de chez soi, que je mène seul de la conception à la mise en ligne."
           ],
         },
         seek: {
@@ -149,8 +148,7 @@ function getContent(lang) {
             "With a Master's in Information Systems (MIAGE), Business Process Engineering track, I have three years of software development experience through work-study at Airbus Operations and Andil.",
             "At Airbus, as developer and project lead, I took charge of an application to recertify Google Drive access rights, from gathering requirements to production, balancing development with coordination with business and security teams.",
             "Moving from PHP at Andil to React, Google APIs and then C# and .NET at Airbus taught me to get up to speed quickly in a new environment.",
-            "Alongside my work, I build my own projects, like RunMates, a web and iOS app to join running or cycling meetups nearby, which I'm leading on my own from design to release.",
-            "Today I want to bring this versatility to a team, as a full-stack developer with, where the project allows, a technical leadership side."
+            "Alongside my work, I build my own projects, like RunMates, a web and iOS app to join running or cycling meetups nearby, which I'm leading on my own from design to release."
           ],
         },
         seek: {
