@@ -18,7 +18,7 @@ function getContent(lang) {
         nav: { projects: 'Projets', experience: 'Expérience', skills: 'Compétences', education: 'Formation', contact: 'Contact' },
         hero: {
           role: 'Développeur full-stack · Toulouse',
-          intro: "Trois ans chez Airbus et Andil à concevoir des outils web, du recueil des besoins jusqu'à la mise en production.",
+          intro: "Développeur full-stack formé en alternance chez Airbus et Andil. Je conçois des outils web utiles, du besoin à la mise en production.",
           status: 'Disponible · CDI · Toulouse', ctaContact: 'Me contacter', ctaCv: 'Télécharger le CV',
           basedLabel: 'Basé à', degreeLabel: 'Diplôme', degree: 'Master MIAGE', linksLabel: 'Liens', cv: 'CV (PDF)',
           photoAlt: 'Portrait de Diego Cortes'
@@ -27,14 +27,14 @@ function getContent(lang) {
           title: 'À propos',
           lead: "J'aime écrire du code, mais j'aime surtout comprendre le problème qu'il doit résoudre.",
           paras: [
-            "Licence d'informatique à Paul Sabatier, puis trois ans d'alternance : chez Andil sur des plugins Moodle, puis chez Airbus en Product Owner technique d'un projet de sécurité, de l'atelier jusqu'à la mise en production."
+            "Licence d'informatique à Paul Sabatier, puis trois ans d'alternance : chez Andil sur des plugins Moodle, puis chez Airbus en chef de projet technique d'un projet de sécurité, de l'atelier jusqu'à la mise en production."
           ],
         },
         seek: {
           title: 'Ce que je cherche',
           lead: '',
           rows: [
-            { label: 'Poste', value: 'Développeur full-stack, ou développeur et Product Owner' },
+            { label: 'Poste', value: 'Développeur full-stack, ou développeur et chef de projet technique' },
             { label: 'Contrat', value: 'CDI, disponible immédiatement' },
             { label: 'Lieu', value: 'Toulouse et alentours' },
             { label: 'Secteur', value: 'Aéronautique en priorité' }
@@ -53,7 +53,7 @@ function getContent(lang) {
         projectsDone: 'Projets réalisés', seeCase: 'Voir le projet ↓',
         jobs: [
           {
-            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Développeur et responsable de projet, en alternance',
+            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Développeur et chef de projet technique, en alternance',
             bullets: [
               "Product Owner technique d'un projet de sécurité, du besoin à la production.",
               'Ateliers avec Data Governance et IT Security, PI Planning, backlog.'
@@ -119,14 +119,14 @@ function getContent(lang) {
             subjects: [],
             jobs: '' }
         ],
-        contact: { lead: 'Je cherche un CDI de développeur full-stack, ou développeur et Product Owner, à Toulouse. Aéronautique en priorité, disponible immédiatement.', email: 'E-mail', phone: 'Téléphone', cv: 'Télécharger mon CV (PDF)' }
+        contact: { lead: 'Je cherche un CDI de développeur full-stack, ou développeur et chef de projet technique, à Toulouse. Aéronautique en priorité, disponible immédiatement.', email: 'E-mail', phone: 'Téléphone', cv: 'Télécharger mon CV (PDF)' }
       },
       en: {
         code: 'en', navLabel: 'Main navigation', langLabel: 'Language', techLabel: 'Technologies', timelineLabel: 'Projects, newest first',
         nav: { projects: 'Projects', experience: 'Experience', skills: 'Skills', education: 'Education', contact: 'Contact' },
         hero: {
           role: 'Full-stack developer · Toulouse',
-          intro: 'Three years at Airbus and Andil building web tools, from gathering requirements all the way to production.',
+          intro: 'Full-stack developer trained through work-study at Airbus and Andil. I build useful web tools, from the first need to production.',
           status: 'Available · Permanent role · Toulouse', ctaContact: 'Get in touch', ctaCv: 'Download resume',
           basedLabel: 'Based in', degreeLabel: 'Degree', degree: "Master's in Information Systems (MIAGE)", linksLabel: 'Links', cv: 'Resume (PDF)',
           photoAlt: 'Portrait of Diego Cortes'
@@ -135,14 +135,14 @@ function getContent(lang) {
           title: 'About',
           lead: 'I enjoy writing code, but what I enjoy most is understanding the problem it has to solve.',
           paras: [
-            "A computer science degree at Paul Sabatier, then three years of work-study: Moodle plugins at Andil, then technical Product Owner of a security project at Airbus, from the first workshop to production."
+            "A computer science degree at Paul Sabatier, then three years of work-study: Moodle plugins at Andil, then technical project lead on a security project at Airbus, from the first workshop to production."
           ],
         },
         seek: {
           title: "What I'm looking for",
           lead: '',
           rows: [
-            { label: 'Role', value: 'Full-stack developer, or developer and Product Owner' },
+            { label: 'Role', value: 'Full-stack developer, or developer and technical project lead' },
             { label: 'Contract', value: 'Permanent (CDI), available now' },
             { label: 'Location', value: 'Toulouse area' },
             { label: 'Sector', value: 'Aerospace first' }
@@ -161,7 +161,7 @@ function getContent(lang) {
         projectsDone: 'Projects delivered', seeCase: 'See the project ↓',
         jobs: [
           {
-            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Developer and project lead, work-study',
+            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Developer and technical project lead, work-study',
             bullets: [
               'Technical Product Owner on a security project, from need to production.',
               'Workshops with Data Governance and IT Security, PI Planning, backlog.'
@@ -227,7 +227,7 @@ function getContent(lang) {
             subjects: [],
             jobs: '' }
         ],
-        contact: { lead: "I'm looking for a permanent full-stack developer role, or developer and Product Owner, in Toulouse. Aerospace first, available now.", email: 'Email', phone: 'Phone', cv: 'Download my resume (PDF)' }
+        contact: { lead: "I'm looking for a permanent full-stack developer role, or developer and technical project lead, in Toulouse. Aerospace first, available now.", email: 'Email', phone: 'Phone', cv: 'Download my resume (PDF)' }
       }
     };
     var t = T[lang];
