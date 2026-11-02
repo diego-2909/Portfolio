@@ -82,7 +82,7 @@ function getContent(lang) {
         skills: [
           { title: 'Front-end', fam: 'front', items: ['React', 'Next.js', 'TypeScript', 'HTML, CSS'] },
           { title: 'Back-end', fam: 'back', items: ['Java, Spring Boot', 'C#, .NET', 'Node.js', 'PHP, Laravel', 'Google Apps Script', 'API REST'] },
-          { title: 'Données', fam: 'data', items: ['PostgreSQL', 'MySQL, Oracle', 'BigQuery', 'Supabase, Prisma', 'Python, Pandas'] },
+          { title: 'Données', fam: 'data', items: ['MySQL', 'PostgreSQL', 'Oracle', 'BigQuery', 'Python, Pandas'] },
           { title: 'Écosystème Google', fam: 'google', items: ['Workspace APIs', 'Drive, Shared Drives'] },
           { title: 'Projet et analyse', fam: 'method', items: ['Agile, Scrum', 'PI Planning, backlog', 'Recueil des besoins', 'BPMN, UML', 'Jira'] },
           { title: 'Outils', fam: 'cloud', items: ['Git', 'Docker', 'Linux, Bash', 'API Mistral, Gemini'] },
@@ -195,7 +195,7 @@ function getContent(lang) {
         skills: [
           { title: 'Front-end', fam: 'front', items: ['React', 'Next.js', 'TypeScript', 'HTML, CSS'] },
           { title: 'Back-end', fam: 'back', items: ['Java, Spring Boot', 'C#, .NET', 'Node.js', 'PHP, Laravel', 'Google Apps Script', 'REST APIs'] },
-          { title: 'Data', fam: 'data', items: ['PostgreSQL', 'MySQL, Oracle', 'BigQuery', 'Supabase, Prisma', 'Python, Pandas'] },
+          { title: 'Data', fam: 'data', items: ['MySQL', 'PostgreSQL', 'Oracle', 'BigQuery', 'Python, Pandas'] },
           { title: 'Google ecosystem', fam: 'google', items: ['Workspace APIs', 'Drive, Shared Drives'] },
           { title: 'Project and analysis', fam: 'method', items: ['Agile, Scrum', 'PI Planning, backlog', 'Requirements gathering', 'BPMN, UML', 'Jira'] },
           { title: 'Tools', fam: 'cloud', items: ['Git', 'Docker', 'Linux, Bash', 'Mistral, Gemini APIs'] },
