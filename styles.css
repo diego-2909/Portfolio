@@ -793,11 +793,12 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 .job-row:hover .row-more { text-decoration-color: currentColor; }
 
 /* Technos : couleurs pastel par famille */
-.techs li.t-front  { background: #EAF2FD; border-color: #CFE0F8; color: #1E4A85; }
-.techs li.t-back   { background: #E8F5EC; border-color: #CBE7D4; color: #1E6338; }
-.techs li.t-data   { background: #F1ECFB; border-color: #DDD2F4; color: #55349A; }
-.techs li.t-cloud  { background: #FDF0E6; border-color: #F6DAC4; color: #934514; }
-.techs li.t-google { background: #FDF7DF; border-color: #F1E4AE; color: #7A5D00; }
+.techs li.t-front,  .skill-row li.t-front  { background: #EAF2FD; border-color: #CFE0F8; color: #1E4A85; }
+.techs li.t-back,   .skill-row li.t-back   { background: #E8F5EC; border-color: #CBE7D4; color: #1E6338; }
+.techs li.t-data,   .skill-row li.t-data   { background: #F1ECFB; border-color: #DDD2F4; color: #55349A; }
+.techs li.t-cloud,  .skill-row li.t-cloud  { background: #FDF0E6; border-color: #F6DAC4; color: #934514; }
+.techs li.t-google, .skill-row li.t-google { background: #FDF7DF; border-color: #F1E4AE; color: #7A5D00; }
+.skill-row li.t-method { background: #FCEDF1; border-color: #F3D3DD; color: #8C2F4C; }
 
 /* Flèche « lien externe » */
 .ext { display: inline-block; margin-left: 3px; vertical-align: -1px; }

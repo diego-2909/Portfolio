@@ -130,10 +130,10 @@
 
   // Couleur pastel par famille de technologie : la même techno a la même couleur partout.
   var TECH_FAMILY = {
-    front: ['react', 'next.js', 'typescript', 'javascript', 'vue.js', 'html', 'css', 'html/css', 'ejs'],
-    back: ['java', 'spring boot', 'node.js', 'express', 'php', 'laravel', 'c#', '.net', 'c', 'python'],
-    data: ['sql', 'mysql', 'postgresql', 'postgis', 'supabase', 'prisma', 'bigquery', 'oracle'],
-    cloud: ['docker', 'stripe', 'mapbox', 'capacitor', 'mistral', 'aws'],
+    front: ['react', 'next.js', 'typescript', 'javascript', 'vue.js', 'html', 'css', 'html/css', 'ejs', 'capacitor'],
+    back: ['java', 'spring boot', 'node.js', 'express', 'php', 'laravel', 'c#', '.net', 'c'],
+    data: ['sql', 'mysql', 'postgresql', 'postgis', 'supabase', 'prisma', 'bigquery', 'oracle', 'python'],
+    cloud: ['docker', 'stripe', 'mapbox', 'mistral', 'aws'],
     google: ['google apis', 'google apps script', 'apps script', 'google drive api', 'google workspace apis']
   };
   function techItem(x) {
@@ -377,8 +377,10 @@
     return '' +
       '<section class="section" id="competences">' +
         '<div class="section-label"><h2>' + esc(t.nav.skills) + '</h2></div>' +
-        '<div class="section-body"><div class="skill-rows">' + map(t.skills, function (s) {
-          return '<div class="skill-row"><h3>' + esc(s.title) + '</h3><ul>' + map(s.items, function (i) { return '<li>' + esc(i) + '</li>'; }) + '</ul></div>';
+        '<div class="section-body"><div class="skill-rows">' + map(t.skills, function (s, n) {
+          // même famille de couleur que les badges des projets
+          var fam = ['front', 'back', 'data', 'google', 'method', 'cloud'][n];
+          return '<div class="skill-row"><h3>' + esc(s.title) + '</h3><ul>' + map(s.items, function (i) { return '<li' + (fam ? ' class="t-' + fam + '"' : '') + '>' + esc(i) + '</li>'; }) + '</ul></div>';
         }) + '</div></div>' +
       '</section>';
   }
