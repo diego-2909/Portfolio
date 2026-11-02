@@ -33,8 +33,6 @@ function getContent(lang) {
             "J'aime aller au bout de ce que j'entreprends. En parallèle de mes expériences professionnelles, je développe mes propres projets : RunMates, une application web et iOS pour découvrir et rejoindre des sorties de course à pied ou de vélo près de chez soi, est un projet que je mène seul, de la conception jusqu'à la mise en ligne.",
             "Aujourd'hui, je souhaite mettre cette polyvalence au service d'une nouvelle équipe, dans un poste de développeur full-stack avec, lorsque le projet le permet, une dimension de pilotage technique."
           ],
-          outsideLabel: 'En dehors du code',
-          outside: 'Musculation, vélo, course à pied (un marathon en 3 h 49) et piano.',
         },
         seek: {
           title: 'Ce que je cherche',
@@ -92,7 +90,9 @@ function getContent(lang) {
           { title: 'Écosystème Google', fam: 'google', items: ['Workspace APIs', 'Drive, Shared Drives'] },
           { title: 'Projet et analyse', fam: 'method', items: ['Agile, Scrum', 'PI Planning, backlog', 'Recueil des besoins', 'BPMN, UML', 'Jira'] },
           { title: 'Outils', fam: 'cloud', items: ['Git', 'Docker', 'Linux, Bash', 'API Mistral, Gemini'] },
-          { title: 'Certification', fam: 'cloud', items: ['AWS Cloud Foundations'], url: 'https://www.credly.com/badges/a07016d2-69c5-4faf-ab38-83d827173f73/public_url' }
+          { title: 'Certification', fam: 'cloud', items: ['AWS Cloud Foundations'], url: 'https://www.credly.com/badges/a07016d2-69c5-4faf-ab38-83d827173f73/public_url' },
+          { title: 'Soft skills', items: ['Enthousiasme', 'Adaptabilité', "Esprit d'équipe"] },
+          { title: 'Hobbies', items: ['Gymnastique', 'Vélo', 'Course à pied', 'Piano'] }
         ],
         certsTitle: 'Certification',
         certs: [
@@ -152,8 +152,6 @@ function getContent(lang) {
             "I like to see things through. Alongside my work, I build my own projects: RunMates, a web and iOS app to find and join running or cycling meetups nearby, is one I'm leading on my own, from design all the way to release.",
             "Today I want to bring this versatility to a new team, as a full-stack developer with, where the project allows, a technical leadership side."
           ],
-          outsideLabel: 'Outside of code',
-          outside: 'Gym, cycling, running (a 3:49 marathon) and piano.',
         },
         seek: {
           title: "What I'm looking for",
@@ -211,7 +209,9 @@ function getContent(lang) {
           { title: 'Google ecosystem', fam: 'google', items: ['Workspace APIs', 'Drive, Shared Drives'] },
           { title: 'Project and analysis', fam: 'method', items: ['Agile, Scrum', 'PI Planning, backlog', 'Requirements gathering', 'BPMN, UML', 'Jira'] },
           { title: 'Tools', fam: 'cloud', items: ['Git', 'Docker', 'Linux, Bash', 'Mistral, Gemini APIs'] },
-          { title: 'Certification', fam: 'cloud', items: ['AWS Cloud Foundations'], url: 'https://www.credly.com/badges/a07016d2-69c5-4faf-ab38-83d827173f73/public_url' }
+          { title: 'Certification', fam: 'cloud', items: ['AWS Cloud Foundations'], url: 'https://www.credly.com/badges/a07016d2-69c5-4faf-ab38-83d827173f73/public_url' },
+          { title: 'Soft skills', items: ['Enthusiasm', 'Adaptability', 'Team spirit'] },
+          { title: 'Hobbies', items: ['Gymnastics', 'Cycling', 'Running', 'Piano'] }
         ],
         certsTitle: 'Certification',
         certs: [
