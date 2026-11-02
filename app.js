@@ -104,6 +104,7 @@
         '<div class="section-body about">' +
           (t.about.lead ? '<p class="lead a-words">' + esc(t.about.lead) + '</p>' : '') +
           '<div class="about-paras">' + map(t.about.paras, function (p) { return '<p class="a-up">' + esc(p) + '</p>'; }) + '</div>' +
+          (t.about.outside ? '<p class="about-outside a-up"><span>' + esc(t.about.outsideLabel) + '</span>' + esc(t.about.outside) + '</p>' : '') +
         '</div>' +
       '</section>';
   }
