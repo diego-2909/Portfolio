@@ -343,7 +343,8 @@
         '<h2 id="push-title" tabindex="-1">' + esc(j.company) + '</h2>' +
         '<p class="push-sub">' + esc(j.role) + '</p>' +
       '</header>' +
-      (j.bullets && j.bullets.length ? '<div class="push-block"><h3>' + esc(t.detail.missions) + '</h3><ul class="push-list">' + map(j.bullets, function (b) { return '<li>' + esc(b) + '</li>'; }) + '</ul></div>' : '') +
+      (j.about ? '<div class="push-block"><h3>' + esc(t.detail.company) + '</h3><p class="push-text">' + esc(j.about) + '</p></div>' : '') +
+      (j.missions && j.missions.length ? '<div class="push-block"><h3>' + esc(t.detail.missions) + '</h3>' + map(j.missions, function (b) { return '<p class="push-text">' + esc(b) + '</p>'; }) + '</div>' : '') +
       '<div class="push-block"><h3>' + esc(t.projectsDone) + '</h3>' +
         map(j.projects, function (jp) {
           return '<div class="push-project">' +

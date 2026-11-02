@@ -45,7 +45,7 @@ function getContent(lang) {
           ]
         },
         p: { context: 'Contexte', result: 'Résultat', approach: "Comment on s'y est pris", open: 'Aperçu', close: 'Réduire', openAria: 'Voir l’aperçu du projet ', closeAria: 'Réduire le projet ' },
-        detail: { more: 'Plus de détails', back: 'Retour', missions: 'Mes missions', count: function (n) { return n + ' réalisation' + (n > 1 ? 's' : ''); } },
+        detail: { more: 'Plus de détails', back: 'Retour', missions: 'Mes missions', company: "L'entreprise", count: function (n) { return n + ' réalisation' + (n > 1 ? 's' : ''); } },
         featured: { tag: 'Mon dernier projet (2026)', others: 'Mes autres projets', more: 'En savoir plus', play: 'Lire la vidéo', pause: 'Mettre la vidéo en pause' },
         now: {
           title: 'En ce moment', when: "Aujourd'hui",
@@ -58,24 +58,26 @@ function getContent(lang) {
         jobs: [
           {
             dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Développeur et responsable projet, en alternance',
-            bullets: [
-              "Responsable projet et développeur d'un projet de sécurité, du besoin à la production.",
-              'Ateliers avec Data Governance et IT Security, PI Planning, backlog.'
+            about: "Airbus Operations est l'entité d'Airbus qui conçoit et produit les avions commerciaux. J'ai rejoint ses équipes informatiques sur le site de Saint-Martin-du-Touch, à Toulouse, pendant mes deux ans d'alternance en Master MIAGE.",
+            missions: [
+              "Au sein de l'équipe Digital Workplace, j'ai occupé un rôle à la fois technique et fonctionnel : développement d'applications et d'outils internes pour les collaborateurs et les équipes métier, intégration des services Google Workspace et outils de classification de documents.",
+              "J'ai aussi participé au fonctionnement Agile de l'équipe, notamment aux PI Planning et au suivi du backlog."
             ],
             projects: [
-              { name: 'Recertification des accès Google Drive', text: "Application web qui fait revalider les droits d'accès aux Shared Drives.", stack: 'React · TypeScript · Google APIs', projectId: 'airbus' },
-              { name: 'Classification des fichiers Google Docs', text: 'Outil interne pour classer les documents selon leur niveau de sensibilité.', stack: 'Google Apps Script', projectId: 'airbus-gdocs' },
+              { name: 'Recertification des accès Google Drive', text: "Application web pour que les responsables revoient et valident régulièrement les droits d'accès aux Shared Drives. Pilotage technique et développement, du besoin à la mise en production.", stack: 'React · TypeScript · Google APIs', projectId: 'airbus' },
+              { name: 'Classification des fichiers Google Docs', text: 'Contribution à un outil interne pour classer les fichiers Google Docs selon leur niveau de sensibilité.', stack: 'Google Apps Script', projectId: 'airbus-gdocs' },
               { name: 'Classification des fichiers Windows', text: 'Le même principe, appliqué aux fichiers des postes Windows.', stack: '.NET · C#', projectId: 'airbus-windows' }
             ]
           },
           {
             dates: '2022 — 2023', place: 'Labège', company: 'Andil', logoUrl: 'assets/andil.png', role: 'Développeur full-stack, en alternance',
-            bullets: [
-              'Développement et maintenance sur la plateforme Moodle des clients.'
+            about: "Andil est une entreprise basée à Labège, près de Toulouse, spécialisée dans le déploiement et la maintenance de plateformes Moodle pour ses clients. J'y étais en alternance pendant ma licence professionnelle Responsable Technique d'Applications Internet.",
+            missions: [
+              "Au sein de l'équipe de développement, j'ai participé à la création, à la maintenance et à l'évolution des plateformes Moodle des clients : développer des fonctionnalités adaptées à leurs besoins et faire évoluer les outils existants."
             ],
             projects: [
-              { name: 'Plugins Moodle sur mesure', text: 'Développement, maintenance et amélioration de plugins pour les besoins des clients.', stack: 'PHP' },
-              { name: 'Tableau de bord des plateformes', text: "Une vue centralisée pour suivre et gérer toutes les plateformes Moodle déployées.", stack: 'Laravel · HTML · CSS · JavaScript' }
+              { name: 'Plugins Moodle sur mesure', text: 'Des plugins pour ajouter ou adapter des fonctionnalités de la plateforme selon les besoins spécifiques des clients.', stack: 'PHP' },
+              { name: 'Tableau de bord des plateformes', text: "Participation à un tableau de bord centralisé qui regroupe les informations et les fonctions utiles au suivi et à l'administration des plateformes déployées.", stack: 'Laravel · HTML · CSS · JavaScript' }
             ]
           }
         ],
@@ -158,7 +160,7 @@ function getContent(lang) {
           ]
         },
         p: { context: 'Context', result: 'Outcome', approach: 'How we went about it', open: 'Preview', close: 'Collapse', openAria: 'Preview project ', closeAria: 'Collapse project ' },
-        detail: { more: 'More details', back: 'Back', missions: 'What I did', count: function (n) { return n + ' project' + (n > 1 ? 's' : ''); } },
+        detail: { more: 'More details', back: 'Back', missions: 'What I did', company: 'The company', count: function (n) { return n + ' project' + (n > 1 ? 's' : ''); } },
         featured: { tag: 'My latest project (2026)', others: 'Other projects', more: 'Learn more', play: 'Play the video', pause: 'Pause the video' },
         now: {
           title: 'Currently', when: 'Today',
@@ -171,24 +173,26 @@ function getContent(lang) {
         jobs: [
           {
             dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Developer and project lead, work-study',
-            bullets: [
-              'Project lead and developer on a security project, from need to production.',
-              'Workshops with Data Governance and IT Security, PI Planning, backlog.'
+            about: "Airbus Operations is the Airbus entity that designs and builds commercial aircraft. I joined its IT teams at the Saint-Martin-du-Touch site in Toulouse for the two-year work-study of my Master's degree.",
+            missions: [
+              'In the Digital Workplace team, I held a role that was both technical and functional: building internal applications and tools for employees and business teams, integrating Google Workspace services, and document classification tools.',
+              "I also took part in the team's Agile practices, including PI Planning and backlog follow-up."
             ],
             projects: [
-              { name: 'Google Drive access recertification', text: 'Web application that has Shared Drive access rights reviewed and re-approved.', stack: 'React · TypeScript · Google APIs', projectId: 'airbus' },
-              { name: 'Google Docs file classification', text: 'Internal tool to label documents by sensitivity level.', stack: 'Google Apps Script', projectId: 'airbus-gdocs' },
+              { name: 'Google Drive access recertification', text: 'Web application for owners to regularly review and approve access rights to Shared Drives. Technical lead and development, from the first need to production.', stack: 'React · TypeScript · Google APIs', projectId: 'airbus' },
+              { name: 'Google Docs file classification', text: 'Contributed to an internal tool that labels Google Docs files by sensitivity level.', stack: 'Google Apps Script', projectId: 'airbus-gdocs' },
               { name: 'Windows file classification', text: 'The same idea, applied to files on Windows workstations.', stack: '.NET · C#', projectId: 'airbus-windows' }
             ]
           },
           {
             dates: '2022 — 2023', place: 'Labège', company: 'Andil', logoUrl: 'assets/andil.png', role: 'Full-stack developer, work-study',
-            bullets: [
-              "Development and maintenance on clients' Moodle platforms."
+            about: 'Andil is a company based in Labège, near Toulouse, that deploys and maintains Moodle platforms for its clients. I was there on work-study during my professional bachelor (Internet Applications Technical Lead).',
+            missions: [
+              "In the development team, I helped build, maintain and evolve clients' Moodle platforms: developing features for their needs and improving existing tools."
             ],
             projects: [
-              { name: 'Custom Moodle plugins', text: 'Built, maintained and improved plugins for client needs.', stack: 'PHP' },
-              { name: 'Platform dashboard', text: 'A central view to monitor and manage every deployed Moodle platform.', stack: 'Laravel · HTML · CSS · JavaScript' }
+              { name: 'Custom Moodle plugins', text: "Plugins that add or adapt platform features for each client's specific needs.", stack: 'PHP' },
+              { name: 'Platform dashboard', text: 'Contributed to a central dashboard bringing together the information and functions needed to monitor and administer the deployed platforms.', stack: 'Laravel · HTML · CSS · JavaScript' }
             ]
           }
         ],
@@ -258,29 +262,30 @@ function getContent(lang) {
           ['Review campaign', '   │', '   ▼', 'The drive owner sees', 'the list of accesses', '   │', '   ▼', 'They confirm or remove', 'each access', '   │', '   ▼', 'Decisions applied', 'through Google APIs', '   │', '   ▼', 'Reporting for Security', 'and Data Governance'].join('\n')
         ),
         context: L(
-          "Chez Airbus, les Shared Drives Google accumulent des droits d'accès qui ne sont jamais revus : des personnes qui ont changé de poste ou de projet gardent l'accès à des données sensibles. L'équipe Digital Workplace m'a confié le sujet, du cadrage jusqu'à la mise en production.",
-          'At Airbus, Google Shared Drives pile up access rights that never get reviewed: people who changed roles or projects keep access to sensitive data. The Digital Workplace team gave me the topic, from scoping all the way to production.'
+          "Un enjeu de sécurité : éviter que des collaborateurs gardent l'accès à des données sensibles après un changement de poste ou de projet. Au sein de l'équipe Digital Workplace, j'ai assuré le pilotage technique et le développement d'une application web qui permet aux responsables de revoir et de valider régulièrement les droits d'accès aux Shared Drives, de la définition du besoin jusqu'à la mise en production.",
+          "A security issue: making sure employees don't keep access to sensitive data after changing roles or projects. In the Digital Workplace team, I led the technical side and built a web application that lets owners regularly review and approve access rights to Shared Drives, from defining the need to production."
         ),
         // Si tu peux citer des chiffres : result: L('… en français', '… in English'). Vide, le bloc n'apparaît pas.
         result: '',
         approach: L([
-          "Recueil des besoins en ateliers avec les équipes Data Governance et IT Security, pour fixer les règles et les contraintes de conformité.",
-          "Maquettes validées avec elles avant d'écrire la première ligne de code.",
-          "Développement itératif dans le cadre Agile de l'équipe, avec les PI Planning et un backlog partagé.",
-          'Documentation technique complète, puis mise en production validée par l’IT Security.'
+          "Échanges avec les équipes Data Governance et IT Security pour comprendre leurs besoins, leurs pratiques, et ce qui fonctionnait ou posait problème dans la gestion des accès.",
+          "Maquettes travaillées avec le Product Owner pour définir le fonctionnement attendu avant le développement.",
+          "Conception et développement avec React, TypeScript et les Google APIs, de manière itérative.",
+          "Documentation technique, puis accompagnement du déploiement, validé par l'équipe IT Security."
         ], [
-          'Requirements workshops with the Data Governance and IT Security teams to set the rules and compliance constraints.',
-          'Mockups approved with them before writing the first line of code.',
-          "Iterative development within the team's Agile framework, with PI Planning and a shared backlog.",
-          'Full technical documentation, then a production release approved by IT Security.'
+          'Discussions with the Data Governance and IT Security teams to understand their needs, their practices, and what worked or caused problems in access management.',
+          'Mockups worked out with the Product Owner to define the expected behaviour before development.',
+          'Design and development with React, TypeScript and Google APIs, iteratively.',
+          'Technical documentation, then support for the deployment, approved by the IT Security team.'
         ]),
         teamTitle: L('Qui a fait quoi', 'Who did what'),
         team: [
-          m('Diego Cortes', '', 'Responsable projet et développeur : besoins, maquettes, développement, documentation, déploiement.', 'Project lead and developer: requirements, mockups, development, documentation, deployment.'),
-          m('Data Governance', '', 'Règles de gouvernance des données, validation fonctionnelle.', 'Data governance rules, functional sign-off.'),
-          m('IT Security', '', 'Exigences de sécurité, validation du déploiement.', 'Security requirements, deployment sign-off.')
+          m('Diego Cortes', '', 'Pilotage technique et développement : besoin, conception, développement, documentation, déploiement.', 'Technical lead and development: requirements, design, development, documentation, deployment.'),
+          m('Product Owner', '', 'Maquettes et fonctionnement attendu, avec moi.', 'Mockups and expected behaviour, together with me.'),
+          m('Data Governance', '', 'Besoins et pratiques de gestion des accès.', 'Access management needs and practices.'),
+          m('IT Security', '', 'Besoins de sécurité, validation du déploiement.', 'Security needs, deployment sign-off.')
         ],
-        stack: 'React · TypeScript · Google Drive API · Apps Script',
+        stack: 'React · TypeScript · Google APIs',
         links: [], private: true, privateLabel: L('Code interne Airbus', 'Internal Airbus code')
       },
       {
@@ -512,8 +517,8 @@ function getContent(lang) {
         id: 'airbus-gdocs', year: '2025', inExperience: true,
         name: L('Classification des fichiers Google Docs', 'Google Docs file classification'),
         kind: L('Airbus Operations · alternance', 'Airbus Operations · work-study'),
-        pitch: L('Un outil interne pour classer les documents Google selon leur niveau de sensibilité.', 'An internal tool to label Google documents by sensitivity level.'),
-        context: '',
+        pitch: L('Un outil interne pour classer les fichiers Google Docs selon leur niveau de sensibilité.', 'An internal tool to label Google Docs files by sensitivity level.'),
+        context: L("Un des outils internes de classification des documents auxquels j'ai contribué chez Airbus. Développé avec Google Apps Script, il permettait de classer les fichiers Google Docs selon leur niveau de sensibilité.", 'One of the internal document classification tools I contributed to at Airbus. Built with Google Apps Script, it labelled Google Docs files by sensitivity level.'),
         approach: [],
         result: '',
         teamTitle: L('Qui a fait quoi', 'Who did what'),
@@ -526,7 +531,7 @@ function getContent(lang) {
         name: L('Classification des fichiers Windows', 'Windows file classification'),
         kind: L('Airbus Operations · alternance', 'Airbus Operations · work-study'),
         pitch: L('Le même principe, appliqué aux fichiers des postes Windows.', 'The same idea, applied to files on Windows workstations.'),
-        context: '',
+        context: L("Le second outil de classification auquel j'ai contribué chez Airbus : le même principe que pour les Google Docs, mais pour les fichiers présents sur les postes Windows, développé avec C# et .NET.", 'The second classification tool I contributed to at Airbus: the same idea as for Google Docs, but for files stored on Windows workstations, built with C# and .NET.'),
         approach: [],
         result: '',
         teamTitle: L('Qui a fait quoi', 'Who did what'),
