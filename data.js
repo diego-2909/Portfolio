@@ -80,12 +80,13 @@ function getContent(lang) {
           }
         ],
         skills: [
-          { title: 'Front-end', items: ['React', 'Next.js', 'TypeScript', 'HTML, CSS', 'Capacitor'] },
-          { title: 'Back-end', items: ['Java, Spring Boot', 'C#, .NET', 'Node.js', 'PHP, Laravel', 'API REST'] },
-          { title: 'Données', items: ['PostgreSQL, PostGIS', 'SQL Server, MySQL, Oracle', 'BigQuery', 'Supabase, Prisma', 'Python, Pandas'] },
-          { title: 'Écosystème Google', items: ['Apps Script', 'Workspace APIs', 'Drive, Shared Drives'] },
-          { title: 'Projet et analyse', items: ['Agile, Scrum', 'PI Planning, backlog', 'Recueil des besoins', 'BPMN, UML', 'Jira'] },
-          { title: 'Outils', items: ['Git', 'Docker', 'Linux, Bash', 'API Mistral, Gemini'] }
+          { title: 'Front-end', fam: 'front', items: ['React', 'Next.js', 'TypeScript', 'HTML, CSS'] },
+          { title: 'Back-end', fam: 'back', items: ['Java, Spring Boot', 'C#, .NET', 'Node.js', 'PHP, Laravel', 'Google Apps Script', 'API REST'] },
+          { title: 'Données', fam: 'data', items: ['PostgreSQL', 'MySQL, Oracle', 'BigQuery', 'Supabase, Prisma', 'Python, Pandas'] },
+          { title: 'Écosystème Google', fam: 'google', items: ['Workspace APIs', 'Drive, Shared Drives'] },
+          { title: 'Projet et analyse', fam: 'method', items: ['Agile, Scrum', 'PI Planning, backlog', 'Recueil des besoins', 'BPMN, UML', 'Jira'] },
+          { title: 'Outils', fam: 'cloud', items: ['Git', 'Docker', 'Linux, Bash', 'API Mistral, Gemini'] },
+          { title: 'Certification', fam: 'cloud', items: ['AWS Cloud Foundations'], url: 'https://www.credly.com/badges/a07016d2-69c5-4faf-ab38-83d827173f73/public_url' }
         ],
         certsTitle: 'Certification',
         certs: [
@@ -192,12 +193,13 @@ function getContent(lang) {
           }
         ],
         skills: [
-          { title: 'Front-end', items: ['React', 'Next.js', 'TypeScript', 'HTML, CSS', 'Capacitor'] },
-          { title: 'Back-end', items: ['Java, Spring Boot', 'C#, .NET', 'Node.js', 'PHP, Laravel', 'REST APIs'] },
-          { title: 'Data', items: ['PostgreSQL, PostGIS', 'SQL Server, MySQL, Oracle', 'BigQuery', 'Supabase, Prisma', 'Python, Pandas'] },
-          { title: 'Google ecosystem', items: ['Apps Script', 'Workspace APIs', 'Drive, Shared Drives'] },
-          { title: 'Project and analysis', items: ['Agile, Scrum', 'PI Planning, backlog', 'Requirements gathering', 'BPMN, UML', 'Jira'] },
-          { title: 'Tools', items: ['Git', 'Docker', 'Linux, Bash', 'Mistral, Gemini APIs'] }
+          { title: 'Front-end', fam: 'front', items: ['React', 'Next.js', 'TypeScript', 'HTML, CSS'] },
+          { title: 'Back-end', fam: 'back', items: ['Java, Spring Boot', 'C#, .NET', 'Node.js', 'PHP, Laravel', 'Google Apps Script', 'REST APIs'] },
+          { title: 'Data', fam: 'data', items: ['PostgreSQL', 'MySQL, Oracle', 'BigQuery', 'Supabase, Prisma', 'Python, Pandas'] },
+          { title: 'Google ecosystem', fam: 'google', items: ['Workspace APIs', 'Drive, Shared Drives'] },
+          { title: 'Project and analysis', fam: 'method', items: ['Agile, Scrum', 'PI Planning, backlog', 'Requirements gathering', 'BPMN, UML', 'Jira'] },
+          { title: 'Tools', fam: 'cloud', items: ['Git', 'Docker', 'Linux, Bash', 'Mistral, Gemini APIs'] },
+          { title: 'Certification', fam: 'cloud', items: ['AWS Cloud Foundations'], url: 'https://www.credly.com/badges/a07016d2-69c5-4faf-ab38-83d827173f73/public_url' }
         ],
         certsTitle: 'Certification',
         certs: [

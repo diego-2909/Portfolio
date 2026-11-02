@@ -847,3 +847,8 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
   .btn-primary, .btn-secondary { font-size: 13px; min-height: 36px; padding: 0 14px; }
   .hero-gh { font-size: 13px; }
 }
+
+/* Badge lien (certification) dans les compétences */
+.skill-row li a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+.skill-row li a .ext { width: 11px; height: 11px; }
+.skill-row li:has(a):hover { filter: brightness(.97); }

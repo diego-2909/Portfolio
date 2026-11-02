@@ -377,10 +377,12 @@
     return '' +
       '<section class="section" id="competences">' +
         '<div class="section-label"><h2>' + esc(t.nav.skills) + '</h2></div>' +
-        '<div class="section-body"><div class="skill-rows">' + map(t.skills, function (s, n) {
+        '<div class="section-body"><div class="skill-rows">' + map(t.skills, function (s) {
           // même famille de couleur que les badges des projets
-          var fam = ['front', 'back', 'data', 'google', 'method', 'cloud'][n];
-          return '<div class="skill-row"><h3>' + esc(s.title) + '</h3><ul>' + map(s.items, function (i) { return '<li' + (fam ? ' class="t-' + fam + '"' : '') + '>' + esc(i) + '</li>'; }) + '</ul></div>';
+          return '<div class="skill-row"><h3>' + esc(s.title) + '</h3><ul>' + map(s.items, function (i) {
+            var label = s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(i) + EXT + '</a>' : esc(i);
+            return '<li' + (s.fam ? ' class="t-' + s.fam + '"' : '') + '>' + label + '</li>';
+          }) + '</ul></div>';
         }) + '</div></div>' +
       '</section>';
   }
