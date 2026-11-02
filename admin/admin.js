@@ -92,7 +92,41 @@
   // ---------------------------------------------------------------------------
   // Tableau de bord
   // ---------------------------------------------------------------------------
-  var state = { links: [], visits: [], lastCreated: null, confirmDelete: null };
+  var state = { links: [], visits: [], lastCreated: null, confirmDelete: null, history: {} };
+
+  function fmtDay(iso) {
+    var d = new Date(iso);
+    var s = d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+  function fmtTime(iso) { return new Date(iso).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }); }
+
+  // Historique d'un lien : une visite par session, avec l'heure de chaque action.
+  function renderHistory(link) {
+    var vs = state.visits.filter(function (v) { return v.link_id === link.id; }).slice().reverse(); // du plus ancien au plus récent
+    if (!vs.length) return '<p class="muted">Aucune visite pour l\'instant.</p>';
+    var bySession = {}, order = [];
+    vs.forEach(function (v) {
+      if (!bySession[v.session_id]) { bySession[v.session_id] = []; order.push(v.session_id); }
+      bySession[v.session_id].push(v);
+    });
+    return '<ol class="hist-list">' + order.slice().reverse().map(function (sid, i) {
+      var evs = bySession[sid], opens = 0;
+      var first = evs[0].created_at, last = evs[evs.length - 1].created_at;
+      var mins = Math.round((new Date(last) - new Date(first)) / 60000);
+      var items = evs.map(function (v) {
+        var label;
+        if (v.event === 'open') label = opens++ ? 'Revient sur la page' : 'Ouvre le portfolio';
+        else if (v.event === 'project') label = 'Consulte le projet ' + (projectNames[v.detail] || v.detail || '');
+        else if (v.event === 'cv') label = 'Télécharge le CV';
+        else if (v.event === 'lang') label = 'Passe en ' + (v.detail === 'en' ? 'anglais' : 'français');
+        else label = v.event;
+        return '<li><time>' + fmtTime(v.created_at) + '</time><span>' + esc(label) + '</span></li>';
+      }).join('');
+      return '<li class="hist-visit"><p class="hist-head"><strong>Visite ' + (order.length - i) + '</strong> · ' + fmtDay(first) +
+        (mins >= 1 ? ' <span class="muted">· ' + mins + ' min</span>' : '') + '</p><ul>' + items + '</ul></li>';
+    }).join('') + '</ol>';
+  }
 
   function summarize(link) {
     var vs = state.visits.filter(function (v) { return v.link_id === link.id; });
@@ -134,10 +168,12 @@
           '<td>' + (seen ? '<div class="chips">' + seen + '</div>' : '<span class="muted">—</span>') + '</td>' +
           '<td class="code">' + esc(l.code) + '</td>' +
           '<td><div class="actions">' +
+            '<button type="button" class="btn ghost small' + (state.history[l.id] ? ' on' : '') + '" data-history="' + esc(l.id) + '" aria-expanded="' + !!state.history[l.id] + '">Historique</button>' +
             '<button type="button" class="btn ghost small" data-copy="' + esc(l.code) + '">Copier</button>' +
             '<button type="button" class="btn danger small' + (confirming ? ' confirm' : '') + '" data-delete="' + esc(l.id) + '">' + (confirming ? 'Confirmer' : 'Supprimer') + '</button>' +
           '</div></td>' +
-        '</tr>';
+        '</tr>' +
+        (state.history[l.id] ? '<tr class="hist"><td colspan="8">' + renderHistory(l) + '</td></tr>' : '');
     }).join('');
 
     var opened = state.links.filter(function (l) { return summarize(l).opened; }).length;
@@ -207,6 +243,7 @@
     var b = e.target.closest('button');
     if (!b) return;
     if (b.dataset.copy) { copy(linkUrl(b.dataset.copy), b); return; }
+    if (b.dataset.history) { state.history[b.dataset.history] = !state.history[b.dataset.history]; renderDashboard(); return; }
     if (b.dataset.delete) {
       var id = b.dataset.delete;
       if (state.confirmDelete !== id) { state.confirmDelete = id; renderDashboard(); return; }

@@ -60,3 +60,14 @@ td.code { font-family: var(--mono); font-size: 12.5px; }
 .chip.cv { border-color: var(--ok); color: var(--ok); }
 .actions { display: flex; gap: 6px; white-space: nowrap; }
 .empty { padding: 28px 0; color: var(--muted); }
+
+/* Historique des visites d'un lien */
+.btn.ghost.on { background: var(--ink); color: var(--paper); }
+tr.hist > td { padding: 4px 0 18px; background: transparent; }
+.hist-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.hist-visit { padding: 12px 14px; border: 1px solid var(--rule); border-radius: 8px; background: #FFFFFF; }
+.hist-head { font-size: 13.5px; margin-bottom: 6px; }
+.hist-head strong { font-weight: 500; }
+.hist-visit ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; color: var(--text-2); }
+.hist-visit li { display: flex; gap: 10px; }
+.hist-visit time { font-family: var(--mono); font-size: 12.5px; color: var(--muted); min-width: 40px; padding-top: 1px; }
