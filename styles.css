@@ -861,3 +861,7 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 .about-outside { margin: 22px 0 0; max-width: 640px; padding-top: 14px; border-top: 1px solid var(--rule-soft); font-size: var(--fs-body); line-height: 1.6; color: var(--text-2); }
 .about-outside span { display: block; margin-bottom: 2px; font-size: var(--fs-meta); font-weight: 500; color: var(--muted); }
 @media (max-width: 560px) { .about-outside { margin-top: 16px; padding-top: 12px; } }
+
+/* Soft skills, hobbies : en texte simple, sans badges */
+.skill-plain { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-2); }
+@media (max-width: 560px) { .skill-plain { font-size: 13.5px; } }

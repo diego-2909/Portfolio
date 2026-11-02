@@ -381,6 +381,7 @@
         '<div class="section-label"><h2>' + esc(t.nav.skills) + '</h2></div>' +
         '<div class="section-body"><div class="skill-rows">' + map(t.skills, function (s) {
           // même famille de couleur que les badges des projets
+          if (s.plain) return '<div class="skill-row is-plain"><h3>' + esc(s.title) + '</h3><p class="skill-plain">' + s.items.map(esc).join(' · ') + '</p></div>';
           return '<div class="skill-row"><h3>' + esc(s.title) + '</h3><ul>' + map(s.items, function (i) {
             var label = s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(i) + EXT + '</a>' : esc(i);
             return '<li' + (s.fam ? ' class="t-' + s.fam + '"' : '') + '>' + label + '</li>';

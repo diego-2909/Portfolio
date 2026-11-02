@@ -91,8 +91,8 @@ function getContent(lang) {
           { title: 'Projet et analyse', fam: 'method', items: ['Agile, Scrum', 'PI Planning, backlog', 'Recueil des besoins', 'BPMN, UML', 'Jira'] },
           { title: 'Outils', fam: 'cloud', items: ['Git', 'Docker', 'Linux, Bash', 'API Mistral, Gemini'] },
           { title: 'Certification', fam: 'cloud', items: ['AWS Cloud Foundations'], url: 'https://www.credly.com/badges/a07016d2-69c5-4faf-ab38-83d827173f73/public_url' },
-          { title: 'Soft skills', items: ['Enthousiasme', 'Adaptabilité', "Esprit d'équipe"] },
-          { title: 'Hobbies', items: ['Gymnastique', 'Vélo', 'Course à pied', 'Piano'] }
+          { title: 'Soft skills', plain: true, items: ['Enthousiasme', 'Adaptabilité', "Esprit d'équipe"] },
+          { title: 'Hobbies', plain: true, items: ['Gymnastique', 'Vélo', 'Course à pied', 'Piano'] }
         ],
         certsTitle: 'Certification',
         certs: [
@@ -210,8 +210,8 @@ function getContent(lang) {
           { title: 'Project and analysis', fam: 'method', items: ['Agile, Scrum', 'PI Planning, backlog', 'Requirements gathering', 'BPMN, UML', 'Jira'] },
           { title: 'Tools', fam: 'cloud', items: ['Git', 'Docker', 'Linux, Bash', 'Mistral, Gemini APIs'] },
           { title: 'Certification', fam: 'cloud', items: ['AWS Cloud Foundations'], url: 'https://www.credly.com/badges/a07016d2-69c5-4faf-ab38-83d827173f73/public_url' },
-          { title: 'Soft skills', items: ['Enthusiasm', 'Adaptability', 'Team spirit'] },
-          { title: 'Hobbies', items: ['Gymnastics', 'Cycling', 'Running', 'Piano'] }
+          { title: 'Soft skills', plain: true, items: ['Enthusiasm', 'Adaptability', 'Team spirit'] },
+          { title: 'Hobbies', plain: true, items: ['Gymnastics', 'Cycling', 'Running', 'Piano'] }
         ],
         certsTitle: 'Certification',
         certs: [
