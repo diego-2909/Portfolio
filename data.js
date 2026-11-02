@@ -298,8 +298,8 @@ function getContent(lang) {
       },
       {
         id: 'runmates', year: '2026', name: 'RunMates',
-        featured: true, video: 'assets/runmates.mp4?v=4d4ebc9', poster: 'assets/runmates-poster.jpg',
-        videoMobile: 'assets/runmates-mobile.mp4?v=4d4ebc9', posterMobile: 'assets/runmates-mobile-poster.jpg?v=9d1d3a6',
+        featured: true, video: 'assets/runmates.mp4?v=81df861', poster: 'assets/runmates-poster.jpg?v=81df861',
+        videoMobile: 'assets/runmates-mobile.mp4?v=81df861', posterMobile: 'assets/runmates-mobile-poster.jpg?v=81df861',
         videoLabel: L("Démonstration de RunMates sur iPhone : explorer les sorties, en proposer une à Toulouse, mes sorties, profil et messages", 'RunMates demo on iPhone: browse runs, post one in Toulouse, my runs, profile and messages'),
         kind: L('Projet personnel · développé seul', 'Personal project · built solo'),
         pitch: L("Une application pour découvrir des sorties de course à pied ou de vélo près de chez soi et rejoindre des personnes qui partagent une allure similaire.", 'An app to discover running or cycling meetups nearby and join people who share a similar pace.'),
