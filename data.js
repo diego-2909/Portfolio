@@ -50,7 +50,7 @@ function getContent(lang) {
         now: {
           title: 'En ce moment', when: "Aujourd'hui",
           items: [
-            { name: 'TicketFlow', text: 'Tickets de support en services. Spring Boot, React, PostgreSQL, Docker.' },
+            { name: 'TicketFlow', text: "Tickets de support en services, et une première prise en main d'Angular. Spring Boot, Angular, PostgreSQL, Docker." },
             { name: "Suivi d'investissement DCA", text: 'Tableau de bord personnel. Next.js, Prisma.' }
           ]
         },
@@ -101,7 +101,7 @@ function getContent(lang) {
               { title: 'Master 2 Ingénierie des Processus Métiers · 2024 — 2025', items: ['Développement front et back', 'Développement pour le Big Data', 'Architecture d’entreprise à base de services', 'Données et développement dans le cloud', 'Intégration et déploiement continus', 'Agilité pour la gestion de projets', 'Urbanisation et gouvernance des SI', 'Intégration de données', 'Process Intelligence', 'Recherche et développement'] }
             ],
             subjects: [],
-            jobs: 'Product Owner, consultant fonctionnel, chef de projet, ingénieur système d’information, développeur.' },
+            jobs: 'Consultant fonctionnel, chef de projet, ingénieur système d’information, développeur.' },
           { dates: '2022 — 2023', name: 'Licence professionnelle Métiers de l’informatique, parcours RTAI', school: 'Université Toulouse Capitole · en alternance chez Andil', logoUrl: 'assets/ut1-capitole.png',
             more: "Une licence professionnelle d'un an (L3), parcours Responsable Technique d'Applications Internet, suivie en alternance chez Andil. Elle forme à encadrer un projet web de bout en bout : concevoir et réaliser des applications Internet, suivre la conduite de projet, assurer leur sécurité et leur pérennité, et rédiger leur documentation.",
             groups: [
@@ -162,7 +162,7 @@ function getContent(lang) {
         now: {
           title: 'Currently', when: 'Today',
           items: [
-            { name: 'TicketFlow', text: 'Support tickets built as services. Spring Boot, React, PostgreSQL, Docker.' },
+            { name: 'TicketFlow', text: 'Support tickets built as services, and a first hands-on with Angular. Spring Boot, Angular, PostgreSQL, Docker.' },
             { name: 'DCA investment tracker', text: 'Personal dashboard. Next.js, Prisma.' }
           ]
         },
@@ -213,7 +213,7 @@ function getContent(lang) {
               { title: "Master's year 2, Business Process Engineering · 2024 — 2025", items: ['Front-end and back-end development', 'Big Data development', 'Service-oriented enterprise architecture', 'Cloud data and development', 'Continuous integration and deployment', 'Agile project management', 'IS urbanisation and governance', 'Data integration', 'Process Intelligence', 'Research and development'] }
             ],
             subjects: [],
-            jobs: 'Product Owner, functional consultant, project manager, information systems engineer, developer.' },
+            jobs: 'Functional consultant, project manager, information systems engineer, developer.' },
           { dates: '2022 — 2023', name: "Professional Bachelor's in Computing, Web Applications (RTAI)", school: 'Toulouse Capitole University · work-study at Andil', logoUrl: 'assets/ut1-capitole.png',
             more: "A one-year professional degree (third year of a bachelor's), specialised as Internet Application Technical Lead, completed as a work-study at Andil. It trains you to run a web project end to end: designing and building Internet applications, following project delivery, keeping them secure and maintainable, and documenting them.",
             groups: [
