@@ -18,7 +18,7 @@ function getContent(lang) {
         nav: { projects: 'Projets', experience: 'Expérience', skills: 'Compétences', education: 'Formation', contact: 'Contact' },
         hero: {
           role: 'Développeur full-stack · Toulouse',
-          intro: "Développeur full-stack formé en alternance chez Airbus et Andil. Je conçois des outils web utiles, du besoin à la mise en production.",
+          intro: "Formé en alternance chez Airbus et Andil, je conçois des outils web utiles, du besoin à la mise en production.",
           status: 'Disponible · CDI · Toulouse', ctaContact: 'Me contacter', ctaCv: 'Télécharger le CV',
           basedLabel: 'Basé à', degreeLabel: 'Diplôme', degree: 'Master MIAGE', linksLabel: 'Liens', cv: 'CV (PDF)',
           photoAlt: 'Portrait de Diego Cortes'
@@ -126,7 +126,7 @@ function getContent(lang) {
         nav: { projects: 'Projects', experience: 'Experience', skills: 'Skills', education: 'Education', contact: 'Contact' },
         hero: {
           role: 'Full-stack developer · Toulouse',
-          intro: 'Full-stack developer trained through work-study at Airbus and Andil. I build useful web tools, from the first need to production.',
+          intro: 'Trained through work-study at Airbus and Andil, I build useful web tools, from the first need to production.',
           status: 'Available · Permanent role · Toulouse', ctaContact: 'Get in touch', ctaCv: 'Download resume',
           basedLabel: 'Based in', degreeLabel: 'Degree', degree: "Master's in Information Systems (MIAGE)", linksLabel: 'Links', cv: 'Resume (PDF)',
           photoAlt: 'Portrait of Diego Cortes'
