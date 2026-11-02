@@ -301,31 +301,24 @@ function getContent(lang) {
         featured: true, video: 'assets/runmates.mp4', poster: 'assets/runmates-poster.jpg',
         videoMobile: 'assets/runmates-mobile.mp4?v=9d1d3a6', posterMobile: 'assets/runmates-mobile-poster.jpg?v=9d1d3a6',
         videoLabel: L("Démonstration de RunMates sur iPhone : explorer les sorties, en proposer une à Toulouse, mes sorties, profil et messages", 'RunMates demo on iPhone: browse runs, post one in Toulouse, my runs, profile and messages'),
-        kind: L('Projet personnel · seul', 'Personal project · solo'),
-        pitch: L('Trouver une sortie course ou vélo près de chez soi, à son allure, et la rejoindre en un geste.', 'Find a run or ride nearby, at your pace, and join it in one tap.'),
+        kind: L('Projet personnel · développé seul', 'Personal project · built solo'),
+        pitch: L("Une application pour découvrir des sorties de course à pied ou de vélo près de chez soi et rejoindre des personnes qui partagent une allure similaire.", 'An app to discover running or cycling meetups nearby and join people who share a similar pace.'),
         img: 'assets/runmates-sorties.jpg',
         imgAlt: L("Maquette de l'écran Sorties de RunMates : sorties du jour et du lendemain avec allure, distance et lieu", 'Mockup of the RunMates Runs screen: today and tomorrow’s runs with pace, distance and place'),
         previewLabel: L("Maquette de l'écran « Sorties »", 'Mockup of the “Runs” screen'),
-        context: L(
-          "Courir à plusieurs, c'est plus motivant, mais les outils existants supposent de déjà connaître un club : Strava et Meetup fonctionnent par abonnement, les groupes WhatsApp sont fermés. J'ai voulu une application où l'on découvre les sorties autour de soi et où l'on rejoint des inconnus qui courent à la même allure. Elle est en ligne sur le web, et en test sur iOS.",
-          "Running with others is more motivating, but existing tools assume you already belong to a club: Strava and Meetup work by membership, WhatsApp groups are closed. I wanted an app where you discover runs around you and join strangers who run at your pace. It is live on the web and in testing on iOS."
-        ),
-        approach: L([
-          "Les fondations d'abord : schéma de la base, types TypeScript et règles d'accès, avant le moindre écran.",
-          "Toute l'autorisation portée par PostgreSQL : 101 règles Row Level Security, et une recherche géographique PostGIS pour les sorties proches.",
-          "L'application construite par couches : client Supabase, hooks de données avec cache, composants, puis les 22 écrans.",
-          "Un audit de sécurité dédié : contacts d'urgence déplacés dans une table privée, webhook Stripe protégé contre le rejeu, fonctions SQL durcies.",
-          "Des itérations produit : parcours d'inscription, ajout du vélo à côté de la course, version bureau avec navigation latérale."
+        context: L([
+          "Trouver des personnes avec qui courir ou faire du vélo peut être motivant, mais il n'est pas toujours facile de savoir où chercher. Les clubs et groupes organisent des sorties et communiquent souvent sur Instagram, mais il faut parfois passer du temps à les trouver, à comprendre leur fonctionnement et à savoir si les sorties proposées correspondent à son niveau. Ce n'est pas toujours évident, notamment lorsqu'on débute.",
+          "C'est de ce constat qu'est né RunMates : une application qui permet de découvrir les sorties organisées autour de soi, de consulter leurs informations et de rejoindre facilement un groupe adapté à ses envies et à son allure."
         ], [
-          'Foundations first: database schema, TypeScript types and access rules, before a single screen.',
-          'All authorization handled by PostgreSQL: 101 Row Level Security policies, plus PostGIS geographic search for nearby runs.',
-          'The app built in layers: Supabase client, cached data hooks, components, then the 22 screens.',
-          'A dedicated security audit: emergency contacts moved to a private table, Stripe webhook protected against replay, SQL functions hardened.',
-          'Product iterations: onboarding flow, cycling added alongside running, a desktop version with side navigation.'
+          "Finding people to run or ride with can be motivating, but it isn't always easy to know where to look. Clubs and groups organise meetups and often post about them on Instagram, but it can take time to find them, understand how they work and tell whether their runs match your level. It isn't always obvious, especially when you're starting out.",
+          "That's where RunMates came from: an app that lets you discover meetups organised around you, check their details and easily join a group that fits what you want and your pace."
         ]),
-        teamTitle: L('Qui a fait quoi', 'Who did what'),
-        team: [ m('Diego Cortes', GH.diego, 'Tout, seul : idée, produit, modèle de données, sécurité, front-end, application iOS, paiements.', 'Everything, solo: idea, product, data model, security, front-end, iOS app, payments.') ],
-        stack: 'React · TypeScript · Supabase · PostGIS · Mapbox · Capacitor · Stripe',
+        approachTitle: L('Développement', 'Development'),
+        approachText: L(
+          "Je développe RunMates seul, de la conception à la réalisation. J'ai commencé par définir le modèle de données et les règles d'accès, avant de construire progressivement l'application avec React et TypeScript. Supabase et PostgreSQL assurent la gestion des données et des utilisateurs, tandis que PostGIS permet de rechercher les sorties selon leur proximité géographique. Mapbox est utilisé pour l'affichage cartographique, et Capacitor permet de proposer une version iOS.",
+          "I'm building RunMates on my own, from design to delivery. I started by defining the data model and access rules, then built the app step by step with React and TypeScript. Supabase and PostgreSQL handle data and users, while PostGIS finds meetups by geographic proximity. Mapbox powers the maps, and Capacitor provides an iOS version."
+        ),
+        stack: 'React · TypeScript · Supabase · PostgreSQL · PostGIS · Mapbox · Capacitor · Stripe',
         links: [], private: true, privateLabel: L('Code privé', 'Private code')
       },
       {

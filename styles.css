@@ -865,3 +865,6 @@ html.is-pushed .wrap { transform: translateX(calc(var(--pw) * -0.82)); opacity: 
 /* Soft skills, hobbies : en texte simple, sans badges */
 .skill-plain { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-2); }
 @media (max-width: 560px) { .skill-plain { font-size: 13.5px; } }
+
+/* Plusieurs paragraphes dans un bloc du détail projet */
+.details p + p { margin-top: 10px; }

@@ -260,8 +260,9 @@
         techList(p, t) +
       '</div>' +
       '<div class="details">' +
-        (p.context ? '<div><h4>' + esc(t.p.context) + '</h4><p>' + esc(p.context) + '</p></div>' : '') +
+        (p.context ? '<div><h4>' + esc(t.p.context) + '</h4>' + map([].concat(p.context), function (c) { return '<p>' + esc(c) + '</p>'; }) + '</div>' : '') +
         (p.result ? '<div><h4>' + esc(t.p.result) + '</h4><p>' + esc(p.result) + '</p></div>' : '') +
+        (p.approachText ? '<div><h4>' + esc(p.approachTitle || t.p.approach) + '</h4><p>' + esc(p.approachText) + '</p></div>' : '') +
         (p.approach && p.approach.length ? '<div><h4>' + esc(t.p.approach) + '</h4><ul>' + map(p.approach, function (a) { return '<li>' + esc(a) + '</li>'; }) + '</ul></div>' : '') +
         (team ? '<div><h4>' + esc(p.teamTitle) + '</h4>' + team + '</div>' : '') +
       '</div>' +
