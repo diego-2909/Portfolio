@@ -102,7 +102,7 @@
       '<section class="section" id="apropos">' +
         '<div class="section-label"><h2>' + esc(t.about.title) + '</h2></div>' +
         '<div class="section-body about">' +
-          '<p class="lead a-words">' + esc(t.about.lead) + '</p>' +
+          (t.about.lead ? '<p class="lead a-words">' + esc(t.about.lead) + '</p>' : '') +
           '<div class="about-paras">' + map(t.about.paras, function (p) { return '<p class="a-up">' + esc(p) + '</p>'; }) + '</div>' +
         '</div>' +
       '</section>';

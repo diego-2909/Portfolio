@@ -17,24 +17,28 @@ function getContent(lang) {
         code: 'fr', navLabel: 'Navigation principale', langLabel: 'Langue', techLabel: 'Technologies', timelineLabel: 'Projets, du plus récent au plus ancien',
         nav: { projects: 'Projets', experience: 'Expérience', skills: 'Compétences', education: 'Formation', contact: 'Contact' },
         hero: {
-          role: 'Développeur full-stack · Toulouse',
-          intro: "Formé en alternance chez Airbus et Andil, je conçois des outils web utiles, du besoin à la mise en production.",
+          role: "Développeur full-stack à Toulouse, diplômé d'un Master MIAGE",
+          intro: "Je conçois et développe des applications web, de l'analyse du besoin à la mise en production. Mon expérience chez Airbus Operations m'a également amené à piloter techniquement un projet, en collaboration avec des équipes métier et sécurité.",
           status: 'Disponible · CDI · Toulouse', ctaContact: 'Me contacter', ctaCv: 'Télécharger le CV',
           basedLabel: 'Basé à', degreeLabel: 'Diplôme', degree: 'Master MIAGE', linksLabel: 'Liens', cv: 'CV (PDF)',
           photoAlt: 'Portrait de Diego Cortes'
         },
         about: {
           title: 'À propos',
-          lead: "J'aime écrire du code, mais j'aime surtout comprendre le problème qu'il doit résoudre.",
+          lead: '',
           paras: [
-            "Licence d'informatique à Paul Sabatier, puis trois ans d'alternance : chez Andil sur des plugins Moodle, puis chez Airbus en chef de projet technique d'un projet de sécurité, de l'atelier jusqu'à la mise en production."
+            "Diplômé d'un Master MIAGE en Ingénierie des Processus Métiers, j'ai acquis trois ans d'expérience en développement informatique, en alternance chez Airbus Operations et Andil.",
+            "Chez Airbus, j'ai occupé un rôle de développeur et responsable projet. J'ai notamment pris en charge le développement d'une application de recertification des accès Google Drive, depuis les ateliers de recueil des besoins et la conception des maquettes jusqu'à la mise en production. Cette expérience m'a permis de travailler aussi bien sur les aspects techniques que sur la coordination avec les équipes métier et sécurité.",
+            "J'aime travailler sur des projets variés et comprendre les différentes étapes de leur réalisation. Mon expérience couvre notamment le développement front-end avec React, Next.js et TypeScript, ainsi que le back-end avec Java, Spring Boot, C#/.NET et PHP.",
+            "En parallèle de mes expériences professionnelles, je développe mes propres projets. RunMates, une application web et iOS pour découvrir et rejoindre des sorties de course à pied ou de vélo près de chez soi, est notamment un projet que je mène seul, de la conception à la réalisation.",
+            "Aujourd'hui, je souhaite mettre cette polyvalence au service d'une nouvelle équipe, dans un poste de développeur full-stack avec, lorsque le projet le permet, une dimension de pilotage technique."
           ],
         },
         seek: {
           title: 'Ce que je cherche',
           lead: '',
           rows: [
-            { label: 'Poste', value: 'Développeur full-stack, ou développeur et chef de projet technique' },
+            { label: 'Poste', value: 'Développeur full-stack, ou développeur et responsable projet' },
             { label: 'Contrat', value: 'CDI, disponible immédiatement' },
             { label: 'Lieu', value: 'Toulouse et alentours' },
             { label: 'Secteur', value: 'Aéronautique en priorité' }
@@ -53,9 +57,9 @@ function getContent(lang) {
         projectsDone: 'Projets réalisés', seeCase: 'Voir le projet ↓',
         jobs: [
           {
-            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Développeur et chef de projet technique, en alternance',
+            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Développeur et responsable projet, en alternance',
             bullets: [
-              "Product Owner technique d'un projet de sécurité, du besoin à la production.",
+              "Responsable projet et développeur d'un projet de sécurité, du besoin à la production.",
               'Ateliers avec Data Governance et IT Security, PI Planning, backlog.'
             ],
             projects: [
@@ -119,30 +123,34 @@ function getContent(lang) {
             subjects: [],
             jobs: '' }
         ],
-        contact: { lead: 'Je cherche un CDI de développeur full-stack, ou développeur et chef de projet technique, à Toulouse. Aéronautique en priorité, disponible immédiatement.', email: 'E-mail', phone: 'Téléphone', cv: 'Télécharger mon CV (PDF)' }
+        contact: { lead: 'Je cherche un CDI de développeur full-stack, ou développeur et responsable projet, à Toulouse. Aéronautique en priorité, disponible immédiatement.', email: 'E-mail', phone: 'Téléphone', cv: 'Télécharger mon CV (PDF)' }
       },
       en: {
         code: 'en', navLabel: 'Main navigation', langLabel: 'Language', techLabel: 'Technologies', timelineLabel: 'Projects, newest first',
         nav: { projects: 'Projects', experience: 'Experience', skills: 'Skills', education: 'Education', contact: 'Contact' },
         hero: {
-          role: 'Full-stack developer · Toulouse',
-          intro: 'Trained through work-study at Airbus and Andil, I build useful web tools, from the first need to production.',
+          role: "Full-stack developer in Toulouse, Master's in Information Systems (MIAGE)",
+          intro: "I design and build web applications, from requirements analysis to production. At Airbus Operations, I also led a project on the technical side, working with business and security teams.",
           status: 'Available · Permanent role · Toulouse', ctaContact: 'Get in touch', ctaCv: 'Download resume',
           basedLabel: 'Based in', degreeLabel: 'Degree', degree: "Master's in Information Systems (MIAGE)", linksLabel: 'Links', cv: 'Resume (PDF)',
           photoAlt: 'Portrait of Diego Cortes'
         },
         about: {
           title: 'About',
-          lead: 'I enjoy writing code, but what I enjoy most is understanding the problem it has to solve.',
+          lead: '',
           paras: [
-            "A computer science degree at Paul Sabatier, then three years of work-study: Moodle plugins at Andil, then technical project lead on a security project at Airbus, from the first workshop to production."
+            "With a Master's in Information Systems (MIAGE), Business Process Engineering track, I have three years of software development experience through work-study at Airbus Operations and Andil.",
+            "At Airbus, I worked as a developer and project lead. I took charge of building an application to recertify Google Drive access rights, from the requirements workshops and mockups all the way to production. It had me working on the technical side as much as coordinating with business and security teams.",
+            "I enjoy working on varied projects and understanding every stage of how they get built. My experience covers front-end development with React, Next.js and TypeScript, and back-end with Java, Spring Boot, C#/.NET and PHP.",
+            "Alongside my work, I build my own projects. RunMates, a web and iOS app to find and join running or cycling meetups nearby, is one I'm leading on my own, from design to delivery.",
+            "Today I want to bring this versatility to a new team, as a full-stack developer with, where the project allows, a technical leadership side."
           ],
         },
         seek: {
           title: "What I'm looking for",
           lead: '',
           rows: [
-            { label: 'Role', value: 'Full-stack developer, or developer and technical project lead' },
+            { label: 'Role', value: 'Full-stack developer, or developer and project lead' },
             { label: 'Contract', value: 'Permanent (CDI), available now' },
             { label: 'Location', value: 'Toulouse area' },
             { label: 'Sector', value: 'Aerospace first' }
@@ -161,9 +169,9 @@ function getContent(lang) {
         projectsDone: 'Projects delivered', seeCase: 'See the project ↓',
         jobs: [
           {
-            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Developer and technical project lead, work-study',
+            dates: '2023 — 2025', place: 'Saint-Martin-du-Touch', company: 'Airbus Operations', logoUrl: 'assets/airbus.png', role: 'Developer and project lead, work-study',
             bullets: [
-              'Technical Product Owner on a security project, from need to production.',
+              'Project lead and developer on a security project, from need to production.',
               'Workshops with Data Governance and IT Security, PI Planning, backlog.'
             ],
             projects: [
@@ -227,7 +235,7 @@ function getContent(lang) {
             subjects: [],
             jobs: '' }
         ],
-        contact: { lead: "I'm looking for a permanent full-stack developer role, or developer and technical project lead, in Toulouse. Aerospace first, available now.", email: 'Email', phone: 'Phone', cv: 'Download my resume (PDF)' }
+        contact: { lead: "I'm looking for a permanent full-stack developer role, or developer and project lead, in Toulouse. Aerospace first, available now.", email: 'Email', phone: 'Phone', cv: 'Download my resume (PDF)' }
       }
     };
     var t = T[lang];
@@ -266,7 +274,7 @@ function getContent(lang) {
         ]),
         teamTitle: L('Qui a fait quoi', 'Who did what'),
         team: [
-          m('Diego Cortes', '', 'Product Owner technique et développeur : besoins, maquettes, développement, documentation, déploiement.', 'Technical Product Owner and developer: requirements, mockups, development, documentation, deployment.'),
+          m('Diego Cortes', '', 'Responsable projet et développeur : besoins, maquettes, développement, documentation, déploiement.', 'Project lead and developer: requirements, mockups, development, documentation, deployment.'),
           m('Data Governance', '', 'Règles de gouvernance des données, validation fonctionnelle.', 'Data governance rules, functional sign-off.'),
           m('IT Security', '', 'Exigences de sécurité, validation du déploiement.', 'Security requirements, deployment sign-off.')
         ],
