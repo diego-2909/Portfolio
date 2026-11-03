@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="robots" content="noindex">
+<title>Balade — Diego Cortes</title>
+<meta name="description" content="Une balade en 3D dans une allée d'arbres, jusqu'au portfolio de Diego Cortes.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141414'/%3E%3Ctext x='16' y='21' font-family='Arial' font-size='13' font-weight='600' fill='%23FAFAF8' text-anchor='middle'%3EDC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/balade/balade.css?v=0000000">
+<script type="importmap">
+{ "imports": {
+  "three": "/balade/js/three/build/three.module.min.js",
+  "three/addons/": "/balade/js/three/addons/"
+} }
+</script>
+</head>
+<body>
+<canvas id="scene" aria-label="Allée d'arbres en 3D"></canvas>
+
+<a class="corner back" href="/">← Portfolio</a>
+<button type="button" class="corner credits-btn" id="credits-btn" aria-haspopup="dialog">Crédits</button>
+
+<!-- Chargement, puis écran d'accueil -->
+<div class="panel" id="intro">
+  <div class="card">
+    <p class="kicker">Diego Cortes · Portfolio</p>
+    <h1>Une petite balade</h1>
+    <p class="lead">Remonte l'allée jusqu'à la table au bout du chemin, assieds-toi et ouvre l'ordinateur.</p>
+    <div class="loading" id="loading">
+      <div class="bar"><span id="bar"></span></div>
+      <p class="muted" id="loading-text">Les arbres poussent… 0 %</p>
+    </div>
+    <div id="ready" hidden>
+      <ul class="keys" id="keys-desktop">
+        <li><span><kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd></span> ou les flèches pour marcher</li>
+        <li><span><kbd>Maj</kbd></span> pour courir</li>
+        <li><span>Glisser</span> avec la souris pour regarder autour</li>
+      </ul>
+      <ul class="keys" id="keys-touch">
+        <li><span>Pouce gauche</span> pour marcher</li>
+        <li><span>Pouce droit</span> pour regarder autour</li>
+      </ul>
+      <button type="button" class="btn" id="start">Commencer la balade</button>
+    </div>
+    <a class="skip" href="/">Aller directement au portfolio</a>
+    <p class="error" id="error" hidden>Ton navigateur ne peut pas afficher la 3D. <a href="/">Voir le portfolio</a></p>
+  </div>
+</div>
+
+<!-- Pendant la balade -->
+<p class="toast" id="goal" hidden>Avance jusqu'à la table au bout de l'allée</p>
+<button type="button" class="action" id="sit" hidden>S'asseoir <kbd>E</kbd></button>
+<div class="seated" id="seated" hidden>
+  <p>Clique sur l'écran de l'ordinateur</p>
+  <div class="row">
+    <button type="button" class="btn" id="open">Ouvrir le portfolio</button>
+    <button type="button" class="btn ghost" id="stand">Se lever</button>
+  </div>
+</div>
+
+<!-- Commandes tactiles -->
+<div class="stick" id="stick" hidden><span></span></div>
+
+<div class="fade" id="fade"></div>
+
+<div class="dialog" id="credits" role="dialog" aria-modal="true" aria-labelledby="credits-title" hidden>
+  <div class="card">
+    <h2 id="credits-title">Crédits</h2>
+    <ul>
+      <li>Moteur 3D : <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> (licence MIT)</li>
+      <li>Arbres et herbe : <a href="https://github.com/dgreenheck/ez-tree" target="_blank" rel="noopener">EZ-Tree</a> de Daniel Greenheck (licence MIT)</li>
+      <li>Personnage : avatar <a href="https://readyplayer.me" target="_blank" rel="noopener">Ready Player Me</a> et animations <a href="https://www.mixamo.com" target="_blank" rel="noopener">Mixamo</a>, issus des exemples three.js</li>
+      <li>Lumière : HDRI « forest » de <a href="https://polyhaven.com" target="_blank" rel="noopener">Poly Haven</a> (CC0)</li>
+      <li>Texture d'herbe : <a href="https://opengameart.org/content/dark-grass" target="_blank" rel="noopener">OpenGameArt</a> (CC BY 3.0)</li>
+    </ul>
+    <button type="button" class="btn ghost" id="credits-close">Fermer</button>
+  </div>
+</div>
+
+<script type="module" src="/balade/js/main.js?v=0000000"></script>
+</body>
+</html>

@@ -89,3 +89,11 @@ python3 -m http.server 8000
 ```
 
 puis ouvrir http://localhost:8000.
+
+## Balade 3D (`/balade`)
+
+Petit jeu en 3D, indépendant du site : on remonte une allée d'arbres, on s'assoit à une table et on ouvre l'ordinateur, qui mène au portfolio.
+
+- Tout est dans `balade/` (three.js r170 et EZ-Tree embarqués, aucun outil de build).
+- `balade/assets/site.jpg` est la capture affichée sur l'écran de l'ordinateur : à refaire si la page d'accueil change beaucoup.
+- `?debug` expose quelques objets dans `window.__b` pour les tests.
