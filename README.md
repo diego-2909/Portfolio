@@ -97,3 +97,10 @@ Petit jeu en 3D, indépendant du site : on remonte une allée d'arbres, on s'ass
 - Tout est dans `balade/` (three.js r170 et EZ-Tree embarqués, aucun outil de build).
 - `balade/assets/site.jpg` est la capture affichée sur l'écran de l'ordinateur : à refaire si la page d'accueil change beaucoup.
 - `?debug` expose quelques objets dans `window.__b` pour les tests.
+
+## Le musée (`/balade2`)
+
+Le portfolio en exposition 3D : une galerie de sept salles (accueil, Airbus avec une maquette d'A320, Andil, formation, projets, compétences, contact).
+
+- Le contenu vient directement de `data.js` : modifier le site met le musée à jour.
+- Code dans `balade2/js/musee.js` ; il réutilise three.js, l'avatar et ses animations de `balade/`.

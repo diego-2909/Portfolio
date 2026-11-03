@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="robots" content="noindex">
+<title>Le musée — Diego Cortes</title>
+<meta name="description" content="Le parcours de Diego Cortes, à visiter en 3D comme une exposition.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141414'/%3E%3Ctext x='16' y='21' font-family='Arial' font-size='13' font-weight='600' fill='%23FAFAF8' text-anchor='middle'%3EDC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/balade/balade.css?v=0000000">
+<link rel="stylesheet" href="/balade2/musee.css?v=0000000">
+<script type="importmap">
+{ "imports": {
+  "three": "/balade/js/three/build/three.module.min.js",
+  "three/addons/": "/balade/js/three/addons/"
+} }
+</script>
+</head>
+<body>
+<canvas id="scene" aria-label="Musée du parcours de Diego Cortes, en 3D"></canvas>
+
+<a class="corner back" href="/">← Portfolio</a>
+<p class="corner progress" id="progress" hidden>0 / 0 découverts</p>
+
+<div class="panel" id="intro">
+  <div class="card">
+    <p class="kicker">Diego Cortes · Portfolio</p>
+    <h1>Le musée</h1>
+    <p class="lead">Mon parcours, salle par salle : Airbus, Andil, mes études, mes projets et mes compétences. Approche-toi d'un panneau ou d'une œuvre pour la lire.</p>
+    <div class="loading" id="loading">
+      <div class="bar"><span id="bar"></span></div>
+      <p class="muted" id="loading-text">Montage de l'exposition… 0 %</p>
+    </div>
+    <div id="ready" hidden>
+      <ul class="keys" id="keys-desktop">
+        <li><span><kbd>Z</kbd><kbd>Q</kbd><kbd>S</kbd><kbd>D</kbd></span> ou les flèches pour marcher</li>
+        <li><span><kbd>Maj</kbd></span> pour courir</li>
+        <li><span><kbd>E</kbd></span> pour lire un panneau</li>
+        <li><span>Glisser</span> avec la souris pour regarder autour</li>
+      </ul>
+      <ul class="keys" id="keys-touch">
+        <li><span>Pouce gauche</span> pour marcher</li>
+        <li><span>Pouce droit</span> pour regarder autour</li>
+      </ul>
+      <button type="button" class="btn" id="start">Entrer dans le musée</button>
+    </div>
+    <a class="skip" href="/">Aller directement au portfolio</a>
+    <p class="error" id="error" hidden>Ton navigateur ne peut pas afficher la 3D. <a href="/">Voir le portfolio</a></p>
+  </div>
+</div>
+
+<p class="toast" id="room" hidden></p>
+<button type="button" class="action" id="read" hidden><span id="read-label">Lire</span> <kbd>E</kbd></button>
+<div class="stick" id="stick" hidden><span></span></div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+  <article class="sheet-card">
+    <button type="button" class="sheet-close" id="sheet-close" aria-label="Fermer">×</button>
+    <div id="sheet-body"></div>
+  </article>
+</div>
+
+<div class="fade" id="fade"></div>
+
+<script src="/data.js?v=0000000"></script>
+<script type="module" src="/balade2/js/musee.js?v=0000000"></script>
+</body>
+</html>

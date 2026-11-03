@@ -1,0 +1,29 @@
+html, body { background: #d9d6cf; }
+.progress { left: 50%; right: auto; transform: translateX(-50%); cursor: default; font-variant-numeric: tabular-nums; }
+.progress.done { background: #1F7A45; color: #fff; }
+
+.sheet { position: fixed; inset: 0; z-index: 15; display: flex; align-items: center; justify-content: center; padding: 16px;
+  background: rgba(20,20,20,.28); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.sheet-card { position: relative; width: min(640px, 100%); max-height: min(82vh, 760px); overflow: auto; padding: 30px 30px 26px;
+  border-radius: 18px; background: #FAFAF8; box-shadow: 0 40px 90px -30px rgba(0,0,0,.55); -webkit-user-select: text; user-select: text;
+  animation: rise .28s cubic-bezier(.2,.9,.3,1); }
+@keyframes rise { from { transform: translateY(14px); opacity: 0; } }
+.sheet-close { position: absolute; right: 14px; top: 12px; width: 38px; height: 38px; border: 0; border-radius: 50%; background: #EFEFEA;
+  font-size: 22px; line-height: 1; cursor: pointer; color: #141414; }
+.sheet-card .kicker { margin: 0 0 6px; }
+.sheet-card h2 { margin: 0 0 4px; padding-right: 40px; font-size: 24px; font-weight: 500; letter-spacing: -0.02em; }
+.sheet-card .sub { margin: 0 0 16px; color: #6B6B66; font-size: 14.5px; }
+.sheet-card h3 { margin: 18px 0 8px; font-size: 13px; font-weight: 500; color: #6B6B66; }
+.sheet-card p { margin: 0 0 10px; font-size: 15px; line-height: 1.6; color: #2E2E2A; }
+.sheet-card ul { margin: 0 0 6px; padding-left: 18px; font-size: 15px; line-height: 1.6; color: #2E2E2A; }
+.sheet-card li { margin-bottom: 4px; }
+.sheet-card .logo { display: block; max-height: 40px; max-width: 170px; margin-bottom: 14px; }
+.sheet-card .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 8px; padding: 0; list-style: none; }
+.sheet-card .chips li { margin: 0; padding: 3px 10px; border: 1px solid #DEDED8; border-radius: 999px; background: #fff; font-size: 13px; }
+.sheet-card .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.sheet-card .links a { display: inline-flex; align-items: center; min-height: 42px; padding: 0 18px; border-radius: 999px; border: 1px solid #141414;
+  color: #141414; text-decoration: none; font-size: 14px; font-weight: 500; }
+.sheet-card .links a.primary { background: #141414; color: #FAFAF8; }
+.sheet-card .proj { padding: 12px 0; border-top: 1px solid #ECECE6; }
+.sheet-card .proj strong { font-weight: 500; }
+@media (max-width: 560px) { .sheet-card { padding: 24px 20px 20px; max-height: 86vh; } .sheet-card h2 { font-size: 21px; } }

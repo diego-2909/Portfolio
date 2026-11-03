@@ -16,7 +16,7 @@
   }
   function linkUrl(code) { return SITE + '/' + code; }
   var CODE_RE = /^[a-z0-9][a-z0-9-]{1,19}$/;
-  var RESERVED = ['admin', 'assets', 'balade'];
+  var RESERVED = ['admin', 'assets', 'balade', 'balade2'];
   function fmtDate(iso) {
     if (!iso) return '—';
     var d = new Date(iso);
@@ -220,7 +220,7 @@
     msg.textContent = '';
     if (!company) return;
     if (chosen && (!CODE_RE.test(chosen) || RESERVED.indexOf(chosen) !== -1)) {
-      msg.textContent = 'Code invalide : 2 à 20 caractères, lettres minuscules, chiffres ou tirets (et pas « admin », « assets » ni « balade »).';
+      msg.textContent = 'Code invalide : 2 à 20 caractères, lettres minuscules, chiffres ou tirets (et pas « admin », « assets », « balade » ni « balade2 »).';
       return;
     }
     btn.disabled = true;
